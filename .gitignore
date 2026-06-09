@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Архивы и ОС
+*.zip
+.DS_Store
+Thumbs.db
+
+# Сгенерированные рантайм-артефакты (регенерируются движком и tools/)
+game-data/encounters/
+game-data/agent-intents/
+game-data/battle-reports/
+game-data/replay/
+game-data/strategic/
+game-data/render-contracts/
+game-data/batch-*.json
+fixtures/enc-005-v04-final-state.json
+fixtures/enc-005-v04-full-log.json
