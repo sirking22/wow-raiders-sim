@@ -1,0 +1,26 @@
+{
+  "version": "v0.7",
+  "principle": "Визуал НЕ источник правды. Источник правды — state/log/replay. Каждый экран строится из конкретного frame_index или state_id.",
+  "required_bindings": {
+    "battle_result_screen": "battle-result.json",
+    "battle_log_screen": "battle-log-key-events.json | full timeline",
+    "battle_stats_screen": "battle-stats.json",
+    "battle_replay_screen": "replay-frames.json (+ replay-milestones.json)",
+    "strategic_map_screen": "post-battle-strategic-state.json"
+  },
+  "validation": {
+    "actors_must_exist_in_registry": true,
+    "cells_must_be_valid_8x8": true,
+    "hp_must_match_state": true,
+    "status_translations_must_match_vocabulary": true,
+    "no_invented_actors": true,
+    "no_invented_positions": true,
+    "no_invented_outcomes": true,
+    "forbidden_terms": ["кровожадность", "кровожадный", "bloodthirsty"]
+  },
+  "frame_rules": {
+    "every_screen_must_reference": ["frame_index OR state_id", "activation_count"],
+    "board_must_be_8x8_from_json": true,
+    "uppercase_alive_lowercase_downed": true
+  }
+}

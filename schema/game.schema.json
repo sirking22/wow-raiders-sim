@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WoW Raiders sim data contract (v0.4)",
+  "definitions": {
+    "Intent": {
+      "type": "object",
+      "required": ["activation", "round", "actor", "intent", "target"],
+      "properties": {
+        "activation": { "type": "integer" },
+        "round": { "type": "integer" },
+        "actor": { "type": "string" },
+        "intent": { "type": "string" },
+        "target": { "type": ["string", "null"] },
+        "reason": { "type": "string" }
+      }
+    },
+    "Roll": {
+      "type": "object",
+      "properties": {
+        "d20": { "type": "integer" },
+        "bonus": { "type": "integer" },
+        "total": { "type": "integer" },
+        "vs_ac": { "type": "integer" },
+        "result": { "enum": ["hit", "miss"] }
+      }
+    },
+    "DamagePart": {
+      "type": "object",
+      "properties": {
+        "expr": { "type": "string" },
+        "rolls": { "type": "array", "items": { "type": "integer" } },
+        "fixed": { "type": "integer" },
+        "type": { "type": "string" },
+        "amount": { "type": "integer" }
+      }
+    },
+    "Activation": {
+      "type": "object",
+      "required": ["activation", "round", "actor"],
+      "properties": {
+        "activation": { "type": "integer" },
+        "round": { "type": "integer" },
+        "actor": { "type": "string" },
+        "start": { "type": ["string", "null"] },
+        "end": { "type": ["string", "null"] },
+        "intent": { "type": "object" },
+        "events": { "type": "array" },
+        "move": { "type": "object" },
+        "action": { "type": "object" },
+        "resources_after": { "type": "object" }
+      }
+    },
+    "Actor": {
+      "type": "object",
+      "required": ["name", "team", "position", "hp", "max_hp", "ac"],
+      "properties": {
+        "name": { "type": "string" },
+        "team": { "enum": ["heroes", "enemies"] },
+        "class": { "type": "string" },
+        "position": { "type": ["string", "null"] },
+        "hp": { "type": "integer" },
+        "max_hp": { "type": "integer" },
+        "ac": { "type": "integer" },
+        "statuses": { "type": "array", "items": { "type": "string" } },
+        "resources": { "type": "object" }
+      }
+    },
+    "Snapshot": {
+      "type": "object",
+      "required": ["snapshot_id", "seed", "winner", "round", "activation_count", "initiative_order", "board", "actors"],
+      "properties": {
+        "snapshot_id": { "type": "string" },
+        "seed": { "type": "string" },
+        "winner": { "enum": ["heroes", "enemies", "unfinished"] },
+        "round": { "type": "integer" },
+        "activation_count": { "type": "integer" },
+        "initiative_order": { "type": "array", "items": { "type": "string" } },
+        "initiative_rolls": { "type": "array" },
+        "board": { "type": "array", "items": { "type": "string" } },
+        "actors": { "type": "object", "additionalProperties": { "$ref": "#/definitions/Actor" } },
+        "intent_log": { "type": "array" },
+        "gm_log": { "type": "array" },
+        "log": { "type": "array", "items": { "$ref": "#/definitions/Activation" } },
+        "render_prompt_seed": { "type": "string" }
+      }
+    }
+  }
+}

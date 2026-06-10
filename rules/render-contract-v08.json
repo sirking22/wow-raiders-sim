@@ -1,0 +1,36 @@
+{
+  "version": "v0.8",
+  "principle": "Визуал НЕ источник правды. Источник правды — state/log/replay. Каждый экран строится из конкретного frame_index или state_id.",
+  "grid": {
+    "type": "hex",
+    "layout": "odd-r",
+    "width": 8,
+    "height": 8,
+    "neighbors": 6,
+    "distance": "cube",
+    "label": "col-letter + row-number (например B2)",
+    "render_note": "Нечётные ряды сдвинуты на полгекса вправо (odd-r). Диагоналей нет — 6 направлений."
+  },
+  "required_bindings": {
+    "battle_result_screen": "enc-005-v08-final-state.json",
+    "battle_replay_screen": "enc-005-v08-final-state.json#log",
+    "strategic_map_screen": "post-battle-state-enc-005-v07.json"
+  },
+  "validation": {
+    "actors_must_exist_in_registry": true,
+    "cells_must_be_valid_hex_8x8_oddr": true,
+    "distance_must_be_cube_hex": true,
+    "adjacency_is_six_neighbors": true,
+    "hp_must_match_state": true,
+    "status_translations_must_match_vocabulary": true,
+    "no_invented_actors": true,
+    "no_invented_positions": true,
+    "no_invented_outcomes": true,
+    "forbidden_terms": ["кровожадность", "кровожадный", "bloodthirsty"]
+  },
+  "frame_rules": {
+    "every_screen_must_reference": ["frame_index OR state_id", "activation_count"],
+    "board_must_be_hex_8x8_oddr_from_json": true,
+    "uppercase_alive_lowercase_downed": true
+  }
+}

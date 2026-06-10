@@ -1,0 +1,47 @@
+{
+  "version": "v0.7",
+  "note": "Контракт словаря статусов. Рендер ОБЯЗАН использовать ru-перевод. Термин 'кровожадность' запрещён.",
+  "statuses": {
+    "bloodied": {
+      "ru": "Изранен",
+      "ru_alt": "Тяжело ранен",
+      "description": "HP <= 50% от макс.",
+      "ui_color": "orange",
+      "render_hint": "wounded / heavily wounded, NOT bloodthirsty",
+      "forbidden_terms": ["кровожадность", "кровожадный", "кровожаден", "bloodthirsty"]
+    },
+    "downed": {
+      "ru": "Без сознания",
+      "description": "0 HP, может быть стабилизирован или поднят; бросает спасброски от смерти.",
+      "ui_color": "red",
+      "render_hint": "collapsed on the ground, unconscious"
+    },
+    "stabilized": {
+      "ru": "Стабилизирован",
+      "description": "Больше не бросает спасброски, но уязвим.",
+      "ui_color": "yellow",
+      "render_hint": "propped up, barely conscious"
+    },
+    "dead": {
+      "ru": "Повержен",
+      "description": "Убран из активного боя.",
+      "ui_color": "gray",
+      "render_hint": "fallen, defeated"
+    },
+    "marked": {
+      "ru": "Под прицелом",
+      "description": "Фокус-метка: следующий удар по цели усилен.",
+      "ui_color": "purple"
+    },
+    "burning": {
+      "ru": "Горит",
+      "description": "Получает урон от огня; срывает канал ритуала у RS.",
+      "ui_color": "orange"
+    },
+    "channeling_ritual": {
+      "ru": "Канализирует ритуал",
+      "description": "RS продвигает часовой механизм ритуала. Цель героев — прервать.",
+      "ui_color": "purple"
+    }
+  }
+}
