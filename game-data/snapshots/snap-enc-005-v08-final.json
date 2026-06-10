@@ -1,0 +1,52 @@
+{
+  "snapshot_id": "snap_enc_005_v08",
+  "seed": "enc_005_v08",
+  "winner": "enemies",
+  "round": 8,
+  "activation_count": 54,
+  "initiative_order": [
+    "XB",
+    "WG",
+    "HE",
+    "SG",
+    "RS",
+    "EZ",
+    "EL"
+  ],
+  "initiative_rolls": [
+    { "actor": "XB", "d20": 16, "dex_mod": 4, "total": 20 },
+    { "actor": "WG", "d20": 15, "dex_mod": 4, "total": 19 },
+    { "actor": "HE", "d20": 14, "dex_mod": 4, "total": 18 },
+    { "actor": "SG", "d20": 14, "dex_mod": 0, "total": 14 },
+    { "actor": "RS", "d20": 7, "dex_mod": 1, "total": 8 },
+    { "actor": "EZ", "d20": 6, "dex_mod": 2, "total": 8 },
+    { "actor": "EL", "d20": 5, "dex_mod": 0, "total": 5 }
+  ],
+  "board": [
+    "8 | .. .. .. .. .. .. .. ..",
+    "7 |   .. .. .. .. RS .. .. ..",
+    "6 | .. .. .. .. .. cv cv ..",
+    "5 |   .. cv Ru .. .. .. .. ..",
+    "4 | .. .. .. ## cv .. Oi ..",
+    "3 |   .. .. .. .. HE Cr .. ..",
+    "2 | EZ .. .. .. .. .. .. ..",
+    "1 |   .. EL .. .. .. .. .. ..",
+    "     A  B  C  D  E  F  G  H"
+  ],
+  "actors": {
+    "EZ": { "name": "EZ", "team": "heroes", "class": "Warlock", "position": "A2", "hp": 9, "max_hp": 32, "ac": 15, "statuses": ["bloodied", "burning", "death_save_fail"], "resources": { "spell1": 2, "concentration": "hex:RS", "action": 0, "bonus_action": 0, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 1 } },
+    "EL": { "name": "ElMasnif", "team": "heroes", "class": "Paladin", "position": "B1", "hp": 24, "max_hp": 45, "ac": 18, "statuses": [], "resources": { "spell1": 0, "lay": 0, "protection_reaction": 1, "action": 0, "bonus_action": 1, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 0 } },
+    "HE": { "name": "Hesh", "team": "heroes", "class": "Rogue", "position": "E3", "hp": 18, "max_hp": 31, "ac": 16, "statuses": [], "resources": { "cunning_action": 1, "action": 0, "bonus_action": 1, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 0 } },
+    "WG": { "name": "Warglaive Hunter", "team": "enemies", "class": "Hunter", "position": "B2", "hp": 0, "max_hp": 34, "ac": 16, "statuses": ["dead"], "resources": { "action": 0, "bonus_action": 1, "reaction": 1, "movement": 5 }, "death_saves": { "success": 0, "fail": 0 } },
+    "SG": { "name": "Stoneguard", "team": "enemies", "class": "Guard", "position": "C3", "hp": 0, "max_hp": 44, "ac": 17, "statuses": ["bloodied", "dead"], "resources": { "action": 0, "bonus_action": 1, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 0 } },
+    "RS": { "name": "Rune Speaker", "team": "enemies", "class": "Caster", "position": "E7", "hp": 17, "max_hp": 28, "ac": 13, "statuses": ["hex:EZ"], "resources": { "spell1": 0, "action": 1, "bonus_action": 1, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 0 } },
+    "XB": { "name": "Crossbow Stalker", "team": "enemies", "class": "Archer", "position": "H6", "hp": 0, "max_hp": 28, "ac": 15, "statuses": ["bloodied", "dead"], "resources": { "action": 0, "bonus_action": 1, "reaction": 1, "movement": 6 }, "death_saves": { "success": 0, "fail": 0 } }
+  },
+  "render_prompt_seed": "Render final board exactly from coordinates. Use uppercase labels for alive units and lowercase labels for downed heroes. No invented units.",
+  "engine_version": "v0.8-hex",
+  "momentum": { "heroes": 6, "enemies": 1 },
+  "mechanics_summary": { "crits": 2, "opportunity_attacks": 0, "ignites": 1, "flanks": 3, "enemy_ignites": 1, "focus_marks": 8, "ritual_channels": 5, "ritual_disrupts": 0 },
+  "ritual": { "progress": 5, "required": 5, "complete": true, "channeler": "RS", "disrupted": 0 },
+  "victory_type": "ritual_complete",
+  "grid": { "type": "hex", "layout": "odd-r", "width": 8, "height": 8, "neighbors": 6, "distance": "cube", "label": "col-letter + row-number (e.g. B2)" }
+}

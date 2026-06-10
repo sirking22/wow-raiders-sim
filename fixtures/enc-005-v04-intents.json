@@ -1,0 +1,530 @@
+[
+  {
+    "activation": 1,
+    "round": 1,
+    "actor": "EZ",
+    "intent": "hex_blast",
+    "target": "SG",
+    "reason": "Control and focus damage."
+  },
+  {
+    "activation": 2,
+    "round": 1,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "WG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 3,
+    "round": 1,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 4,
+    "round": 1,
+    "actor": "WG",
+    "intent": "dive_EZ",
+    "target": "EZ",
+    "reason": "Hunter dives controller."
+  },
+  {
+    "activation": 5,
+    "round": 1,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 6,
+    "round": 1,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 7,
+    "round": 1,
+    "actor": "RS",
+    "intent": "heal_wounded_enemy",
+    "target": "WG",
+    "reason": "Preserve formation."
+  },
+  {
+    "activation": 8,
+    "round": 2,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "WG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 9,
+    "round": 2,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "WG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 10,
+    "round": 2,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 11,
+    "round": 2,
+    "actor": "WG",
+    "intent": "dive_EZ",
+    "target": "EZ",
+    "reason": "Hunter dives controller."
+  },
+  {
+    "activation": 12,
+    "round": 2,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 13,
+    "round": 2,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 14,
+    "round": 2,
+    "actor": "RS",
+    "intent": "heal_wounded_enemy",
+    "target": "WG",
+    "reason": "Preserve formation."
+  },
+  {
+    "activation": 15,
+    "round": 3,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "WG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 16,
+    "round": 3,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "WG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 17,
+    "round": 3,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 19,
+    "round": 3,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 20,
+    "round": 3,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 21,
+    "round": 3,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 22,
+    "round": 4,
+    "actor": "EZ",
+    "intent": "hex_blast",
+    "target": "SG",
+    "reason": "Control and focus damage."
+  },
+  {
+    "activation": 23,
+    "round": 4,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 24,
+    "round": 4,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 26,
+    "round": 4,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 27,
+    "round": 4,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 28,
+    "round": 4,
+    "actor": "RS",
+    "intent": "heal_wounded_enemy",
+    "target": "XB",
+    "reason": "Preserve formation."
+  },
+  {
+    "activation": 29,
+    "round": 5,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 30,
+    "round": 5,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 31,
+    "round": 5,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 33,
+    "round": 5,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 34,
+    "round": 5,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 35,
+    "round": 5,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 36,
+    "round": 6,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 37,
+    "round": 6,
+    "actor": "EL",
+    "intent": "self_heal",
+    "target": "EL",
+    "reason": "Below 35% HP."
+  },
+  {
+    "activation": 38,
+    "round": 6,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 40,
+    "round": 6,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 41,
+    "round": 6,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 42,
+    "round": 6,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 43,
+    "round": 7,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 44,
+    "round": 7,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 45,
+    "round": 7,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 47,
+    "round": 7,
+    "actor": "XB",
+    "intent": "focus_priority",
+    "target": "EZ",
+    "reason": "Archer focuses fragile high-value target."
+  },
+  {
+    "activation": 48,
+    "round": 7,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "XB",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 49,
+    "round": 7,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 50,
+    "round": 8,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 51,
+    "round": 8,
+    "actor": "EL",
+    "intent": "self_heal",
+    "target": "EL",
+    "reason": "Below 35% HP."
+  },
+  {
+    "activation": 52,
+    "round": 8,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 55,
+    "round": 8,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "RS",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 56,
+    "round": 8,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 57,
+    "round": 9,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 58,
+    "round": 9,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 59,
+    "round": 9,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 62,
+    "round": 9,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "RS",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 63,
+    "round": 9,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 64,
+    "round": 10,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 65,
+    "round": 10,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 66,
+    "round": 10,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 69,
+    "round": 10,
+    "actor": "HE",
+    "intent": "assassinate_priority",
+    "target": "RS",
+    "reason": "Rogue hunts ranged/caster/wounded targets."
+  },
+  {
+    "activation": 70,
+    "round": 10,
+    "actor": "RS",
+    "intent": "ruin_bolt_paladin",
+    "target": "EL",
+    "reason": "Pressure heroes."
+  },
+  {
+    "activation": 71,
+    "round": 11,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 72,
+    "round": 11,
+    "actor": "EL",
+    "intent": "intercept_EZ_threat",
+    "target": "SG",
+    "reason": "Paladin protects caster."
+  },
+  {
+    "activation": 73,
+    "round": 11,
+    "actor": "SG",
+    "intent": "lock_paladin",
+    "target": "EL",
+    "reason": "Guard pins frontline."
+  },
+  {
+    "activation": 76,
+    "round": 11,
+    "actor": "HE",
+    "intent": "disengage_hide_survive",
+    "target": "self",
+    "reason": "Hesh low HP, keeps rogue alive."
+  },
+  {
+    "activation": 78,
+    "round": 12,
+    "actor": "EZ",
+    "intent": "retreat_control",
+    "target": "SG",
+    "reason": "Survival rule: EZ avoids previous death loop."
+  },
+  {
+    "activation": 80,
+    "round": 12,
+    "actor": "SG",
+    "intent": "attack_nearest",
+    "target": "EZ",
+    "reason": "Nearest living target."
+  },
+  {
+    "activation": 83,
+    "round": 12,
+    "actor": "HE",
+    "intent": "disengage_hide_survive",
+    "target": "self",
+    "reason": "Hesh low HP, keeps rogue alive."
+  }
+]
