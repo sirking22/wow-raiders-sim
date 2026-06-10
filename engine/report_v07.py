@@ -291,4 +291,36 @@ def validate(bundle):
 def main():
     bundle = build_reports()
     errs = validate(bundle)
-    
+    out = ROOT / "game-data"
+    (out / "battle-reports").mkdir(parents=True, exist_ok=True)
+    (out / "replay").mkdir(parents=True, exist_ok=True)
+    (out / "strategic").mkdir(parents=True, exist_ok=True)
+    (out / "render-contracts").mkdir(parents=True, exist_ok=True)
+
+    def w(p, obj):
+        p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    w(out / "battle-reports" / "enc-005-v07-result.json", bundle["result"])
+    w(out / "battle-reports" / "enc-005-v07-stats.json", bundle["stats"])
+    w(out / "battle-reports" / "enc-005-v07-key-events.json", bundle["key_events"])
+    w(out / "replay" / "enc-005-v07-replay-frames.json", bundle["frames"])
+    w(out / "replay" / "enc-005-v07-replay-milestones.json", bundle["milestones"])
+    w(out / "battle-reports" / "enc-005-v07-full-timeline.json", bundle["timeline"])
+    w(out / "strategic" / "post-battle-state-enc-005-v07.json", bundle["strategic"])
+    for screen, c in bundle["render_contracts"].items():
+        w(out / "render-contracts" / f"{screen}-screen-v07.json", c)
+
+    snap = bundle["snap"]
+    print(json.dumps({
+        "engine_version": snap["engine_version"], "winner": snap["winner"],
+        "victory_type": snap["victory_type"], "rating": bundle["result"]["rating"],
+        "rounds": snap["round"], "activations": snap["activation_count"],
+        "timeline_len": len(bundle["timeline"]), "frames_len": len(bundle["frames"]),
+        "mvp": bundle["result"]["mvp"], "validation_errors": errs,
+    }, ensure_ascii=False, indent=2))
+    if errs:
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
