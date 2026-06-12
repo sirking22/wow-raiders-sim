@@ -1,9 +1,14 @@
 # wow-raiders-sim
 
-## v0.42 Calculated Campaign Foundation
+## v0.43 Battle Adapter Checkpoint
 
 Current active checkpoint:
 
+- `engine/battle_adapter_v043.py` - read-only adapter contract from v0.42
+  calculated campaign data to legacy `battle_v08.py` hex battle snapshots.
+- `tests/test_battle_adapter_v043.py` - acceptance tests for actor/action
+  mapping, explicit loss report, and adapter screen payload.
+- `docs/BATTLE_ADAPTER_V043.md` - adapter status and BattleV09 runtime gap.
 - `engine/rules_v042.py` - calculated stat/action/loadout/progression rules
   spine.
 - `engine/campaign_v042.py` - v0.42 campaign using the calculated rules spine.

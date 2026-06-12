@@ -35,6 +35,19 @@ v0.42 replaces ad hoc demo stats with a calculated rules spine: equal attribute
 budget, derived stat formulas, loadout budget, player directives, AI action
 scoring, action budgets, camp costs, and progression.
 
+The third implemented checkpoint is v0.43:
+
+```text
+engine/battle_adapter_v043.py
+tests/test_battle_adapter_v043.py
+docs/BATTLE_ADAPTER_V043.md
+```
+
+v0.43 creates a read-only adapter contract between the v0.42 calculated
+campaign and the legacy `battle_v08.py` hex battle engine. It maps heroes,
+enemies, stats, and actions, and records explicit gaps before a future
+BattleV09 runtime accepts external rosters.
+
 ## Recommended Path
 
 Start with Option B from `docs/V040_SYNC_AND_MERGE_PLAN.md`: promote the v0.40
