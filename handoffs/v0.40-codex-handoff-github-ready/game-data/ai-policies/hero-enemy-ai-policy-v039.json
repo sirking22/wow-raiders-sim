@@ -1,0 +1,15 @@
+{
+  "schema_version": "wow-raiders.ai-policy.v0.39",
+  "hero_director_rules": [
+    "If enemy channeler alive and objective not near completion: EZ targets channeler.",
+    "If ally HP < 72% in range: Dr.Feed heals before attacking.",
+    "If Dr.Feed HP < 68% and CandyPeace nearby: CandyPeace guards Dr.Feed.",
+    "CandyPeace prioritizes elite/channeler targets.",
+    "Objective action is preferred when channeler pressure is controlled."
+  ],
+  "enemy_director_rules": [
+    "Acolytes pressure objective only when heroes made progress.",
+    "Enemies target wounded heroes but do not over-focus Dr.Feed.",
+    "Melee units close distance via axial hex movement."
+  ]
+}

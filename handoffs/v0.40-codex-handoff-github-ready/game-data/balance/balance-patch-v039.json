@@ -1,0 +1,71 @@
+{
+  "schema_version": "wow-raiders.balance-patch.v0.39",
+  "source_problem_v038": {
+    "raid_status": "extraction_with_casualties",
+    "encounters": [
+      "failed",
+      "failed"
+    ],
+    "main_causes": [
+      "heroes did not prioritize channelers/objective correctly",
+      "Dr.Feed was pressured/downed too easily",
+      "enemy objective pressure could erase progress too aggressively",
+      "first room objective was too strict for a warm-up fight"
+    ]
+  },
+  "changes_v039": {
+    "hero_ai": [
+      "EZ now prioritizes channelers before objective spam unless objective is one step from completion",
+      "Dr.Feed heals earlier at 72% HP threshold",
+      "CandyPeace can guard Dr.Feed and prioritizes elite/channeler targets"
+    ],
+    "enemy_ai": [
+      "less hard tunnel vision on Dr.Feed",
+      "channelers delay progress but cannot reset objective below 1 once secured"
+    ],
+    "balance": [
+      "hero damage slightly increased",
+      "enemy damage slightly reduced",
+      "first room objective required reduced 4 -> 3",
+      "enemy HP reduced 10-15% in early raid"
+    ]
+  },
+  "result_v039": {
+    "status": "successful_extraction",
+    "encounter_outcomes": [
+      "victory",
+      "victory"
+    ],
+    "heroes": {
+      "CP": {
+        "name": "CandyPeace",
+        "hp": "178/178",
+        "alive": true,
+        "status": "normal",
+        "level": 7,
+        "xp": "1790/2500",
+        "role": "командир / дуэлист"
+      },
+      "DF": {
+        "name": "Dr.Feed",
+        "hp": "132/145",
+        "alive": true,
+        "status": "normal",
+        "level": 7,
+        "xp": "1790/2500",
+        "role": "медик / саппорт"
+      },
+      "EZ": {
+        "name": "EZ",
+        "hp": "132/132",
+        "alive": true,
+        "status": "normal",
+        "level": 7,
+        "xp": "1790/2500",
+        "role": "стрелок / оккультный контроль"
+      }
+    },
+    "turns": 47,
+    "audit": 47
+  }
+}

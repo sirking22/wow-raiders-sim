@@ -1,0 +1,125 @@
+{
+  "schema_version": "wow-raiders.v039-qa",
+  "passed": true,
+  "checks": [
+    {
+      "name": "turn log exists",
+      "ok": true,
+      "details": 47
+    },
+    {
+      "name": "audit log exists",
+      "ok": true,
+      "details": 47
+    },
+    {
+      "name": "hex positions tracked",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "raid reaches extraction",
+      "ok": true,
+      "details": {
+        "id": "EXT01",
+        "type": "extraction",
+        "title": "Лифт эвакуации",
+        "outcome": "successful_extraction",
+        "details": "Рейд завершён выходом через лифт эвакуации."
+      }
+    },
+    {
+      "name": "both encounters are victory",
+      "ok": true,
+      "details": [
+        "victory",
+        "victory"
+      ]
+    },
+    {
+      "name": "all heroes alive after v039",
+      "ok": true,
+      "details": {
+        "CP": {
+          "name": "CandyPeace",
+          "hp": "178/178",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "командир / дуэлист"
+        },
+        "DF": {
+          "name": "Dr.Feed",
+          "hp": "132/145",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "медик / саппорт"
+        },
+        "EZ": {
+          "name": "EZ",
+          "hp": "132/132",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "стрелок / оккультный контроль"
+        }
+      }
+    },
+    {
+      "name": "Dr.Feed no longer downed",
+      "ok": true,
+      "details": {
+        "name": "Dr.Feed",
+        "hp": "132/145",
+        "alive": true,
+        "status": "normal",
+        "level": 7,
+        "xp": "1790/2500",
+        "role": "медик / саппорт"
+      }
+    },
+    {
+      "name": "v039 status successful extraction",
+      "ok": true,
+      "details": "successful_extraction"
+    },
+    {
+      "name": "image not truth flag",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "CP final HP matches last tactical state",
+      "ok": true,
+      "details": {
+        "final": "178/178",
+        "last": "178/178"
+      }
+    },
+    {
+      "name": "DF final HP matches last tactical state",
+      "ok": true,
+      "details": {
+        "final": "132/145",
+        "last": "132/145"
+      }
+    },
+    {
+      "name": "EZ final HP matches last tactical state",
+      "ok": true,
+      "details": {
+        "final": "132/132",
+        "last": "132/132"
+      }
+    },
+    {
+      "name": "three v039 Russian data-driven screens exist",
+      "ok": true
+    }
+  ],
+  "issues": []
+}

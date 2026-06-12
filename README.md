@@ -1,5 +1,23 @@
 # wow-raiders-sim
 
+## Codex Sync 2026-06-12
+
+This branch adds a safe GitHub sync layer for continuing WoW Raiders from Codex,
+ChatGPT web, Claude Code, Antigravity, or lower-effort executors.
+
+New entry points:
+
+- `AGENTS.md` - repo-level agent contract.
+- `docs/WEB_CHAT_DEVELOPMENT_GUIDE.md` - compact packet for web ChatGPT work.
+- `docs/AGENT_TASK_ARCHITECTURE.md` - planner/executor/verifier architecture.
+- `docs/V040_SYNC_AND_MERGE_PLAN.md` - how v0.40 should enter the repo without
+  overwriting the older v0.8/v0.9 line.
+- `handoffs/v0.40-codex-handoff-github-ready/` - imported v0.40 Codex handoff.
+
+Use `handoffs/v0.40-codex-handoff-github-ready/` as preserved source material.
+Do not merge it into the active engine until a v0.41 production spec chooses the
+merge path.
+
 Детерминированное симуляционное ядро тактической RPG **WoW Raiders · AI Game Master Run**.
 Deterministic-first: один и тот же `seed` → идентичный прогон. Источник правды — state/log/snapshot, визуал рендерится из данных, ничего не выдумывая.
 

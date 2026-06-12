@@ -1,0 +1,108 @@
+{
+  "schema_version": "wow-raiders.v040-verification",
+  "passed": true,
+  "checks": [
+    {
+      "name": "exists engine/hex_raid_simulator_v039.py",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists engine/render_hex_field_v040.py",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists game-data/raid-runs/campaign03_raid01_full_run_v039.json",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists game-data/standards/hex-field-standard-v040.json",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists docs/CODEX_HANDOFF.md",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists docs/GITHUB_PUSH_PLAN.md",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "raid successful extraction",
+      "ok": true,
+      "details": "successful_extraction"
+    },
+    {
+      "name": "both encounters victory",
+      "ok": true,
+      "details": [
+        "victory",
+        "victory"
+      ]
+    },
+    {
+      "name": "all heroes alive",
+      "ok": true,
+      "details": {
+        "CP": {
+          "name": "CandyPeace",
+          "hp": "178/178",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "командир / дуэлист"
+        },
+        "DF": {
+          "name": "Dr.Feed",
+          "hp": "132/145",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "медик / саппорт"
+        },
+        "EZ": {
+          "name": "EZ",
+          "hp": "132/132",
+          "alive": true,
+          "status": "normal",
+          "level": 7,
+          "xp": "1790/2500",
+          "role": "стрелок / оккультный контроль"
+        }
+      }
+    },
+    {
+      "name": "three field types",
+      "ok": true,
+      "details": 3
+    },
+    {
+      "name": "exists visual-standards/png/hex_standard_tactical_11x9_v040.png",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists visual-standards/png/hex_boss_arena_13x11_v040.png",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists visual-standards/png/hex_corridor_chokepoint_12x7_v040.png",
+      "ok": true,
+      "details": null
+    },
+    {
+      "name": "exists visual-standards/png/raid01_v039_rectangular_hex_state_v040.png",
+      "ok": true,
+      "details": null
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "wow-raiders.release-manifest.v0.40",
+  "release": "v0.40-codex-handoff-github-ready",
+  "created_at": "2026-06-11T23:30:16.942566+00:00",
+  "status": "archive_ready_for_pc_codex_github",
+  "summary": {
+    "main_change": "rectangular hex field standard",
+    "current_engine": "engine/hex_raid_simulator_v039.py",
+    "current_renderer": "engine/render_hex_field_v040.py",
+    "current_run": "game-data/raid-runs/campaign03_raid01_full_run_v039.json",
+    "github_ready_path": "github-ready/wow-raiders-sim",
+    "repo_target": "sirking22/wow-raiders-sim"
+  }
+}

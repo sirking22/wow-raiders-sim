@@ -1,0 +1,12 @@
+{
+  "schema_version": "wow-raiders.render-contract.v0.39",
+  "style_reference": "gothic grimdark tactical UI like uploaded reference",
+  "source_payload": "game-data/screen-payloads/raid01_key_screens_payload_v039.json",
+  "hard_rules": [
+    "Все подписи на русском.",
+    "Тактический экран показывает гексовую сетку.",
+    "CandyPeace, Dr.Feed, EZ — имена строго так.",
+    "HP/статусы только из v039 JSON.",
+    "Не использовать v038 failed state для новых итоговых экранов."
+  ]
+}

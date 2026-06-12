@@ -1,0 +1,254 @@
+{
+  "schema_version": "wow-raiders.screen-payloads.v0.39",
+  "source_of_truth": "game-data/raid-runs/campaign03_raid01_full_run_v039.json",
+  "language": "ru",
+  "hard_rules": [
+    "русский интерфейс",
+    "гексовая карта",
+    "не менять HP/XP/имена после payload",
+    "красивые image-gen визуалы только после QA"
+  ],
+  "balance_patch": "game-data/balance/balance-patch-v039.json",
+  "screens": [
+    {
+      "id": "S01",
+      "type": "balance_patch_summary",
+      "title": "Патч баланса/ИИ v0.39",
+      "payload": {
+        "schema_version": "wow-raiders.balance-patch.v0.39",
+        "source_problem_v038": {
+          "raid_status": "extraction_with_casualties",
+          "encounters": [
+            "failed",
+            "failed"
+          ],
+          "main_causes": [
+            "heroes did not prioritize channelers/objective correctly",
+            "Dr.Feed was pressured/downed too easily",
+            "enemy objective pressure could erase progress too aggressively",
+            "first room objective was too strict for a warm-up fight"
+          ]
+        },
+        "changes_v039": {
+          "hero_ai": [
+            "EZ now prioritizes channelers before objective spam unless objective is one step from completion",
+            "Dr.Feed heals earlier at 72% HP threshold",
+            "CandyPeace can guard Dr.Feed and prioritizes elite/channeler targets"
+          ],
+          "enemy_ai": [
+            "less hard tunnel vision on Dr.Feed",
+            "channelers delay progress but cannot reset objective below 1 once secured"
+          ],
+          "balance": [
+            "hero damage slightly increased",
+            "enemy damage slightly reduced",
+            "first room objective required reduced 4 -> 3",
+            "enemy HP reduced 10-15% in early raid"
+          ]
+        },
+        "result_v039": {
+          "status": "successful_extraction",
+          "encounter_outcomes": [
+            "victory",
+            "victory"
+          ],
+          "heroes": {
+            "CP": {
+              "name": "CandyPeace",
+              "hp": "178/178",
+              "alive": true,
+              "status": "normal",
+              "level": 7,
+              "xp": "1790/2500",
+              "role": "командир / дуэлист"
+            },
+            "DF": {
+              "name": "Dr.Feed",
+              "hp": "132/145",
+              "alive": true,
+              "status": "normal",
+              "level": 7,
+              "xp": "1790/2500",
+              "role": "медик / саппорт"
+            },
+            "EZ": {
+              "name": "EZ",
+              "hp": "132/132",
+              "alive": true,
+              "status": "normal",
+              "level": 7,
+              "xp": "1790/2500",
+              "role": "стрелок / оккультный контроль"
+            }
+          },
+          "turns": 47,
+          "audit": 47
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "type": "tactical_hex_state",
+      "title": "Тактический hex-state после патча",
+      "payload": {
+        "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+        "title": "Реликварий пепла",
+        "outcome": "victory",
+        "rounds_used": 4,
+        "activations": 25,
+        "objective": "3/3",
+        "heroes": {
+          "CP": "178/178",
+          "DF": "132/145",
+          "EZ": "132/132"
+        },
+        "heroes_alive": "3/3",
+        "enemies_defeated": [
+          "Аколит реликвария"
+        ],
+        "enemies_remaining": [
+          "Чемпион культа",
+          "Культовый палач",
+          "Красный проповедник",
+          "Жнец в капюшоне"
+        ],
+        "turn_log_start": 22,
+        "turn_log_end": 47,
+        "audit_start": 22,
+        "audit_end": 47
+      }
+    },
+    {
+      "id": "S03",
+      "type": "raid_result",
+      "title": "Итоги рейда после патча",
+      "payload": {
+        "status": "successful_extraction",
+        "heroes": {
+          "CP": {
+            "name": "CandyPeace",
+            "hp": "178/178",
+            "alive": true,
+            "status": "normal",
+            "level": 7,
+            "xp": "1790/2500",
+            "role": "командир / дуэлист"
+          },
+          "DF": {
+            "name": "Dr.Feed",
+            "hp": "132/145",
+            "alive": true,
+            "status": "normal",
+            "level": 7,
+            "xp": "1790/2500",
+            "role": "медик / саппорт"
+          },
+          "EZ": {
+            "name": "EZ",
+            "hp": "132/132",
+            "alive": true,
+            "status": "normal",
+            "level": 7,
+            "xp": "1790/2500",
+            "role": "стрелок / оккультный контроль"
+          }
+        },
+        "resources": {
+          "requisition": 165,
+          "medkits": 2,
+          "ammo_crates": 3,
+          "intel": 2,
+          "black_shard": 1,
+          "cult_seals": 3
+        },
+        "hero_stats": {
+          "CP": {
+            "damage_dealt": 174,
+            "damage_taken": 0,
+            "healing_done": 0,
+            "kills": 2,
+            "downs": 0,
+            "objective_actions": 0,
+            "actions": 8,
+            "guards": 0
+          },
+          "DF": {
+            "damage_dealt": 61,
+            "damage_taken": 91,
+            "healing_done": 78,
+            "kills": 1,
+            "downs": 0,
+            "objective_actions": 0,
+            "actions": 6,
+            "guards": 0
+          },
+          "EZ": {
+            "damage_dealt": 51,
+            "damage_taken": 0,
+            "healing_done": 0,
+            "kills": 0,
+            "downs": 0,
+            "objective_actions": 6,
+            "actions": 8,
+            "guards": 0
+          }
+        },
+        "encounters": [
+          {
+            "encounter_id": "R01E01_HALL_OF_PENITENTS",
+            "title": "Зал кающихся",
+            "outcome": "victory",
+            "rounds_used": 4,
+            "activations": 22,
+            "objective": "3/3",
+            "heroes": {
+              "CP": "178/178",
+              "DF": "114/145",
+              "EZ": "132/132"
+            },
+            "heroes_alive": "3/3",
+            "enemies_defeated": [
+              "Культист-стрелок",
+              "Аколит культа"
+            ],
+            "enemies_remaining": [
+              "Культист-фанатик",
+              "Цепной палач"
+            ],
+            "turn_log_start": 0,
+            "turn_log_end": 22,
+            "audit_start": 0,
+            "audit_end": 22
+          },
+          {
+            "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+            "title": "Реликварий пепла",
+            "outcome": "victory",
+            "rounds_used": 4,
+            "activations": 25,
+            "objective": "3/3",
+            "heroes": {
+              "CP": "178/178",
+              "DF": "132/145",
+              "EZ": "132/132"
+            },
+            "heroes_alive": "3/3",
+            "enemies_defeated": [
+              "Аколит реликвария"
+            ],
+            "enemies_remaining": [
+              "Чемпион культа",
+              "Культовый палач",
+              "Красный проповедник",
+              "Жнец в капюшоне"
+            ],
+            "turn_log_start": 22,
+            "turn_log_end": 47,
+            "audit_start": 22,
+            "audit_end": 47
+          }
+        ]
+      }
+    }
+  ]
+}
