@@ -1,0 +1,35 @@
+{
+  "EZ": {
+    "mobility": 0.65,
+    "objective": 0.85,
+    "greed": 0.35,
+    "survival": 0.45,
+    "ability_bias": "control_priority",
+    "character_notes": [
+      "seeks anomalies",
+      "pushes objective tempo"
+    ]
+  },
+  "Candy Peace": {
+    "mobility": 0.35,
+    "objective": 0.65,
+    "greed": 0.3,
+    "survival": 0.8,
+    "ability_bias": "guard_allies",
+    "character_notes": [
+      "holds line",
+      "protects medic"
+    ]
+  },
+  "Dr.Feed": {
+    "mobility": 0.3,
+    "objective": 0.55,
+    "greed": 0.25,
+    "survival": 0.9,
+    "ability_bias": "heal_early",
+    "character_notes": [
+      "keeps squad alive",
+      "spends supplies before collapse"
+    ]
+  }
+}

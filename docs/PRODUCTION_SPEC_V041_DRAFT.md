@@ -1,11 +1,25 @@
 # Production Spec v0.41 Draft
 
-Status: draft for planner review.
+Status: implemented foundation checkpoint plus remaining planner questions.
 
 ## Goal
 
 Turn the v0.40 handoff into an executable next development plan without
 overwriting the existing v0.8/v0.9 simulator line.
+
+The first implemented checkpoint is not a broad engine rewrite. It adds a
+campaign orchestrator above the existing tactical/strategic modules:
+
+```text
+engine/campaign_v041.py
+tests/test_campaign_v041.py
+docs/GAME_SYSTEM_V041.md
+docs/SCREEN_PIPELINE_V041.md
+```
+
+This checkpoint produces a deterministic full-run with hero selection,
+directives, camp loadout, route screens, tactical rounds, extraction, summary,
+hero progression, and camp return.
 
 ## Recommended Path
 
@@ -47,6 +61,20 @@ handoffs/v0.40-codex-handoff-github-ready/game-data/raid-runs/campaign03_raid01_
 ```
 
 ## Acceptance For v0.41
+
+Implemented foundation acceptance:
+
+1. `tests/test_campaign_v041.py` passes.
+2. Campaign run is deterministic for the same seed.
+3. Player slots are exact: `EZ`, `Candy Peace`, `Dr.Feed`.
+4. The first screen keeps all three player slots unassigned before lock-in.
+5. The setting profile records a hard WH40 latest-edition grimdark reference
+   direction while keeping public assets original-safe.
+6. Generated state exists under `game-data/agent-directives/`,
+   `game-data/campaign-runs/`, `game-data/screen-payloads/`, and
+   `game-data/camp/`.
+
+Older renderer-promotion acceptance remains relevant for v0.42:
 
 1. Existing tests still pass.
 2. v0.40 verifier still passes.
@@ -120,4 +148,3 @@ Acceptance:
    integration?
 3. Should visual standards live under `rules/`, `game-data/standards/`, or
    `visual-standards/` in active repo?
-

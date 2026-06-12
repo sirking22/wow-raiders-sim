@@ -1,5 +1,23 @@
 # wow-raiders-sim
 
+## v0.41 Full-Campaign Foundation
+
+Current active checkpoint:
+
+- `engine/campaign_v041.py` - deterministic campaign orchestrator above the
+  older tactical/strategic line.
+- `tests/test_campaign_v041.py` - acceptance tests for full-run state,
+  screen payloads, `Dr.Feed`, directives, and camp progression.
+- `docs/GAME_SYSTEM_V041.md` - system model.
+- `docs/SCREEN_PIPELINE_V041.md` - state-to-screen contract.
+- `game-data/campaign-runs/campaign01_v041_full_run.json` - generated run.
+- `game-data/screen-payloads/campaign01_v041_screen_payloads.json` - 17
+  renderable screen payloads.
+
+Reference direction: hard WH40 latest-edition grimdark planetary raid mood.
+Public production artifacts stay original-safe under `Blackstar Raiders`
+unless explicitly marked as private fan/reference work.
+
 ## Codex Sync 2026-06-12
 
 This branch adds a safe GitHub sync layer for continuing WoW Raiders from Codex,
