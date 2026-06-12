@@ -1,9 +1,21 @@
 # wow-raiders-sim
 
-## v0.9 / v0.44 Battle Runtime Checkpoint
+## v0.44 Full Campaign Runtime Checkpoint
 
 Current active checkpoint:
 
+- `engine/campaign_v044.py` - end-to-end campaign runtime from hero selection
+  to continuity handoff, with BattleV09 embedded as the tactical stage.
+- `tests/test_campaign_v044.py` - acceptance tests for replayable screens,
+  integrated BattleV09, AI layers, camp progression, continuity ledger, balance
+  audit, and patch intake.
+- `docs/FULL_CAMPAIGN_RUNTIME_V044.md` - full loop status and contract.
+- `game-data/campaign-runs/campaign01_v044_full_run.json` - generated full
+  campaign run with 20 screen payloads.
+- `game-data/screen-payloads/campaign01_v044_screen_payloads.json` - generated
+  v0.44 render payloads.
+- `game-data/continuity/campaign01_v044_continuity_ledger.json` - between-run
+  hero/camp continuity ledger.
 - `engine/battle_v09.py` - first tactical runtime that consumes the v0.42
   calculated external roster directly.
 - `tests/test_battle_v09.py` - acceptance tests for deterministic battle

@@ -61,6 +61,21 @@ directly. It preserves v0.8 instead of replacing it, carries campaign clocks
 into combat, resolves hex movement, one main action, one bonus action, objective
 progress, extraction readiness, and native `Dr.Feed` medic/support behavior.
 
+The fifth implemented checkpoint is v0.44:
+
+```text
+engine/campaign_v044.py
+tests/test_campaign_v044.py
+docs/FULL_CAMPAIGN_RUNTIME_V044.md
+```
+
+v0.44 embeds BattleV09 into a full campaign runtime. It outputs a 20-screen
+chain from hero selection through route decisions, tactical rounds, AI GM
+interlude, extraction, highlights, progression, camp return, and campaign
+continuity. It also writes a continuity ledger and a v0.44 patch intake contract
+for ChatGPT Web, Notion, GitHub PRs, Google Drive manifests, and local file
+packets.
+
 ## Recommended Path
 
 Start with Option B from `docs/V040_SYNC_AND_MERGE_PLAN.md`: promote the v0.40
@@ -100,7 +115,7 @@ handoffs/v0.40-codex-handoff-github-ready/game-data/standards/hex-field-standard
 handoffs/v0.40-codex-handoff-github-ready/game-data/raid-runs/campaign03_raid01_full_run_v039.json
 ```
 
-## Acceptance For v0.41 / v0.42 / BattleV09
+## Acceptance For v0.41 / v0.42 / BattleV09 / v0.44
 
 Implemented foundation acceptance:
 
@@ -119,6 +134,14 @@ Implemented foundation acceptance:
 9. BattleV09 outputs generated state under `game-data/battle-runs/` and
    `game-data/screen-payloads/`.
 10. BattleV09 validation returns zero errors.
+11. v0.44 full campaign run embeds BattleV09 instead of using abstract tactical
+    rounds.
+12. v0.44 screen payloads are replayable from `state`, `log_refs`, and
+    `calculation_refs`.
+13. v0.44 records AI Director, AI GM, AI Heroes, and AI Enemies turns.
+14. v0.44 writes a continuity ledger for between-run hero/camp development.
+15. v0.44 includes a balance audit that names concrete next tuning targets
+    instead of hiding crooked stats.
 
 Older renderer-promotion acceptance remains relevant for a later renderer checkpoint:
 
