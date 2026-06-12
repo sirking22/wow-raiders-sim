@@ -1,9 +1,19 @@
 # wow-raiders-sim
 
-## v0.43 Battle Adapter Checkpoint
+## v0.9 / v0.44 Battle Runtime Checkpoint
 
 Current active checkpoint:
 
+- `engine/battle_v09.py` - first tactical runtime that consumes the v0.42
+  calculated external roster directly.
+- `tests/test_battle_v09.py` - acceptance tests for deterministic battle
+  resolution, native `Dr.Feed` medic behavior, movement/action budgets, clocks,
+  frames, and screen payloads.
+- `docs/BATTLE_V09_RUNTIME.md` - runtime status and contract.
+- `game-data/battle-runs/campaign01_v09_external_battle_run.json` - generated
+  battle run.
+- `game-data/screen-payloads/campaign01_v09_external_battle_screen_payloads.json`
+  - generated render payloads for BattleV09.
 - `engine/battle_adapter_v043.py` - read-only adapter contract from v0.42
   calculated campaign data to legacy `battle_v08.py` hex battle snapshots.
 - `tests/test_battle_adapter_v043.py` - acceptance tests for actor/action
@@ -29,6 +39,8 @@ Current active checkpoint:
 Reference direction: hard WH40 latest-edition grimdark planetary raid mood.
 Public production artifacts stay original-safe under `Blackstar Raiders`
 unless explicitly marked as private fan/reference work.
+
+Canonical player nickname: `Dr.Feed`.
 
 ## Codex Sync 2026-06-12
 

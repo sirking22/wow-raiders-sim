@@ -48,6 +48,19 @@ campaign and the legacy `battle_v08.py` hex battle engine. It maps heroes,
 enemies, stats, and actions, and records explicit gaps before a future
 BattleV09 runtime accepts external rosters.
 
+The fourth implemented checkpoint is BattleV09:
+
+```text
+engine/battle_v09.py
+tests/test_battle_v09.py
+docs/BATTLE_V09_RUNTIME.md
+```
+
+BattleV09 is the first tactical runtime that accepts the v0.42 external roster
+directly. It preserves v0.8 instead of replacing it, carries campaign clocks
+into combat, resolves hex movement, one main action, one bonus action, objective
+progress, extraction readiness, and native `Dr.Feed` medic/support behavior.
+
 ## Recommended Path
 
 Start with Option B from `docs/V040_SYNC_AND_MERGE_PLAN.md`: promote the v0.40
@@ -87,7 +100,7 @@ handoffs/v0.40-codex-handoff-github-ready/game-data/standards/hex-field-standard
 handoffs/v0.40-codex-handoff-github-ready/game-data/raid-runs/campaign03_raid01_full_run_v039.json
 ```
 
-## Acceptance For v0.41 / v0.42
+## Acceptance For v0.41 / v0.42 / BattleV09
 
 Implemented foundation acceptance:
 
@@ -100,6 +113,12 @@ Implemented foundation acceptance:
 6. Generated state exists under `game-data/agent-directives/`,
    `game-data/campaign-runs/`, `game-data/screen-payloads/`, and
    `game-data/camp/`.
+7. BattleV09 accepts `EZ`, `Candy Peace`, and `Dr.Feed` from v0.42 without
+   weak legacy actor mapping.
+8. `Dr.Feed` is the canonical nickname and resolves as a native medic.
+9. BattleV09 outputs generated state under `game-data/battle-runs/` and
+   `game-data/screen-payloads/`.
+10. BattleV09 validation returns zero errors.
 
 Older renderer-promotion acceptance remains relevant for a later renderer checkpoint:
 
