@@ -1,0 +1,29 @@
+{
+  "schema": "blackstar-raiders.patch-intake.v0.42",
+  "purpose": "Allow ChatGPT Web, Notion, GitHub, or local agents to propose versioned game changes without editing canon directly.",
+  "allowed_patch_targets": [
+    "player_directives",
+    "hero_assignment_demo_seed",
+    "loadout_priority",
+    "action_score_weight",
+    "screen_copy",
+    "research_question",
+    "visual_prompt"
+  ],
+  "required_fields": [
+    "patch_id",
+    "source",
+    "target",
+    "reason",
+    "proposed_change",
+    "acceptance_check"
+  ],
+  "asset_policy": {
+    "heavy_assets": "store in Google Drive or local artifact folder, then reference by manifest",
+    "repo_assets": "keep only small JSON/spec/test fixtures in Git"
+  },
+  "current_run": {
+    "run_id": "blackstar_campaign_001_run_001_v042",
+    "schema": "blackstar-raiders.campaign-run.v0.42"
+  }
+}

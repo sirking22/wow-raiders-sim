@@ -1,0 +1,34 @@
+{
+  "schema": "blackstar-raiders.rules.v0.42",
+  "attribute_budget": 30,
+  "attribute_keys": [
+    "force",
+    "agility",
+    "endurance",
+    "will",
+    "tech",
+    "presence"
+  ],
+  "directive_keys": [
+    "mobility",
+    "objective",
+    "greed",
+    "survival",
+    "ability",
+    "consumable",
+    "quest"
+  ],
+  "hero_count": 9,
+  "loadout_count": 9,
+  "main_action_count": 6,
+  "bonus_action_count": 5,
+  "stat_formulas": {
+    "max_hp": "18 + endurance*4 + force",
+    "armor": "1 + floor(endurance/3) + loadout mods",
+    "movement": "3 + floor(agility/2), capped 1..8",
+    "initiative": "agility + floor(will/2)",
+    "accuracy": "will + floor(agility/2) + loadout mods",
+    "resolve": "will + presence + loadout mods",
+    "supply_slots": "2 + floor(tech/3) + floor(endurance/4)"
+  }
+}

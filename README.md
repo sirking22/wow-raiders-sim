@@ -1,9 +1,16 @@
 # wow-raiders-sim
 
-## v0.41 Full-Campaign Foundation
+## v0.42 Calculated Campaign Foundation
 
 Current active checkpoint:
 
+- `engine/rules_v042.py` - calculated stat/action/loadout/progression rules
+  spine.
+- `engine/campaign_v042.py` - v0.42 campaign using the calculated rules spine.
+- `tests/test_rules_v042.py` and `tests/test_campaign_v042.py` - acceptance
+  tests for derived stats, action budgets, AI scoring, screen payloads, and
+  patch intake.
+- `docs/RULES_MODEL_V042.md` - stat formulas and AI directive contract.
 - `engine/campaign_v041.py` - deterministic campaign orchestrator above the
   older tactical/strategic line.
 - `tests/test_campaign_v041.py` - acceptance tests for full-run state,

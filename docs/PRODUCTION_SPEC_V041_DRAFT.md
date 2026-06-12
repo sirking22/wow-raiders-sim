@@ -21,6 +21,20 @@ This checkpoint produces a deterministic full-run with hero selection,
 directives, camp loadout, route screens, tactical rounds, extraction, summary,
 hero progression, and camp return.
 
+The second implemented checkpoint is v0.42:
+
+```text
+engine/rules_v042.py
+engine/campaign_v042.py
+tests/test_rules_v042.py
+tests/test_campaign_v042.py
+docs/RULES_MODEL_V042.md
+```
+
+v0.42 replaces ad hoc demo stats with a calculated rules spine: equal attribute
+budget, derived stat formulas, loadout budget, player directives, AI action
+scoring, action budgets, camp costs, and progression.
+
 ## Recommended Path
 
 Start with Option B from `docs/V040_SYNC_AND_MERGE_PLAN.md`: promote the v0.40
@@ -60,7 +74,7 @@ handoffs/v0.40-codex-handoff-github-ready/game-data/standards/hex-field-standard
 handoffs/v0.40-codex-handoff-github-ready/game-data/raid-runs/campaign03_raid01_full_run_v039.json
 ```
 
-## Acceptance For v0.41
+## Acceptance For v0.41 / v0.42
 
 Implemented foundation acceptance:
 
@@ -74,7 +88,7 @@ Implemented foundation acceptance:
    `game-data/campaign-runs/`, `game-data/screen-payloads/`, and
    `game-data/camp/`.
 
-Older renderer-promotion acceptance remains relevant for v0.42:
+Older renderer-promotion acceptance remains relevant for a later renderer checkpoint:
 
 1. Existing tests still pass.
 2. v0.40 verifier still passes.
