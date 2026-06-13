@@ -1,0 +1,179 @@
+{
+  "schema": "blackstar-raiders.current-context.v0.52",
+  "status": "working_context_snapshot",
+  "notion_hub": "https://app.notion.com/p/37ecf67d88c6810c91aac7a157069324",
+  "repository": "sirking22/wow-raiders-sim",
+  "project": {
+    "name": "Blackstar Raiders",
+    "type": "deterministic-first tactical RPG / strategic exploration prototype",
+    "player_faction": "Артель добытчиков «Чёрная Звезда»",
+    "player_identity": [
+      "neutral salvage crew",
+      "interspecies expedition group",
+      "relic hunters",
+      "scavenger-raiders",
+      "guides, technicians and combat specialists"
+    ],
+    "tone": [
+      "grimdark",
+      "planetary ruin",
+      "industrial gothic",
+      "open-sector exploration",
+      "moral ambiguity"
+    ],
+    "safety_rule": "Use original dark gothic sci-fi genre logic, but avoid official protected names, logos, factions and symbols."
+  },
+  "storage_model": {
+    "notion": "human project hub, reference upload surface, plan and tasks",
+    "github": "source of truth for rules, data, runtime, tests and versioned decisions",
+    "drive_or_notion_uploads": "heavy visual references and raw image assets",
+    "render_rule": "Image generation never defines facts. Data/state/log/payload defines facts."
+  },
+  "versions": {
+    "v0.48": {
+      "name": "Modular RPG Combat Core",
+      "purpose": "Separate combat mechanics from setting pack.",
+      "key_systems": [
+        "attributes: force, agility, endurance, will, tech, presence",
+        "derived stats",
+        "focus as real resource",
+        "equipment unlocks abilities",
+        "formula breakdowns",
+        "logs drive render payloads"
+      ]
+    },
+    "v0.49": {
+      "name": "Entity Bible + Combat Screen Payloads",
+      "purpose": "Lock heroes, enemies, gear, abilities and player-facing payloads.",
+      "heroes": [
+        {
+          "name": "EZ",
+          "class": "Призма-псайкер",
+          "role": "control",
+          "visual_rule": "must match hero page canon across all screens"
+        },
+        {
+          "name": "Candy Peace",
+          "class": "Часовенный Бездны",
+          "role": "tank",
+          "visual_rule": "must match hero page canon across all screens"
+        },
+        {
+          "name": "Dr.Feed",
+          "class": "Чумной хирург",
+          "role": "medic",
+          "visual_rule": "must match hero page canon across all screens"
+        }
+      ],
+      "enemy_roles": [
+        "Vault Warden / Хранитель реликвария",
+        "Suppressor Gunner / Подавитель",
+        "Servo-Swarm / Рой сервопауков",
+        "Scanner Acolyte / Сканирующий адепт"
+      ],
+      "ui_rule": "Technical IDs can live in JSON; player UI should use human-readable Russian names."
+    },
+    "v0.50": {
+      "name": "Battle Screen Pre-render",
+      "purpose": "Validate tactical battle screen before final image generation.",
+      "tactical_default": "12x12 hex",
+      "small_test": "8x8 hex",
+      "rules": [
+        "heroes and enemies are positioned from payload",
+        "battle units must be proportional to hexes",
+        "hero battlefield models match hero page canon",
+        "victory screen numbers come from data, not generation"
+      ]
+    },
+    "v0.51": {
+      "name": "Strategic Sector Map",
+      "previous_problem": "The first strategic pre-render still used route lines and looked like a board path.",
+      "correction": "Strategic map must be an open-world 32x32 hex sector with fog, terrain, event points, units and scouting.",
+      "strategic_default": "32x32 hex"
+    },
+    "v0.52": {
+      "name": "Strategic Open World + Fog Runtime",
+      "status": "current active build",
+      "goal": "Make the strategic map behave like a real explorable sector rather than a route-line board.",
+      "required_systems": [
+        "party token on 32x32 hex map",
+        "visibility radius",
+        "tile states: unknown / visible / scanned / discovered",
+        "scout action",
+        "terrain movement cost",
+        "event points",
+        "enemy patrols",
+        "neutral squads",
+        "resource sites",
+        "risk roll",
+        "tactical 12x12 encounter generation"
+      ]
+    }
+  },
+  "map_scale": {
+    "strategic_map": "32x32 hex",
+    "normal_tactical_battle": "12x12 hex",
+    "small_test_battle": "8x8 hex"
+  },
+  "strategic_layer": {
+    "correct_direction": [
+      "open-world 32x32 hex sector",
+      "terrain cells",
+      "fog of war",
+      "event points",
+      "neutral units",
+      "enemy patrols",
+      "resource sites",
+      "exploration radius",
+      "scouting",
+      "intel data improves understanding of surrounding tiles, events and units"
+    ],
+    "wrong_direction": [
+      "hero route lines",
+      "board-game path lines",
+      "fixed three-lane road as main UI",
+      "fantasy map that ignores data states"
+    ],
+    "tile_states": [
+      "unknown",
+      "visible",
+      "scanned",
+      "discovered"
+    ],
+    "entity_types": [
+      "party",
+      "enemy_patrol",
+      "neutral_squad",
+      "resource_site",
+      "event_point",
+      "hazard",
+      "tactical_entry"
+    ]
+  },
+  "reference_lock": {
+    "hero_page": "canon for EZ / Candy Peace / Dr.Feed appearance",
+    "strategic_fog_map": "reference for 32x32 open-world map with fog, terrain and units",
+    "battle_screen": "reference for tactical UI; must obey payload and unit scale",
+    "victory_screen": "reference for result UI; numbers and hero visuals must be corrected from canon/data"
+  },
+  "hard_rules": [
+    "Data first: state -> action log -> payload -> pre-render -> final visual.",
+    "Visuals are references, not facts.",
+    "No route lines on strategic map unless they represent temporary player-planned path overlay.",
+    "Hero visuals must remain consistent across hero page, battle screen and victory screen.",
+    "All victory numbers must come from run data.",
+    "8x8 is not the normal battle size anymore."
+  ],
+  "immediate_tasks": [
+    "Create true open-sector map payload.",
+    "Add party visibility radius.",
+    "Add fog/scouting tile states.",
+    "Add event point model.",
+    "Add enemy patrol model.",
+    "Add neutral salvage faction units.",
+    "Add terrain movement cost.",
+    "Simulate one strategic turn.",
+    "Generate updated map payload after scout/move.",
+    "Generate tactical 12x12 encounter from discovered point."
+  ]
+}
