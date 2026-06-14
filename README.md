@@ -11,6 +11,9 @@ Current active checkpoint:
 - `docs/ENGINE_ACCELERATION_STRATEGY_V053.md` - route for accelerating the
   project through Python runtime exports, browser/Godot shells, and friend task
   packets while treating Steam games as references, not engines.
+- `docs/REFERENCE_GAME_ANALYSIS_V054.md` - reference matrix for extracting
+  mechanics, pacing logic, UI-state contracts, and production patterns from
+  existing games without copying code, assets, lore, UI, or proprietary data.
 - `engine/campaign_v044.py` - end-to-end campaign runtime from hero selection
   to continuity handoff, with BattleV09 embedded as the tactical stage.
 - `tests/test_campaign_v044.py` - acceptance tests for replayable screens,
