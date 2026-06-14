@@ -4,6 +4,13 @@
 
 Current active checkpoint:
 
+- `blackstar-raiders/` - current compact playable/runtime package v0.52 from
+  GitHub main: 32x32 strategic open-world hex sector, fog/scouting, event
+  points, heroes, equipment, 12x12 tactical encounter generation, action log,
+  formula-driven damage, and invariant tests.
+- `docs/ENGINE_ACCELERATION_STRATEGY_V053.md` - route for accelerating the
+  project through Python runtime exports, browser/Godot shells, and friend task
+  packets while treating Steam games as references, not engines.
 - `engine/campaign_v044.py` - end-to-end campaign runtime from hero selection
   to continuity handoff, with BattleV09 embedded as the tactical stage.
 - `tests/test_campaign_v044.py` - acceptance tests for replayable screens,
