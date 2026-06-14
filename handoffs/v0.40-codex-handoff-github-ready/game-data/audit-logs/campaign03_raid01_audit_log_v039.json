@@ -1,0 +1,626 @@
+[
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 1,
+    "kind": "hp",
+    "source": "CP",
+    "target": "AC1",
+    "before": 64,
+    "after": 29,
+    "delta": -35,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 2,
+    "kind": "position",
+    "source": "DF",
+    "target": "DF",
+    "before": [
+      1,
+      7
+    ],
+    "after": [
+      4,
+      5
+    ],
+    "delta": null,
+    "reason": "Смена позиции"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 3,
+    "kind": "hp",
+    "source": "EZ",
+    "target": "AC1",
+    "before": 29,
+    "after": 3,
+    "delta": -26,
+    "reason": "Пустотный разряд"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 4,
+    "kind": "position",
+    "source": "AC1",
+    "target": "AC1",
+    "before": [
+      8,
+      8
+    ],
+    "after": [
+      6,
+      8
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 5,
+    "kind": "hp",
+    "source": "CU1",
+    "target": "DF",
+    "before": 145,
+    "after": 143,
+    "delta": -2,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 6,
+    "kind": "position",
+    "source": "CU2",
+    "target": "CU2",
+    "before": [
+      8,
+      6
+    ],
+    "after": [
+      6,
+      6
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 1,
+    "activation": 7,
+    "kind": "position",
+    "source": "EN1",
+    "target": "EN1",
+    "before": [
+      6,
+      5
+    ],
+    "after": [
+      5,
+      5
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 8,
+    "kind": "hp",
+    "source": "CP",
+    "target": "AC1",
+    "before": 3,
+    "after": 0,
+    "delta": -3,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 9,
+    "kind": "hp",
+    "source": "DF",
+    "target": "CU1",
+    "before": 48,
+    "after": 27,
+    "delta": -21,
+    "reason": "Коррозийный выстрел"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 10,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "clear_hall",
+    "before": 0,
+    "after": 1,
+    "delta": 1,
+    "reason": "Слом печати"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 11,
+    "kind": "hp",
+    "source": "CU1",
+    "target": "DF",
+    "before": 143,
+    "after": 140,
+    "delta": -3,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 12,
+    "kind": "hp",
+    "source": "CU2",
+    "target": "DF",
+    "before": 140,
+    "after": 134,
+    "delta": -6,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 2,
+    "activation": 13,
+    "kind": "hp",
+    "source": "EN1",
+    "target": "DF",
+    "before": 134,
+    "after": 125,
+    "delta": -9,
+    "reason": "Цепной топор"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 14,
+    "kind": "hp",
+    "source": "CP",
+    "target": "EN1",
+    "before": 68,
+    "after": 53,
+    "delta": -15,
+    "reason": "Подавляющий огонь"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 15,
+    "kind": "hp",
+    "source": "DF",
+    "target": "CU1",
+    "before": 27,
+    "after": 9,
+    "delta": -18,
+    "reason": "Коррозийный выстрел"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 16,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "clear_hall",
+    "before": 1,
+    "after": 2,
+    "delta": 1,
+    "reason": "Слом печати"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 17,
+    "kind": "hp",
+    "source": "CU1",
+    "target": "DF",
+    "before": 125,
+    "after": 123,
+    "delta": -2,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 18,
+    "kind": "hp",
+    "source": "CU2",
+    "target": "DF",
+    "before": 123,
+    "after": 122,
+    "delta": -1,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 3,
+    "activation": 19,
+    "kind": "hp",
+    "source": "EN1",
+    "target": "DF",
+    "before": 122,
+    "after": 114,
+    "delta": -8,
+    "reason": "Цепной топор"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 4,
+    "activation": 20,
+    "kind": "hp",
+    "source": "CP",
+    "target": "EN1",
+    "before": 53,
+    "after": 36,
+    "delta": -17,
+    "reason": "Подавляющий огонь"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 4,
+    "activation": 21,
+    "kind": "hp",
+    "source": "DF",
+    "target": "CU1",
+    "before": 9,
+    "after": 0,
+    "delta": -9,
+    "reason": "Коррозийный выстрел"
+  },
+  {
+    "encounter_id": "R01E01_HALL_OF_PENITENTS",
+    "round": 4,
+    "activation": 22,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "clear_hall",
+    "before": 2,
+    "after": 3,
+    "delta": 1,
+    "reason": "Слом печати"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 1,
+    "kind": "hp",
+    "source": "CP",
+    "target": "AC2",
+    "before": 76,
+    "after": 45,
+    "delta": -31,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 2,
+    "kind": "position",
+    "source": "DF",
+    "target": "DF",
+    "before": [
+      1,
+      7
+    ],
+    "after": [
+      4,
+      7
+    ],
+    "delta": null,
+    "reason": "Смена позиции"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 3,
+    "kind": "hp",
+    "source": "EZ",
+    "target": "AC2",
+    "before": 45,
+    "after": 20,
+    "delta": -25,
+    "reason": "Пустотный разряд"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 4,
+    "kind": "hp",
+    "source": "AC2",
+    "target": "DF",
+    "before": 114,
+    "after": 106,
+    "delta": -8,
+    "reason": "Костяная искра"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 5,
+    "kind": "position",
+    "source": "CH1",
+    "target": "CH1",
+    "before": [
+      8,
+      4
+    ],
+    "after": [
+      6,
+      5
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 6,
+    "kind": "hp",
+    "source": "CU3",
+    "target": "DF",
+    "before": 106,
+    "after": 99,
+    "delta": -7,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 7,
+    "kind": "position",
+    "source": "CU4",
+    "target": "CU4",
+    "before": [
+      9,
+      9
+    ],
+    "after": [
+      7,
+      9
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 1,
+    "activation": 8,
+    "kind": "position",
+    "source": "EN2",
+    "target": "EN2",
+    "before": [
+      7,
+      7
+    ],
+    "after": [
+      5,
+      7
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 9,
+    "kind": "hp",
+    "source": "CP",
+    "target": "AC2",
+    "before": 20,
+    "after": 0,
+    "delta": -20,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 10,
+    "kind": "hp",
+    "source": "DF",
+    "target": "DF",
+    "before": 99,
+    "after": 138,
+    "delta": 39,
+    "reason": "Медицинский протокол"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 11,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "break_ward",
+    "before": 0,
+    "after": 1,
+    "delta": 1,
+    "reason": "Слом печати"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 12,
+    "kind": "position",
+    "source": "CH1",
+    "target": "CH1",
+    "before": [
+      6,
+      5
+    ],
+    "after": [
+      5,
+      6
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 13,
+    "kind": "hp",
+    "source": "CU3",
+    "target": "DF",
+    "before": 138,
+    "after": 135,
+    "delta": -3,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 14,
+    "kind": "position",
+    "source": "CU4",
+    "target": "CU4",
+    "before": [
+      7,
+      9
+    ],
+    "after": [
+      5,
+      9
+    ],
+    "delta": null,
+    "reason": "Сближение"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 2,
+    "activation": 15,
+    "kind": "hp",
+    "source": "EN2",
+    "target": "DF",
+    "before": 135,
+    "after": 124,
+    "delta": -11,
+    "reason": "Цепной топор"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 16,
+    "kind": "hp",
+    "source": "CP",
+    "target": "CH1",
+    "before": 108,
+    "after": 83,
+    "delta": -25,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 17,
+    "kind": "hp",
+    "source": "DF",
+    "target": "CH1",
+    "before": 83,
+    "after": 70,
+    "delta": -13,
+    "reason": "Коррозийный выстрел"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 18,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "break_ward",
+    "before": 1,
+    "after": 2,
+    "delta": 1,
+    "reason": "Слом печати"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 19,
+    "kind": "hp",
+    "source": "CH1",
+    "target": "DF",
+    "before": 124,
+    "after": 106,
+    "delta": -18,
+    "reason": "Чёрная глефа"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 20,
+    "kind": "hp",
+    "source": "CU3",
+    "target": "DF",
+    "before": 106,
+    "after": 105,
+    "delta": -1,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 21,
+    "kind": "hp",
+    "source": "CU4",
+    "target": "DF",
+    "before": 105,
+    "after": 103,
+    "delta": -2,
+    "reason": "Автоган"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 3,
+    "activation": 22,
+    "kind": "hp",
+    "source": "EN2",
+    "target": "DF",
+    "before": 103,
+    "after": 93,
+    "delta": -10,
+    "reason": "Цепной топор"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 4,
+    "activation": 23,
+    "kind": "hp",
+    "source": "CP",
+    "target": "CH1",
+    "before": 70,
+    "after": 42,
+    "delta": -28,
+    "reason": "Дуэльная очередь"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 4,
+    "activation": 24,
+    "kind": "hp",
+    "source": "DF",
+    "target": "DF",
+    "before": 93,
+    "after": 132,
+    "delta": 39,
+    "reason": "Медицинский протокол"
+  },
+  {
+    "encounter_id": "R01E02_RELIQUARY_OF_ASH",
+    "round": 4,
+    "activation": 25,
+    "kind": "objective",
+    "source": "EZ",
+    "target": "break_ward",
+    "before": 2,
+    "after": 3,
+    "delta": 1,
+    "reason": "Слом печати"
+  }
+]

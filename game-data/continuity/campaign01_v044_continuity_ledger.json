@@ -1,0 +1,94 @@
+{
+  "ledger_id": "blackstar_campaign_001_continuity_after_run_001_v044",
+  "campaign_id": "blackstar_campaign_001",
+  "run_id": "blackstar_campaign_001_run_001_v044",
+  "battle_run_id": "campaign01_battle_v09_external_roster",
+  "route_nodes_resolved": [
+    "ash_causeway",
+    "dead_vox_shrine",
+    "black_reliquary_gate"
+  ],
+  "hero_deltas": [
+    {
+      "player": "EZ",
+      "hero": "Sanctioned Prism Psyker",
+      "role": "control",
+      "level_after": 2,
+      "xp_after": 29,
+      "xp_gain": 179,
+      "hp_after": 27,
+      "traits": [
+        "objective_driven"
+      ],
+      "injuries": []
+    },
+    {
+      "player": "Candy Peace",
+      "hero": "Void Chaplain",
+      "role": "tank",
+      "level_after": 2,
+      "xp_after": 29,
+      "xp_gain": 179,
+      "hp_after": 53,
+      "traits": [
+        "hard_to_kill"
+      ],
+      "injuries": []
+    },
+    {
+      "player": "Dr.Feed",
+      "hero": "Plague Surgeon",
+      "role": "medic",
+      "level_after": 2,
+      "xp_after": 29,
+      "xp_gain": 179,
+      "hp_after": 40,
+      "traits": [
+        "hard_to_kill"
+      ],
+      "injuries": []
+    }
+  ],
+  "camp_after": {
+    "id": "blackstar_camp_vesper_reliquary",
+    "name": "Vesper Reliquary Camp",
+    "tier": 1,
+    "resources": {
+      "scrap": 26,
+      "relic_shards": 10,
+      "medicae": 1,
+      "intel": 4
+    },
+    "facilities": {
+      "triage_bay": {
+        "level": 1,
+        "effect": "post-run injury mitigation"
+      },
+      "armory_rack": {
+        "level": 2,
+        "effect": "basic loadout budget"
+      },
+      "strategium_table": {
+        "level": 0,
+        "effect": "route intel locked"
+      }
+    },
+    "heat": 5,
+    "morale": 8,
+    "persistent_events": [
+      {
+        "id": "black_reliquary_claimed",
+        "result": "victory",
+        "heat_after": 5
+      }
+    ]
+  },
+  "ai_turn_count": 25,
+  "persistent_threads": [
+    {
+      "id": "black_reliquary_claimed",
+      "result": "victory",
+      "heat_after": 5
+    }
+  ]
+}

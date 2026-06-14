@@ -1,0 +1,34 @@
+{
+  "id": "blackstar_camp_vesper_reliquary",
+  "name": "Vesper Reliquary Camp",
+  "tier": 1,
+  "resources": {
+    "scrap": 26,
+    "relic_shards": 10,
+    "medicae": 1,
+    "intel": 4
+  },
+  "facilities": {
+    "triage_bay": {
+      "level": 1,
+      "effect": "post-run injury mitigation"
+    },
+    "armory_rack": {
+      "level": 2,
+      "effect": "basic loadout budget"
+    },
+    "strategium_table": {
+      "level": 0,
+      "effect": "route intel locked"
+    }
+  },
+  "heat": 5,
+  "morale": 8,
+  "persistent_events": [
+    {
+      "id": "black_reliquary_claimed",
+      "result": "victory",
+      "heat_after": 5
+    }
+  ]
+}

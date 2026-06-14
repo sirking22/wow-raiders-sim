@@ -1,0 +1,7069 @@
+{
+  "schema": "blackstar-raiders.campaign-run.v0.42",
+  "run_id": "blackstar_campaign_001_run_001_v042",
+  "campaign_id": "blackstar_campaign_001",
+  "seed": "blackstar-v042-demo-001",
+  "setting": "blackstar_far_future_grimdark_original_safe",
+  "setting_profile": {
+    "production_mode": "blackstar_raiders_original_safe",
+    "reference_target": "hard WH40 latest-edition grimdark planetary raid mood",
+    "tone": [
+      "brutal",
+      "gothic",
+      "military",
+      "high-risk",
+      "no-soft-fantasy"
+    ],
+    "public_asset_rule": "use original names and symbols unless explicitly marked as private fan/reference work",
+    "setting_swap_rule": "mechanics stay in rules_v042; names, visuals, factions, and mission dressing can change by setting pack"
+  },
+  "rules_summary": {
+    "schema": "blackstar-raiders.rules.v0.42",
+    "attribute_budget": 30,
+    "attribute_keys": [
+      "force",
+      "agility",
+      "endurance",
+      "will",
+      "tech",
+      "presence"
+    ],
+    "directive_keys": [
+      "mobility",
+      "objective",
+      "greed",
+      "survival",
+      "ability",
+      "consumable",
+      "quest"
+    ],
+    "hero_count": 9,
+    "loadout_count": 9,
+    "main_action_count": 6,
+    "bonus_action_count": 5,
+    "stat_formulas": {
+      "max_hp": "18 + endurance*4 + force",
+      "armor": "1 + floor(endurance/3) + loadout mods",
+      "movement": "3 + floor(agility/2), capped 1..8",
+      "initiative": "agility + floor(will/2)",
+      "accuracy": "will + floor(agility/2) + loadout mods",
+      "resolve": "will + presence + loadout mods",
+      "supply_slots": "2 + floor(tech/3) + floor(endurance/4)"
+    }
+  },
+  "ai_roles": {
+    "ai_director": {
+      "job": "pace threat clocks, extraction pressure, noise escalation, and campaign events",
+      "writes": "director_clock_log"
+    },
+    "ai_gm": {
+      "job": "turn computed state into player-facing choices and consequences",
+      "writes": "gm_options, decision prompts, consequence previews"
+    },
+    "ai_heroes": {
+      "job": "convert player directives into movement, main action, bonus action, and reaction reserve",
+      "writes": "hero action plans with score components"
+    },
+    "ai_enemies": {
+      "job": "apply threat pressure, target bias, and objective denial",
+      "writes": "enemy action log"
+    },
+    "engine": {
+      "job": "resolve numbers deterministically from rules_v042",
+      "writes": "state, logs, screen payloads, progression"
+    }
+  },
+  "mission": {
+    "id": "blightfall_relic_extraction",
+    "name": "Blightfall Relic Extraction",
+    "planet": "Korvash Prime",
+    "primary_objective": "recover black reliquary core",
+    "secondary_objectives": [
+      "scan dead vox shrine",
+      "extract at least two heroes alive"
+    ],
+    "extraction_window": 30,
+    "threat_band": "extreme",
+    "rewards": {
+      "relic_shards": 6,
+      "scrap": 12,
+      "intel": 3,
+      "xp": 130
+    }
+  },
+  "player_slots": [
+    {
+      "player": "EZ",
+      "assigned_hero": "sanctioned_prism_psyker"
+    },
+    {
+      "player": "Candy Peace",
+      "assigned_hero": "void_chaplain"
+    },
+    {
+      "player": "Dr.Feed",
+      "assigned_hero": "plague_surgeon"
+    }
+  ],
+  "player_directives": {
+    "EZ": {
+      "mobility": 0.65,
+      "objective": 0.9,
+      "greed": 0.35,
+      "survival": 0.45,
+      "ability": 0.85,
+      "consumable": 0.35,
+      "quest": 0.75,
+      "ability_bias": "control_priority",
+      "character_notes": [
+        "pushes anomaly objectives",
+        "accepts controlled warp risk"
+      ]
+    },
+    "Candy Peace": {
+      "mobility": 0.35,
+      "objective": 0.7,
+      "greed": 0.25,
+      "survival": 0.9,
+      "ability": 0.45,
+      "consumable": 0.45,
+      "quest": 0.35,
+      "ability_bias": "guard_allies",
+      "character_notes": [
+        "holds the line",
+        "keeps Dr.Feed covered"
+      ]
+    },
+    "Dr.Feed": {
+      "mobility": 0.3,
+      "objective": 0.55,
+      "greed": 0.2,
+      "survival": 0.95,
+      "ability": 0.7,
+      "consumable": 0.9,
+      "quest": 0.45,
+      "ability_bias": "heal_early",
+      "character_notes": [
+        "spends supplies before collapse",
+        "keeps damaged heroes operational"
+      ]
+    }
+  },
+  "hero_pool": [
+    {
+      "id": "void_chaplain",
+      "name": "Void Chaplain",
+      "role": "tank",
+      "class_tags": [
+        "anchor",
+        "protector",
+        "morale",
+        "frontline"
+      ],
+      "attributes": {
+        "force": 6,
+        "agility": 3,
+        "endurance": 8,
+        "will": 6,
+        "tech": 2,
+        "presence": 5
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 56,
+        "armor": 3,
+        "movement": 4,
+        "initiative": 6,
+        "accuracy": 7,
+        "resolve": 11,
+        "supply_slots": 4,
+        "carry_capacity": 16,
+        "damage_power": 9,
+        "healing_power": 3,
+        "objective_power": 4,
+        "tech_power": 2,
+        "evasion": 1,
+        "threat": 11
+      }
+    },
+    {
+      "id": "ash_scout",
+      "name": "Ash Scout",
+      "role": "scout",
+      "class_tags": [
+        "mobility",
+        "stealth",
+        "route",
+        "quest"
+      ],
+      "attributes": {
+        "force": 3,
+        "agility": 8,
+        "endurance": 4,
+        "will": 5,
+        "tech": 5,
+        "presence": 5
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 37,
+        "armor": 2,
+        "movement": 7,
+        "initiative": 10,
+        "accuracy": 9,
+        "resolve": 10,
+        "supply_slots": 4,
+        "carry_capacity": 11,
+        "damage_power": 5,
+        "healing_power": 3,
+        "objective_power": 4,
+        "tech_power": 5,
+        "evasion": 2,
+        "threat": 7
+      }
+    },
+    {
+      "id": "plague_surgeon",
+      "name": "Plague Surgeon",
+      "role": "medic",
+      "class_tags": [
+        "healing",
+        "toxins",
+        "stabilize",
+        "consumable"
+      ],
+      "attributes": {
+        "force": 2,
+        "agility": 4,
+        "endurance": 5,
+        "will": 6,
+        "tech": 8,
+        "presence": 5
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 40,
+        "armor": 2,
+        "movement": 5,
+        "initiative": 7,
+        "accuracy": 8,
+        "resolve": 11,
+        "supply_slots": 5,
+        "carry_capacity": 10,
+        "damage_power": 5,
+        "healing_power": 6,
+        "objective_power": 6,
+        "tech_power": 8,
+        "evasion": 1,
+        "threat": 7
+      }
+    },
+    {
+      "id": "siege_gunner",
+      "name": "Siege Gunner",
+      "role": "heavy",
+      "class_tags": [
+        "suppression",
+        "breach",
+        "heavy",
+        "noise"
+      ],
+      "attributes": {
+        "force": 7,
+        "agility": 2,
+        "endurance": 7,
+        "will": 4,
+        "tech": 7,
+        "presence": 3
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 53,
+        "armor": 3,
+        "movement": 4,
+        "initiative": 4,
+        "accuracy": 5,
+        "resolve": 7,
+        "supply_slots": 5,
+        "carry_capacity": 16,
+        "damage_power": 9,
+        "healing_power": 4,
+        "objective_power": 5,
+        "tech_power": 7,
+        "evasion": 0,
+        "threat": 10
+      }
+    },
+    {
+      "id": "sanctioned_prism_psyker",
+      "name": "Sanctioned Prism Psyker",
+      "role": "control",
+      "class_tags": [
+        "psyker",
+        "control",
+        "risk",
+        "objective"
+      ],
+      "attributes": {
+        "force": 2,
+        "agility": 4,
+        "endurance": 3,
+        "will": 10,
+        "tech": 3,
+        "presence": 8
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 32,
+        "armor": 2,
+        "movement": 5,
+        "initiative": 9,
+        "accuracy": 12,
+        "resolve": 18,
+        "supply_slots": 3,
+        "carry_capacity": 9,
+        "damage_power": 7,
+        "healing_power": 4,
+        "objective_power": 8,
+        "tech_power": 3,
+        "evasion": 1,
+        "threat": 11
+      }
+    },
+    {
+      "id": "iron_tech_adept",
+      "name": "Iron Tech-Adept",
+      "role": "support",
+      "class_tags": [
+        "repair",
+        "devices",
+        "camp",
+        "consumable"
+      ],
+      "attributes": {
+        "force": 4,
+        "agility": 3,
+        "endurance": 5,
+        "will": 5,
+        "tech": 10,
+        "presence": 3
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 42,
+        "armor": 2,
+        "movement": 4,
+        "initiative": 5,
+        "accuracy": 6,
+        "resolve": 8,
+        "supply_slots": 6,
+        "carry_capacity": 12,
+        "damage_power": 6,
+        "healing_power": 6,
+        "objective_power": 6,
+        "tech_power": 10,
+        "evasion": 1,
+        "threat": 7
+      }
+    },
+    {
+      "id": "deathworld_beastmaster",
+      "name": "Deathworld Beastmaster",
+      "role": "ranger",
+      "class_tags": [
+        "tracking",
+        "beast",
+        "survival",
+        "mobility"
+      ],
+      "attributes": {
+        "force": 5,
+        "agility": 7,
+        "endurance": 6,
+        "will": 5,
+        "tech": 2,
+        "presence": 5
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 47,
+        "armor": 3,
+        "movement": 6,
+        "initiative": 9,
+        "accuracy": 8,
+        "resolve": 10,
+        "supply_slots": 3,
+        "carry_capacity": 14,
+        "damage_power": 7,
+        "healing_power": 2,
+        "objective_power": 3,
+        "tech_power": 2,
+        "evasion": 2,
+        "threat": 9
+      }
+    },
+    {
+      "id": "penitent_duelist",
+      "name": "Penitent Duelist",
+      "role": "duelist",
+      "class_tags": [
+        "melee",
+        "bleed",
+        "zeal",
+        "risk"
+      ],
+      "attributes": {
+        "force": 7,
+        "agility": 7,
+        "endurance": 5,
+        "will": 6,
+        "tech": 1,
+        "presence": 4
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 45,
+        "armor": 2,
+        "movement": 6,
+        "initiative": 10,
+        "accuracy": 9,
+        "resolve": 10,
+        "supply_slots": 3,
+        "carry_capacity": 15,
+        "damage_power": 10,
+        "healing_power": 2,
+        "objective_power": 4,
+        "tech_power": 1,
+        "evasion": 2,
+        "threat": 12
+      }
+    },
+    {
+      "id": "xeno_relic_sniper",
+      "name": "Xeno Relic Sniper",
+      "role": "sniper",
+      "class_tags": [
+        "range",
+        "relics",
+        "precision",
+        "greed"
+      ],
+      "attributes": {
+        "force": 3,
+        "agility": 8,
+        "endurance": 3,
+        "will": 6,
+        "tech": 6,
+        "presence": 4
+      },
+      "attribute_budget": 30,
+      "derived": {
+        "max_hp": 33,
+        "armor": 2,
+        "movement": 7,
+        "initiative": 11,
+        "accuracy": 10,
+        "resolve": 10,
+        "supply_slots": 4,
+        "carry_capacity": 10,
+        "damage_power": 6,
+        "healing_power": 5,
+        "objective_power": 6,
+        "tech_power": 6,
+        "evasion": 2,
+        "threat": 8
+      }
+    }
+  ],
+  "initial_camp": {
+    "id": "blackstar_camp_vesper_reliquary",
+    "name": "Vesper Reliquary Camp",
+    "tier": 1,
+    "resources": {
+      "scrap": 18,
+      "relic_shards": 4,
+      "medicae": 3,
+      "intel": 3
+    },
+    "facilities": {
+      "triage_bay": {
+        "level": 1,
+        "effect": "post-run injury mitigation"
+      },
+      "armory_rack": {
+        "level": 1,
+        "effect": "basic loadout budget"
+      },
+      "strategium_table": {
+        "level": 0,
+        "effect": "route intel locked"
+      }
+    },
+    "heat": 1,
+    "morale": 6,
+    "persistent_events": []
+  },
+  "final_camp": {
+    "id": "blackstar_camp_vesper_reliquary",
+    "name": "Vesper Reliquary Camp",
+    "tier": 1,
+    "resources": {
+      "scrap": 26,
+      "relic_shards": 10,
+      "medicae": 1,
+      "intel": 4
+    },
+    "facilities": {
+      "triage_bay": {
+        "level": 1,
+        "effect": "post-run injury mitigation"
+      },
+      "armory_rack": {
+        "level": 2,
+        "effect": "basic loadout budget"
+      },
+      "strategium_table": {
+        "level": 0,
+        "effect": "route intel locked"
+      }
+    },
+    "heat": 5,
+    "morale": 8,
+    "persistent_events": [
+      {
+        "id": "black_reliquary_claimed",
+        "result": "victory",
+        "heat_after": 5
+      }
+    ]
+  },
+  "route_log": [
+    {
+      "index": 1,
+      "node": {
+        "node": "ash_causeway",
+        "choice": "fast route through shell-fire",
+        "cost": {
+          "extraction_timer": -4,
+          "noise": 1
+        },
+        "screen_focus": "tempo"
+      },
+      "clocks_after": {
+        "threat": 4,
+        "noise": 2,
+        "doom": 2,
+        "extraction_timer": 23
+      },
+      "camp_resources_after": {
+        "scrap": 14,
+        "relic_shards": 4,
+        "medicae": 1,
+        "intel": 0
+      }
+    },
+    {
+      "index": 2,
+      "node": {
+        "node": "dead_vox_shrine",
+        "choice": "scan secondary objective",
+        "cost": {
+          "extraction_timer": -5,
+          "doom": 1
+        },
+        "reward": {
+          "intel": 1
+        },
+        "screen_focus": "quest"
+      },
+      "clocks_after": {
+        "threat": 4,
+        "noise": 2,
+        "doom": 3,
+        "extraction_timer": 18
+      },
+      "camp_resources_after": {
+        "scrap": 14,
+        "relic_shards": 4,
+        "medicae": 1,
+        "intel": 1
+      }
+    },
+    {
+      "index": 3,
+      "node": {
+        "node": "black_reliquary_gate",
+        "choice": "breach vault perimeter",
+        "cost": {
+          "threat": 1,
+          "noise": 1
+        },
+        "screen_focus": "combat_setup"
+      },
+      "clocks_after": {
+        "threat": 5,
+        "noise": 3,
+        "doom": 3,
+        "extraction_timer": 18
+      },
+      "camp_resources_after": {
+        "scrap": 14,
+        "relic_shards": 4,
+        "medicae": 1,
+        "intel": 1
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "type": "campaign_start",
+      "campaign": "blackstar_campaign_001",
+      "mission": "blightfall_relic_extraction",
+      "rules": "blackstar-raiders.rules.v0.42"
+    },
+    {
+      "type": "director",
+      "event": "drop_in_under_fire",
+      "delta": {
+        "noise": 1,
+        "extraction_timer": -3
+      },
+      "clocks": {
+        "threat": 4,
+        "noise": 1,
+        "doom": 2,
+        "extraction_timer": 27
+      },
+      "note": "Landing starts hot; the director adds pressure before the first route choice."
+    },
+    {
+      "type": "director",
+      "event": "route:ash_causeway",
+      "delta": {
+        "extraction_timer": -4,
+        "noise": 1
+      },
+      "clocks": {
+        "threat": 4,
+        "noise": 2,
+        "doom": 2,
+        "extraction_timer": 23
+      },
+      "note": "AI Director resolves route cost for fast route through shell-fire."
+    },
+    {
+      "type": "director",
+      "event": "route:dead_vox_shrine",
+      "delta": {
+        "extraction_timer": -5,
+        "doom": 1
+      },
+      "clocks": {
+        "threat": 4,
+        "noise": 2,
+        "doom": 3,
+        "extraction_timer": 18
+      },
+      "note": "AI Director resolves route cost for scan secondary objective."
+    },
+    {
+      "type": "director",
+      "event": "route:black_reliquary_gate",
+      "delta": {
+        "threat": 1,
+        "noise": 1
+      },
+      "clocks": {
+        "threat": 5,
+        "noise": 3,
+        "doom": 3,
+        "extraction_timer": 18
+      },
+      "note": "AI Director resolves route cost for breach vault perimeter."
+    },
+    {
+      "type": "tactical_round",
+      "round": 1,
+      "summary": {
+        "round": 1,
+        "context": {
+          "lowest_ally_hp_ratio": 1.0,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": true
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 19.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "objective_unclaimed": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 48,
+                "after": 35,
+                "value": 13
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 32,
+                "after": 32,
+                "value": 18
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "EZ",
+                "before": 32,
+                "after": 32,
+                "value": 11
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 8,
+            "mitigated": 8,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 9,
+            "mitigated": 2,
+            "damage": 5,
+            "before": 32,
+            "after": 27
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 8,
+            "mitigated": 0,
+            "damage": 4,
+            "before": 56,
+            "after": 52
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 35,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 27,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 52,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 5,
+        "noise": 4
+      }
+    },
+    {
+      "type": "tactical_round",
+      "round": 2,
+      "summary": {
+        "round": 2,
+        "context": {
+          "lowest_ally_hp_ratio": 0.84375,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": true
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 19.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "objective_unclaimed": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 35,
+                "after": 19,
+                "value": 16
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 27,
+                "after": 32,
+                "value": 15
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "Candy Peace",
+                "before": 52,
+                "after": 56,
+                "value": 14
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 7,
+            "mitigated": 7,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 10,
+            "mitigated": 3,
+            "damage": 5,
+            "before": 32,
+            "after": 27
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 6,
+            "mitigated": 0,
+            "damage": 2,
+            "before": 56,
+            "after": 54
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 19,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 27,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 54,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 10,
+        "noise": 5
+      }
+    },
+    {
+      "type": "tactical_round",
+      "round": 3,
+      "summary": {
+        "round": 3,
+        "context": {
+          "lowest_ally_hp_ratio": 0.84375,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": false
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 17.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 19,
+                "after": 5,
+                "value": 14
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 27,
+                "after": 32,
+                "value": 17
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "Candy Peace",
+                "before": 54,
+                "after": 56,
+                "value": 12
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 8,
+            "mitigated": 8,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 8,
+            "mitigated": 2,
+            "damage": 4,
+            "before": 32,
+            "after": 28
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 9,
+            "mitigated": 0,
+            "damage": 5,
+            "before": 56,
+            "after": 51
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 5,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 28,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 51,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 15,
+        "noise": 6
+      }
+    },
+    {
+      "type": "director",
+      "event": "extraction_resolution",
+      "delta": {
+        "extraction_timer": -6,
+        "threat": 1
+      },
+      "clocks": {
+        "threat": 6,
+        "noise": 3,
+        "doom": 3,
+        "extraction_timer": 12
+      },
+      "note": "Extraction beacon resolves after tactical result and noise."
+    }
+  ],
+  "tactical_rounds": [
+    {
+      "round": 1,
+      "context": {
+        "lowest_ally_hp_ratio": 1.0,
+        "enemy_pressure": 12,
+        "extraction_timer": 18,
+        "unclaimed_objective": true
+      },
+      "hero_actions": [
+        {
+          "actor": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "initiative": 9,
+          "budget": {
+            "movement": 5,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 0
+          },
+          "main_action": {
+            "id": "prism_lock",
+            "tags": [
+              "ability",
+              "control",
+              "objective",
+              "risk"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 26.1,
+            "score_components": {
+              "base": 6.0,
+              "role_fit": 2.0,
+              "directive:ability": 2.55,
+              "loadout_tag:ability": 1.0,
+              "class_tag:control": 1.0,
+              "loadout_tag:control": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "class_tag:risk": 1.0,
+              "attr:will": 3.333,
+              "attr:presence": 1.067,
+              "enemy_pressure": 2.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "damage": 8,
+              "objective": 2,
+              "noise": 1,
+              "risk": 2
+            }
+          },
+          "bonus_action": {
+            "id": "scan_relic_signal",
+            "tags": [
+              "quest",
+              "objective",
+              "greed"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 19.85,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:quest": 2.25,
+              "loadout_tag:quest": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "directive:greed": 1.05,
+              "loadout_tag:greed": 1.0,
+              "attr:tech": 0.4,
+              "attr:will": 1.0,
+              "objective_unclaimed": 2.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "objective": 1,
+              "intel": 1,
+              "noise": 0,
+              "risk": 0
+            }
+          },
+          "effects": [
+            {
+              "type": "damage",
+              "action": "prism_lock",
+              "target": "blight_sergeant",
+              "before": 48,
+              "after": 35,
+              "value": 13
+            }
+          ]
+        },
+        {
+          "actor": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "initiative": 7,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "stabilize_ally",
+            "tags": [
+              "survival",
+              "consumable",
+              "healing"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 20.633,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 2.133,
+              "attr:will": 0.6,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 7,
+              "objective": 1,
+              "noise": 0,
+              "risk": -2
+            }
+          },
+          "bonus_action": {
+            "id": "field_injector",
+            "tags": [
+              "consumable",
+              "survival",
+              "healing"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 16.967,
+            "score_components": {
+              "base": 3.0,
+              "role_fit": 2.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 1.067,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 3,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "heal",
+              "action": "stabilize_ally",
+              "target": "EZ",
+              "before": 32,
+              "after": 32,
+              "value": 18
+            },
+            {
+              "type": "heal",
+              "action": "field_injector",
+              "target": "EZ",
+              "before": 32,
+              "after": 32,
+              "value": 11
+            }
+          ]
+        },
+        {
+          "actor": "Candy Peace",
+          "hero": "Void Chaplain",
+          "initiative": 6,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "guard_line",
+            "tags": [
+              "survival",
+              "guard",
+              "objective"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 17.467,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "directive:objective": 2.1,
+              "loadout_tag:objective": 1.0,
+              "attr:endurance": 1.867,
+              "attr:presence": 0.5,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 4,
+              "objective": 1,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "bonus_action": {
+            "id": "raise_shield",
+            "tags": [
+              "survival",
+              "guard"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 12.067,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "attr:endurance": 1.067,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 2,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "mitigation",
+              "action": "guard_line",
+              "value": 6
+            },
+            {
+              "type": "mitigation",
+              "action": "raise_shield",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "enemy_actions": [
+        {
+          "actor": "blight_sergeant",
+          "target": "Dr.Feed",
+          "raw_threat": 8,
+          "mitigated": 8,
+          "damage": 0,
+          "before": 40,
+          "after": 40
+        },
+        {
+          "actor": "rust_gunner",
+          "target": "EZ",
+          "raw_threat": 9,
+          "mitigated": 2,
+          "damage": 5,
+          "before": 32,
+          "after": 27
+        },
+        {
+          "actor": "relic_thrall_pack",
+          "target": "Candy Peace",
+          "raw_threat": 8,
+          "mitigated": 0,
+          "damage": 4,
+          "before": 56,
+          "after": 52
+        }
+      ],
+      "enemy_state": [
+        {
+          "id": "blight_sergeant",
+          "name": "Blight Sergeant",
+          "hp": 35,
+          "armor": 3,
+          "threat": 5,
+          "target_bias": "medic"
+        },
+        {
+          "id": "rust_gunner",
+          "name": "Rust Gunner",
+          "hp": 34,
+          "armor": 2,
+          "threat": 4,
+          "target_bias": "lowest_armor"
+        },
+        {
+          "id": "relic_thrall_pack",
+          "name": "Relic Thrall Pack",
+          "hp": 58,
+          "armor": 1,
+          "threat": 3,
+          "target_bias": "frontline"
+        }
+      ],
+      "squad_state": [
+        {
+          "player": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "role": "control",
+          "hp": 27,
+          "max_hp": 32,
+          "armor": 2,
+          "movement": 5,
+          "initiative": 9,
+          "resolve": 19
+        },
+        {
+          "player": "Candy Peace",
+          "hero": "Void Chaplain",
+          "role": "tank",
+          "hp": 52,
+          "max_hp": 56,
+          "armor": 4,
+          "movement": 4,
+          "initiative": 6,
+          "resolve": 12
+        },
+        {
+          "player": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "role": "medic",
+          "hp": 40,
+          "max_hp": 40,
+          "armor": 3,
+          "movement": 5,
+          "initiative": 7,
+          "resolve": 11
+        }
+      ],
+      "objective_progress": 5,
+      "noise": 4
+    },
+    {
+      "round": 2,
+      "context": {
+        "lowest_ally_hp_ratio": 0.84375,
+        "enemy_pressure": 12,
+        "extraction_timer": 18,
+        "unclaimed_objective": true
+      },
+      "hero_actions": [
+        {
+          "actor": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "initiative": 9,
+          "budget": {
+            "movement": 5,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 0
+          },
+          "main_action": {
+            "id": "prism_lock",
+            "tags": [
+              "ability",
+              "control",
+              "objective",
+              "risk"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 26.1,
+            "score_components": {
+              "base": 6.0,
+              "role_fit": 2.0,
+              "directive:ability": 2.55,
+              "loadout_tag:ability": 1.0,
+              "class_tag:control": 1.0,
+              "loadout_tag:control": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "class_tag:risk": 1.0,
+              "attr:will": 3.333,
+              "attr:presence": 1.067,
+              "enemy_pressure": 2.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "damage": 8,
+              "objective": 2,
+              "noise": 1,
+              "risk": 2
+            }
+          },
+          "bonus_action": {
+            "id": "scan_relic_signal",
+            "tags": [
+              "quest",
+              "objective",
+              "greed"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 19.85,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:quest": 2.25,
+              "loadout_tag:quest": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "directive:greed": 1.05,
+              "loadout_tag:greed": 1.0,
+              "attr:tech": 0.4,
+              "attr:will": 1.0,
+              "objective_unclaimed": 2.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "objective": 1,
+              "intel": 1,
+              "noise": 0,
+              "risk": 0
+            }
+          },
+          "effects": [
+            {
+              "type": "damage",
+              "action": "prism_lock",
+              "target": "blight_sergeant",
+              "before": 35,
+              "after": 19,
+              "value": 16
+            }
+          ]
+        },
+        {
+          "actor": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "initiative": 7,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "stabilize_ally",
+            "tags": [
+              "survival",
+              "consumable",
+              "healing"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 20.633,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 2.133,
+              "attr:will": 0.6,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 7,
+              "objective": 1,
+              "noise": 0,
+              "risk": -2
+            }
+          },
+          "bonus_action": {
+            "id": "field_injector",
+            "tags": [
+              "consumable",
+              "survival",
+              "healing"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 16.967,
+            "score_components": {
+              "base": 3.0,
+              "role_fit": 2.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 1.067,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 3,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "heal",
+              "action": "stabilize_ally",
+              "target": "EZ",
+              "before": 27,
+              "after": 32,
+              "value": 15
+            },
+            {
+              "type": "heal",
+              "action": "field_injector",
+              "target": "Candy Peace",
+              "before": 52,
+              "after": 56,
+              "value": 14
+            }
+          ]
+        },
+        {
+          "actor": "Candy Peace",
+          "hero": "Void Chaplain",
+          "initiative": 6,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "guard_line",
+            "tags": [
+              "survival",
+              "guard",
+              "objective"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 17.467,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "directive:objective": 2.1,
+              "loadout_tag:objective": 1.0,
+              "attr:endurance": 1.867,
+              "attr:presence": 0.5,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 4,
+              "objective": 1,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "bonus_action": {
+            "id": "raise_shield",
+            "tags": [
+              "survival",
+              "guard"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 12.067,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "attr:endurance": 1.067,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 2,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "mitigation",
+              "action": "guard_line",
+              "value": 6
+            },
+            {
+              "type": "mitigation",
+              "action": "raise_shield",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "enemy_actions": [
+        {
+          "actor": "blight_sergeant",
+          "target": "Dr.Feed",
+          "raw_threat": 7,
+          "mitigated": 7,
+          "damage": 0,
+          "before": 40,
+          "after": 40
+        },
+        {
+          "actor": "rust_gunner",
+          "target": "EZ",
+          "raw_threat": 10,
+          "mitigated": 3,
+          "damage": 5,
+          "before": 32,
+          "after": 27
+        },
+        {
+          "actor": "relic_thrall_pack",
+          "target": "Candy Peace",
+          "raw_threat": 6,
+          "mitigated": 0,
+          "damage": 2,
+          "before": 56,
+          "after": 54
+        }
+      ],
+      "enemy_state": [
+        {
+          "id": "blight_sergeant",
+          "name": "Blight Sergeant",
+          "hp": 19,
+          "armor": 3,
+          "threat": 5,
+          "target_bias": "medic"
+        },
+        {
+          "id": "rust_gunner",
+          "name": "Rust Gunner",
+          "hp": 34,
+          "armor": 2,
+          "threat": 4,
+          "target_bias": "lowest_armor"
+        },
+        {
+          "id": "relic_thrall_pack",
+          "name": "Relic Thrall Pack",
+          "hp": 58,
+          "armor": 1,
+          "threat": 3,
+          "target_bias": "frontline"
+        }
+      ],
+      "squad_state": [
+        {
+          "player": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "role": "control",
+          "hp": 27,
+          "max_hp": 32,
+          "armor": 2,
+          "movement": 5,
+          "initiative": 9,
+          "resolve": 19
+        },
+        {
+          "player": "Candy Peace",
+          "hero": "Void Chaplain",
+          "role": "tank",
+          "hp": 54,
+          "max_hp": 56,
+          "armor": 4,
+          "movement": 4,
+          "initiative": 6,
+          "resolve": 12
+        },
+        {
+          "player": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "role": "medic",
+          "hp": 40,
+          "max_hp": 40,
+          "armor": 3,
+          "movement": 5,
+          "initiative": 7,
+          "resolve": 11
+        }
+      ],
+      "objective_progress": 10,
+      "noise": 5
+    },
+    {
+      "round": 3,
+      "context": {
+        "lowest_ally_hp_ratio": 0.84375,
+        "enemy_pressure": 12,
+        "extraction_timer": 18,
+        "unclaimed_objective": false
+      },
+      "hero_actions": [
+        {
+          "actor": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "initiative": 9,
+          "budget": {
+            "movement": 5,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 0
+          },
+          "main_action": {
+            "id": "prism_lock",
+            "tags": [
+              "ability",
+              "control",
+              "objective",
+              "risk"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 26.1,
+            "score_components": {
+              "base": 6.0,
+              "role_fit": 2.0,
+              "directive:ability": 2.55,
+              "loadout_tag:ability": 1.0,
+              "class_tag:control": 1.0,
+              "loadout_tag:control": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "class_tag:risk": 1.0,
+              "attr:will": 3.333,
+              "attr:presence": 1.067,
+              "enemy_pressure": 2.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "damage": 8,
+              "objective": 2,
+              "noise": 1,
+              "risk": 2
+            }
+          },
+          "bonus_action": {
+            "id": "scan_relic_signal",
+            "tags": [
+              "quest",
+              "objective",
+              "greed"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 17.85,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:quest": 2.25,
+              "loadout_tag:quest": 1.0,
+              "directive:objective": 2.7,
+              "class_tag:objective": 1.0,
+              "loadout_tag:objective": 1.0,
+              "directive:greed": 1.05,
+              "loadout_tag:greed": 1.0,
+              "attr:tech": 0.4,
+              "attr:will": 1.0,
+              "initiative_bias": 0.45
+            },
+            "effect": {
+              "objective": 1,
+              "intel": 1,
+              "noise": 0,
+              "risk": 0
+            }
+          },
+          "effects": [
+            {
+              "type": "damage",
+              "action": "prism_lock",
+              "target": "blight_sergeant",
+              "before": 19,
+              "after": 5,
+              "value": 14
+            }
+          ]
+        },
+        {
+          "actor": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "initiative": 7,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "stabilize_ally",
+            "tags": [
+              "survival",
+              "consumable",
+              "healing"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 20.633,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 2.133,
+              "attr:will": 0.6,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 7,
+              "objective": 1,
+              "noise": 0,
+              "risk": -2
+            }
+          },
+          "bonus_action": {
+            "id": "field_injector",
+            "tags": [
+              "consumable",
+              "survival",
+              "healing"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 16.967,
+            "score_components": {
+              "base": 3.0,
+              "role_fit": 2.0,
+              "directive:consumable": 2.7,
+              "class_tag:consumable": 1.0,
+              "loadout_tag:consumable": 1.0,
+              "directive:survival": 2.85,
+              "loadout_tag:survival": 1.0,
+              "class_tag:healing": 1.0,
+              "loadout_tag:healing": 1.0,
+              "attr:tech": 1.067,
+              "initiative_bias": 0.35
+            },
+            "effect": {
+              "heal": 3,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "heal",
+              "action": "stabilize_ally",
+              "target": "EZ",
+              "before": 27,
+              "after": 32,
+              "value": 17
+            },
+            {
+              "type": "heal",
+              "action": "field_injector",
+              "target": "Candy Peace",
+              "before": 54,
+              "after": 56,
+              "value": 12
+            }
+          ]
+        },
+        {
+          "actor": "Candy Peace",
+          "hero": "Void Chaplain",
+          "initiative": 6,
+          "budget": {
+            "movement": 3,
+            "main": 1,
+            "bonus": 1,
+            "reaction_reserved": 1
+          },
+          "main_action": {
+            "id": "guard_line",
+            "tags": [
+              "survival",
+              "guard",
+              "objective"
+            ],
+            "budget": {
+              "main": 1,
+              "bonus": 0,
+              "reaction": 0
+            },
+            "score": 17.467,
+            "score_components": {
+              "base": 5.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "directive:objective": 2.1,
+              "loadout_tag:objective": 1.0,
+              "attr:endurance": 1.867,
+              "attr:presence": 0.5,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 4,
+              "objective": 1,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "bonus_action": {
+            "id": "raise_shield",
+            "tags": [
+              "survival",
+              "guard"
+            ],
+            "budget": {
+              "main": 0,
+              "bonus": 1,
+              "reaction": 0
+            },
+            "score": 12.067,
+            "score_components": {
+              "base": 4.0,
+              "role_fit": 2.0,
+              "directive:survival": 2.7,
+              "loadout_tag:survival": 1.0,
+              "loadout_tag:guard": 1.0,
+              "attr:endurance": 1.067,
+              "initiative_bias": 0.3
+            },
+            "effect": {
+              "mitigation": 2,
+              "objective": 0,
+              "noise": 0,
+              "risk": -1
+            }
+          },
+          "effects": [
+            {
+              "type": "mitigation",
+              "action": "guard_line",
+              "value": 6
+            },
+            {
+              "type": "mitigation",
+              "action": "raise_shield",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "enemy_actions": [
+        {
+          "actor": "blight_sergeant",
+          "target": "Dr.Feed",
+          "raw_threat": 8,
+          "mitigated": 8,
+          "damage": 0,
+          "before": 40,
+          "after": 40
+        },
+        {
+          "actor": "rust_gunner",
+          "target": "EZ",
+          "raw_threat": 8,
+          "mitigated": 2,
+          "damage": 4,
+          "before": 32,
+          "after": 28
+        },
+        {
+          "actor": "relic_thrall_pack",
+          "target": "Candy Peace",
+          "raw_threat": 9,
+          "mitigated": 0,
+          "damage": 5,
+          "before": 56,
+          "after": 51
+        }
+      ],
+      "enemy_state": [
+        {
+          "id": "blight_sergeant",
+          "name": "Blight Sergeant",
+          "hp": 5,
+          "armor": 3,
+          "threat": 5,
+          "target_bias": "medic"
+        },
+        {
+          "id": "rust_gunner",
+          "name": "Rust Gunner",
+          "hp": 34,
+          "armor": 2,
+          "threat": 4,
+          "target_bias": "lowest_armor"
+        },
+        {
+          "id": "relic_thrall_pack",
+          "name": "Relic Thrall Pack",
+          "hp": 58,
+          "armor": 1,
+          "threat": 3,
+          "target_bias": "frontline"
+        }
+      ],
+      "squad_state": [
+        {
+          "player": "EZ",
+          "hero": "Sanctioned Prism Psyker",
+          "role": "control",
+          "hp": 28,
+          "max_hp": 32,
+          "armor": 2,
+          "movement": 5,
+          "initiative": 9,
+          "resolve": 19
+        },
+        {
+          "player": "Candy Peace",
+          "hero": "Void Chaplain",
+          "role": "tank",
+          "hp": 51,
+          "max_hp": 56,
+          "armor": 4,
+          "movement": 4,
+          "initiative": 6,
+          "resolve": 12
+        },
+        {
+          "player": "Dr.Feed",
+          "hero": "Plague Surgeon",
+          "role": "medic",
+          "hp": 40,
+          "max_hp": 40,
+          "armor": 3,
+          "movement": 5,
+          "initiative": 7,
+          "resolve": 11
+        }
+      ],
+      "objective_progress": 15,
+      "noise": 6
+    }
+  ],
+  "tactical_result": {
+    "victory": true,
+    "objective_progress": 15,
+    "noise": 6,
+    "rounds": 3,
+    "heroes_alive": [
+      "EZ",
+      "Candy Peace",
+      "Dr.Feed"
+    ],
+    "enemies_remaining": [
+      {
+        "id": "blight_sergeant",
+        "name": "Blight Sergeant",
+        "hp": 5,
+        "armor": 3,
+        "threat": 5,
+        "target_bias": "medic"
+      },
+      {
+        "id": "rust_gunner",
+        "name": "Rust Gunner",
+        "hp": 34,
+        "armor": 2,
+        "threat": 4,
+        "target_bias": "lowest_armor"
+      },
+      {
+        "id": "relic_thrall_pack",
+        "name": "Relic Thrall Pack",
+        "hp": 58,
+        "armor": 1,
+        "threat": 3,
+        "target_bias": "frontline"
+      }
+    ],
+    "extraction_readiness": 100
+  },
+  "screen_payloads": [
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_00_hero_selection",
+      "stage": "hero_selection",
+      "title": "Hero Selection",
+      "time_index": 0,
+      "state": {
+        "player_slots": [
+          {
+            "player": "EZ",
+            "status": "unassigned"
+          },
+          {
+            "player": "Candy Peace",
+            "status": "unassigned"
+          },
+          {
+            "player": "Dr.Feed",
+            "status": "unassigned"
+          }
+        ],
+        "hero_pool": [
+          {
+            "id": "void_chaplain",
+            "name": "Void Chaplain",
+            "role": "tank",
+            "class_tags": [
+              "anchor",
+              "protector",
+              "morale",
+              "frontline"
+            ],
+            "attributes": {
+              "force": 6,
+              "agility": 3,
+              "endurance": 8,
+              "will": 6,
+              "tech": 2,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 56,
+              "armor": 3,
+              "movement": 4,
+              "initiative": 6,
+              "accuracy": 7,
+              "resolve": 11,
+              "supply_slots": 4,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 2,
+              "evasion": 1,
+              "threat": 11
+            }
+          },
+          {
+            "id": "ash_scout",
+            "name": "Ash Scout",
+            "role": "scout",
+            "class_tags": [
+              "mobility",
+              "stealth",
+              "route",
+              "quest"
+            ],
+            "attributes": {
+              "force": 3,
+              "agility": 8,
+              "endurance": 4,
+              "will": 5,
+              "tech": 5,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 37,
+              "armor": 2,
+              "movement": 7,
+              "initiative": 10,
+              "accuracy": 9,
+              "resolve": 10,
+              "supply_slots": 4,
+              "carry_capacity": 11,
+              "damage_power": 5,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 5,
+              "evasion": 2,
+              "threat": 7
+            }
+          },
+          {
+            "id": "plague_surgeon",
+            "name": "Plague Surgeon",
+            "role": "medic",
+            "class_tags": [
+              "healing",
+              "toxins",
+              "stabilize",
+              "consumable"
+            ],
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 5,
+              "will": 6,
+              "tech": 8,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 40,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 7,
+              "accuracy": 8,
+              "resolve": 11,
+              "supply_slots": 5,
+              "carry_capacity": 10,
+              "damage_power": 5,
+              "healing_power": 6,
+              "objective_power": 6,
+              "tech_power": 8,
+              "evasion": 1,
+              "threat": 7
+            }
+          },
+          {
+            "id": "siege_gunner",
+            "name": "Siege Gunner",
+            "role": "heavy",
+            "class_tags": [
+              "suppression",
+              "breach",
+              "heavy",
+              "noise"
+            ],
+            "attributes": {
+              "force": 7,
+              "agility": 2,
+              "endurance": 7,
+              "will": 4,
+              "tech": 7,
+              "presence": 3
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 53,
+              "armor": 3,
+              "movement": 4,
+              "initiative": 4,
+              "accuracy": 5,
+              "resolve": 7,
+              "supply_slots": 5,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 4,
+              "objective_power": 5,
+              "tech_power": 7,
+              "evasion": 0,
+              "threat": 10
+            }
+          },
+          {
+            "id": "sanctioned_prism_psyker",
+            "name": "Sanctioned Prism Psyker",
+            "role": "control",
+            "class_tags": [
+              "psyker",
+              "control",
+              "risk",
+              "objective"
+            ],
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 3,
+              "will": 10,
+              "tech": 3,
+              "presence": 8
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 32,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 9,
+              "accuracy": 12,
+              "resolve": 18,
+              "supply_slots": 3,
+              "carry_capacity": 9,
+              "damage_power": 7,
+              "healing_power": 4,
+              "objective_power": 8,
+              "tech_power": 3,
+              "evasion": 1,
+              "threat": 11
+            }
+          },
+          {
+            "id": "iron_tech_adept",
+            "name": "Iron Tech-Adept",
+            "role": "support",
+            "class_tags": [
+              "repair",
+              "devices",
+              "camp",
+              "consumable"
+            ],
+            "attributes": {
+              "force": 4,
+              "agility": 3,
+              "endurance": 5,
+              "will": 5,
+              "tech": 10,
+              "presence": 3
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 42,
+              "armor": 2,
+              "movement": 4,
+              "initiative": 5,
+              "accuracy": 6,
+              "resolve": 8,
+              "supply_slots": 6,
+              "carry_capacity": 12,
+              "damage_power": 6,
+              "healing_power": 6,
+              "objective_power": 6,
+              "tech_power": 10,
+              "evasion": 1,
+              "threat": 7
+            }
+          },
+          {
+            "id": "deathworld_beastmaster",
+            "name": "Deathworld Beastmaster",
+            "role": "ranger",
+            "class_tags": [
+              "tracking",
+              "beast",
+              "survival",
+              "mobility"
+            ],
+            "attributes": {
+              "force": 5,
+              "agility": 7,
+              "endurance": 6,
+              "will": 5,
+              "tech": 2,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 47,
+              "armor": 3,
+              "movement": 6,
+              "initiative": 9,
+              "accuracy": 8,
+              "resolve": 10,
+              "supply_slots": 3,
+              "carry_capacity": 14,
+              "damage_power": 7,
+              "healing_power": 2,
+              "objective_power": 3,
+              "tech_power": 2,
+              "evasion": 2,
+              "threat": 9
+            }
+          },
+          {
+            "id": "penitent_duelist",
+            "name": "Penitent Duelist",
+            "role": "duelist",
+            "class_tags": [
+              "melee",
+              "bleed",
+              "zeal",
+              "risk"
+            ],
+            "attributes": {
+              "force": 7,
+              "agility": 7,
+              "endurance": 5,
+              "will": 6,
+              "tech": 1,
+              "presence": 4
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 45,
+              "armor": 2,
+              "movement": 6,
+              "initiative": 10,
+              "accuracy": 9,
+              "resolve": 10,
+              "supply_slots": 3,
+              "carry_capacity": 15,
+              "damage_power": 10,
+              "healing_power": 2,
+              "objective_power": 4,
+              "tech_power": 1,
+              "evasion": 2,
+              "threat": 12
+            }
+          },
+          {
+            "id": "xeno_relic_sniper",
+            "name": "Xeno Relic Sniper",
+            "role": "sniper",
+            "class_tags": [
+              "range",
+              "relics",
+              "precision",
+              "greed"
+            ],
+            "attributes": {
+              "force": 3,
+              "agility": 8,
+              "endurance": 3,
+              "will": 6,
+              "tech": 6,
+              "presence": 4
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 33,
+              "armor": 2,
+              "movement": 7,
+              "initiative": 11,
+              "accuracy": 10,
+              "resolve": 10,
+              "supply_slots": 4,
+              "carry_capacity": 10,
+              "damage_power": 6,
+              "healing_power": 5,
+              "objective_power": 6,
+              "tech_power": 6,
+              "evasion": 2,
+              "threat": 8
+            }
+          }
+        ],
+        "rules_summary": {
+          "schema": "blackstar-raiders.rules.v0.42",
+          "attribute_budget": 30,
+          "attribute_keys": [
+            "force",
+            "agility",
+            "endurance",
+            "will",
+            "tech",
+            "presence"
+          ],
+          "directive_keys": [
+            "mobility",
+            "objective",
+            "greed",
+            "survival",
+            "ability",
+            "consumable",
+            "quest"
+          ],
+          "hero_count": 9,
+          "loadout_count": 9,
+          "main_action_count": 6,
+          "bonus_action_count": 5,
+          "stat_formulas": {
+            "max_hp": "18 + endurance*4 + force",
+            "armor": "1 + floor(endurance/3) + loadout mods",
+            "movement": "3 + floor(agility/2), capped 1..8",
+            "initiative": "agility + floor(will/2)",
+            "accuracy": "will + floor(agility/2) + loadout mods",
+            "resolve": "will + presence + loadout mods",
+            "supply_slots": "2 + floor(tech/3) + floor(endurance/4)"
+          }
+        },
+        "setting_profile": {
+          "production_mode": "blackstar_raiders_original_safe",
+          "reference_target": "hard WH40 latest-edition grimdark planetary raid mood",
+          "tone": [
+            "brutal",
+            "gothic",
+            "military",
+            "high-risk",
+            "no-soft-fantasy"
+          ],
+          "public_asset_rule": "use original names and symbols unless explicitly marked as private fan/reference work",
+          "setting_swap_rule": "mechanics stay in rules_v042; names, visuals, factions, and mission dressing can change by setting pack"
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "reserved_player_slots"
+        },
+        {
+          "id": "hero_pool_grid"
+        },
+        {
+          "id": "rules_preview"
+        },
+        {
+          "id": "mission_sidebar"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "hero_pool",
+          "player_slots",
+          "rules_summary",
+          "setting_profile"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": [
+        {
+          "id": "assign_squad",
+          "label": "Assign heroes for this run"
+        }
+      ]
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_01_squad_lock_in",
+      "stage": "squad_lock_in",
+      "title": "Squad Lock-In",
+      "time_index": 1,
+      "state": {
+        "squad": [
+          {
+            "id": "sanctioned_prism_psyker",
+            "name": "Sanctioned Prism Psyker",
+            "role": "control",
+            "class_tags": [
+              "psyker",
+              "control",
+              "risk",
+              "objective"
+            ],
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 3,
+              "will": 10,
+              "tech": 3,
+              "presence": 8
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 32,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 9,
+              "accuracy": 13,
+              "resolve": 19,
+              "supply_slots": 3,
+              "carry_capacity": 9,
+              "damage_power": 7,
+              "healing_power": 4,
+              "objective_power": 9,
+              "tech_power": 3,
+              "evasion": 1,
+              "threat": 11
+            },
+            "loadout": [
+              {
+                "id": "prism_focus",
+                "name": "Prism Focus",
+                "tags": [
+                  "ability",
+                  "control",
+                  "objective"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "loadout_tags": [
+              "ability",
+              "control",
+              "greed",
+              "objective",
+              "quest",
+              "route"
+            ],
+            "loadout_slots_used": 3,
+            "hp": 28,
+            "max_hp": 32,
+            "xp": 35,
+            "level": 2,
+            "traits": [
+              "objective_driven"
+            ],
+            "injuries": [],
+            "player": "EZ",
+            "hero_id": "sanctioned_prism_psyker",
+            "hero_name": "Sanctioned Prism Psyker",
+            "directive": {
+              "mobility": 0.65,
+              "objective": 0.9,
+              "greed": 0.35,
+              "survival": 0.45,
+              "ability": 0.85,
+              "consumable": 0.35,
+              "quest": 0.75,
+              "ability_bias": "control_priority",
+              "character_notes": [
+                "pushes anomaly objectives",
+                "accepts controlled warp risk"
+              ]
+            }
+          },
+          {
+            "id": "void_chaplain",
+            "name": "Void Chaplain",
+            "role": "tank",
+            "class_tags": [
+              "anchor",
+              "protector",
+              "morale",
+              "frontline"
+            ],
+            "attributes": {
+              "force": 6,
+              "agility": 3,
+              "endurance": 8,
+              "will": 6,
+              "tech": 2,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 56,
+              "armor": 4,
+              "movement": 4,
+              "initiative": 6,
+              "accuracy": 7,
+              "resolve": 12,
+              "supply_slots": 4,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 2,
+              "evasion": 2,
+              "threat": 12
+            },
+            "loadout": [
+              {
+                "id": "refractor_field",
+                "name": "Refractor Field",
+                "tags": [
+                  "survival",
+                  "guard"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "chain_relic",
+                "name": "Chain Relic",
+                "tags": [
+                  "melee",
+                  "objective"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "smoke_charge",
+                "name": "Smoke Charge",
+                "tags": [
+                  "mobility",
+                  "survival"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "loadout_tags": [
+              "guard",
+              "melee",
+              "mobility",
+              "objective",
+              "survival"
+            ],
+            "loadout_slots_used": 4,
+            "hp": 51,
+            "max_hp": 56,
+            "xp": 35,
+            "level": 2,
+            "traits": [
+              "hard_to_kill"
+            ],
+            "injuries": [],
+            "player": "Candy Peace",
+            "hero_id": "void_chaplain",
+            "hero_name": "Void Chaplain",
+            "directive": {
+              "mobility": 0.35,
+              "objective": 0.7,
+              "greed": 0.25,
+              "survival": 0.9,
+              "ability": 0.45,
+              "consumable": 0.45,
+              "quest": 0.35,
+              "ability_bias": "guard_allies",
+              "character_notes": [
+                "holds the line",
+                "keeps Dr.Feed covered"
+              ]
+            }
+          },
+          {
+            "id": "plague_surgeon",
+            "name": "Plague Surgeon",
+            "role": "medic",
+            "class_tags": [
+              "healing",
+              "toxins",
+              "stabilize",
+              "consumable"
+            ],
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 5,
+              "will": 6,
+              "tech": 8,
+              "presence": 5
+            },
+            "attribute_budget": 30,
+            "derived": {
+              "max_hp": 40,
+              "armor": 3,
+              "movement": 5,
+              "initiative": 7,
+              "accuracy": 8,
+              "resolve": 11,
+              "supply_slots": 5,
+              "carry_capacity": 10,
+              "damage_power": 5,
+              "healing_power": 8,
+              "objective_power": 7,
+              "tech_power": 8,
+              "evasion": 1,
+              "threat": 7
+            },
+            "loadout": [
+              {
+                "id": "medicae_injector",
+                "name": "Medicae Injector",
+                "tags": [
+                  "consumable",
+                  "healing",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "toxin_screen",
+                "name": "Toxin Screen",
+                "tags": [
+                  "control",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "loadout_tags": [
+              "consumable",
+              "control",
+              "greed",
+              "healing",
+              "quest",
+              "route",
+              "survival"
+            ],
+            "loadout_slots_used": 3,
+            "hp": 40,
+            "max_hp": 40,
+            "xp": 35,
+            "level": 2,
+            "traits": [
+              "hard_to_kill"
+            ],
+            "injuries": [],
+            "player": "Dr.Feed",
+            "hero_id": "plague_surgeon",
+            "hero_name": "Plague Surgeon",
+            "directive": {
+              "mobility": 0.3,
+              "objective": 0.55,
+              "greed": 0.2,
+              "survival": 0.95,
+              "ability": 0.7,
+              "consumable": 0.9,
+              "quest": 0.45,
+              "ability_bias": "heal_early",
+              "character_notes": [
+                "spends supplies before collapse",
+                "keeps damaged heroes operational"
+              ]
+            }
+          }
+        ],
+        "directives": {
+          "EZ": {
+            "mobility": 0.65,
+            "objective": 0.9,
+            "greed": 0.35,
+            "survival": 0.45,
+            "ability": 0.85,
+            "consumable": 0.35,
+            "quest": 0.75,
+            "ability_bias": "control_priority",
+            "character_notes": [
+              "pushes anomaly objectives",
+              "accepts controlled warp risk"
+            ]
+          },
+          "Candy Peace": {
+            "mobility": 0.35,
+            "objective": 0.7,
+            "greed": 0.25,
+            "survival": 0.9,
+            "ability": 0.45,
+            "consumable": 0.45,
+            "quest": 0.35,
+            "ability_bias": "guard_allies",
+            "character_notes": [
+              "holds the line",
+              "keeps Dr.Feed covered"
+            ]
+          },
+          "Dr.Feed": {
+            "mobility": 0.3,
+            "objective": 0.55,
+            "greed": 0.2,
+            "survival": 0.95,
+            "ability": 0.7,
+            "consumable": 0.9,
+            "quest": 0.45,
+            "ability_bias": "heal_early",
+            "character_notes": [
+              "spends supplies before collapse",
+              "keeps damaged heroes operational"
+            ]
+          }
+        },
+        "ai_roles": {
+          "ai_director": {
+            "job": "pace threat clocks, extraction pressure, noise escalation, and campaign events",
+            "writes": "director_clock_log"
+          },
+          "ai_gm": {
+            "job": "turn computed state into player-facing choices and consequences",
+            "writes": "gm_options, decision prompts, consequence previews"
+          },
+          "ai_heroes": {
+            "job": "convert player directives into movement, main action, bonus action, and reaction reserve",
+            "writes": "hero action plans with score components"
+          },
+          "ai_enemies": {
+            "job": "apply threat pressure, target bias, and objective denial",
+            "writes": "enemy action log"
+          },
+          "engine": {
+            "job": "resolve numbers deterministically from rules_v042",
+            "writes": "state, logs, screen payloads, progression"
+          }
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "assigned_slots"
+        },
+        {
+          "id": "directive_cards"
+        },
+        {
+          "id": "ai_role_matrix"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "ai_roles",
+          "directives",
+          "squad"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": [
+        {
+          "id": "confirm_directives",
+          "label": "Confirm player directives"
+        }
+      ]
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_02_campaign_briefing",
+      "stage": "campaign_briefing",
+      "title": "Campaign Briefing",
+      "time_index": 2,
+      "state": {
+        "mission": {
+          "id": "blightfall_relic_extraction",
+          "name": "Blightfall Relic Extraction",
+          "planet": "Korvash Prime",
+          "primary_objective": "recover black reliquary core",
+          "secondary_objectives": [
+            "scan dead vox shrine",
+            "extract at least two heroes alive"
+          ],
+          "extraction_window": 30,
+          "threat_band": "extreme",
+          "rewards": {
+            "relic_shards": 6,
+            "scrap": 12,
+            "intel": 3,
+            "xp": 130
+          }
+        },
+        "camp": {
+          "id": "blackstar_camp_vesper_reliquary",
+          "name": "Vesper Reliquary Camp",
+          "tier": 1,
+          "resources": {
+            "scrap": 26,
+            "relic_shards": 10,
+            "medicae": 1,
+            "intel": 4
+          },
+          "facilities": {
+            "triage_bay": {
+              "level": 1,
+              "effect": "post-run injury mitigation"
+            },
+            "armory_rack": {
+              "level": 2,
+              "effect": "basic loadout budget"
+            },
+            "strategium_table": {
+              "level": 0,
+              "effect": "route intel locked"
+            }
+          },
+          "heat": 5,
+          "morale": 8,
+          "persistent_events": [
+            {
+              "id": "black_reliquary_claimed",
+              "result": "victory",
+              "heat_after": 5
+            }
+          ]
+        },
+        "director_clocks": {
+          "threat": 6,
+          "noise": 3,
+          "doom": 3,
+          "extraction_timer": 12
+        },
+        "ai_director": {
+          "job": "pace threat clocks, extraction pressure, noise escalation, and campaign events",
+          "writes": "director_clock_log"
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "mission_objectives"
+        },
+        {
+          "id": "risk_panel"
+        },
+        {
+          "id": "reward_panel"
+        },
+        {
+          "id": "director_clocks"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "ai_director",
+          "camp",
+          "director_clocks",
+          "mission"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_03_camp_loadout",
+      "stage": "camp_loadout",
+      "title": "Camp Loadout",
+      "time_index": 3,
+      "state": {
+        "camp": {
+          "id": "blackstar_camp_vesper_reliquary",
+          "name": "Vesper Reliquary Camp",
+          "tier": 1,
+          "resources": {
+            "scrap": 26,
+            "relic_shards": 10,
+            "medicae": 1,
+            "intel": 4
+          },
+          "facilities": {
+            "triage_bay": {
+              "level": 1,
+              "effect": "post-run injury mitigation"
+            },
+            "armory_rack": {
+              "level": 2,
+              "effect": "basic loadout budget"
+            },
+            "strategium_table": {
+              "level": 0,
+              "effect": "route intel locked"
+            }
+          },
+          "heat": 5,
+          "morale": 8,
+          "persistent_events": [
+            {
+              "id": "black_reliquary_claimed",
+              "result": "victory",
+              "heat_after": 5
+            }
+          ]
+        },
+        "loadout_log": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "slots_used": 3,
+            "slot_limit": 3,
+            "items": [
+              {
+                "id": "prism_focus",
+                "name": "Prism Focus",
+                "tags": [
+                  "ability",
+                  "control",
+                  "objective"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ]
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "slots_used": 4,
+            "slot_limit": 4,
+            "items": [
+              {
+                "id": "refractor_field",
+                "name": "Refractor Field",
+                "tags": [
+                  "survival",
+                  "guard"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "chain_relic",
+                "name": "Chain Relic",
+                "tags": [
+                  "melee",
+                  "objective"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "smoke_charge",
+                "name": "Smoke Charge",
+                "tags": [
+                  "mobility",
+                  "survival"
+                ],
+                "slot_cost": 1
+              }
+            ]
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "slots_used": 3,
+            "slot_limit": 5,
+            "items": [
+              {
+                "id": "medicae_injector",
+                "name": "Medicae Injector",
+                "tags": [
+                  "consumable",
+                  "healing",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "toxin_screen",
+                "name": "Toxin Screen",
+                "tags": [
+                  "control",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ]
+          }
+        ],
+        "squad_after_loadout": [
+          {
+            "player": "EZ",
+            "hero_id": "sanctioned_prism_psyker",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 3,
+              "will": 10,
+              "tech": 3,
+              "presence": 8
+            },
+            "derived": {
+              "max_hp": 32,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 9,
+              "accuracy": 13,
+              "resolve": 19,
+              "supply_slots": 3,
+              "carry_capacity": 9,
+              "damage_power": 7,
+              "healing_power": 4,
+              "objective_power": 9,
+              "tech_power": 3,
+              "evasion": 1,
+              "threat": 11
+            },
+            "hp": 32,
+            "max_hp": 32,
+            "loadout": [
+              {
+                "id": "prism_focus",
+                "name": "Prism Focus",
+                "tags": [
+                  "ability",
+                  "control",
+                  "objective"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.65,
+              "objective": 0.9,
+              "greed": 0.35,
+              "survival": 0.45,
+              "ability": 0.85,
+              "consumable": 0.35,
+              "quest": 0.75,
+              "ability_bias": "control_priority",
+              "character_notes": [
+                "pushes anomaly objectives",
+                "accepts controlled warp risk"
+              ]
+            }
+          },
+          {
+            "player": "Candy Peace",
+            "hero_id": "void_chaplain",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "attributes": {
+              "force": 6,
+              "agility": 3,
+              "endurance": 8,
+              "will": 6,
+              "tech": 2,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 56,
+              "armor": 4,
+              "movement": 4,
+              "initiative": 6,
+              "accuracy": 7,
+              "resolve": 12,
+              "supply_slots": 4,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 2,
+              "evasion": 2,
+              "threat": 12
+            },
+            "hp": 56,
+            "max_hp": 56,
+            "loadout": [
+              {
+                "id": "refractor_field",
+                "name": "Refractor Field",
+                "tags": [
+                  "survival",
+                  "guard"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "chain_relic",
+                "name": "Chain Relic",
+                "tags": [
+                  "melee",
+                  "objective"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "smoke_charge",
+                "name": "Smoke Charge",
+                "tags": [
+                  "mobility",
+                  "survival"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.35,
+              "objective": 0.7,
+              "greed": 0.25,
+              "survival": 0.9,
+              "ability": 0.45,
+              "consumable": 0.45,
+              "quest": 0.35,
+              "ability_bias": "guard_allies",
+              "character_notes": [
+                "holds the line",
+                "keeps Dr.Feed covered"
+              ]
+            }
+          },
+          {
+            "player": "Dr.Feed",
+            "hero_id": "plague_surgeon",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 5,
+              "will": 6,
+              "tech": 8,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 40,
+              "armor": 3,
+              "movement": 5,
+              "initiative": 7,
+              "accuracy": 8,
+              "resolve": 11,
+              "supply_slots": 5,
+              "carry_capacity": 10,
+              "damage_power": 5,
+              "healing_power": 8,
+              "objective_power": 7,
+              "tech_power": 8,
+              "evasion": 1,
+              "threat": 7
+            },
+            "hp": 40,
+            "max_hp": 40,
+            "loadout": [
+              {
+                "id": "medicae_injector",
+                "name": "Medicae Injector",
+                "tags": [
+                  "consumable",
+                  "healing",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "toxin_screen",
+                "name": "Toxin Screen",
+                "tags": [
+                  "control",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.3,
+              "objective": 0.55,
+              "greed": 0.2,
+              "survival": 0.95,
+              "ability": 0.7,
+              "consumable": 0.9,
+              "quest": 0.45,
+              "ability_bias": "heal_early",
+              "character_notes": [
+                "spends supplies before collapse",
+                "keeps damaged heroes operational"
+              ]
+            }
+          }
+        ]
+      },
+      "ui_panels": [
+        {
+          "id": "camp_resources"
+        },
+        {
+          "id": "loadout_budget"
+        },
+        {
+          "id": "stat_delta_cards"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp",
+          "loadout_log",
+          "squad_after_loadout"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_04_drop_in",
+      "stage": "drop_in",
+      "title": "Drop-In",
+      "time_index": 4,
+      "state": {
+        "zone": "Korvash Prime / ash landing deck",
+        "director_clocks": {
+          "threat": 6,
+          "noise": 3,
+          "doom": 3,
+          "extraction_timer": 12
+        },
+        "squad": [
+          {
+            "player": "EZ",
+            "hero_id": "sanctioned_prism_psyker",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 3,
+              "will": 10,
+              "tech": 3,
+              "presence": 8
+            },
+            "derived": {
+              "max_hp": 32,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 9,
+              "accuracy": 13,
+              "resolve": 19,
+              "supply_slots": 3,
+              "carry_capacity": 9,
+              "damage_power": 7,
+              "healing_power": 4,
+              "objective_power": 9,
+              "tech_power": 3,
+              "evasion": 1,
+              "threat": 11
+            },
+            "hp": 32,
+            "max_hp": 32,
+            "loadout": [
+              {
+                "id": "prism_focus",
+                "name": "Prism Focus",
+                "tags": [
+                  "ability",
+                  "control",
+                  "objective"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.65,
+              "objective": 0.9,
+              "greed": 0.35,
+              "survival": 0.45,
+              "ability": 0.85,
+              "consumable": 0.35,
+              "quest": 0.75,
+              "ability_bias": "control_priority",
+              "character_notes": [
+                "pushes anomaly objectives",
+                "accepts controlled warp risk"
+              ]
+            }
+          },
+          {
+            "player": "Candy Peace",
+            "hero_id": "void_chaplain",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "attributes": {
+              "force": 6,
+              "agility": 3,
+              "endurance": 8,
+              "will": 6,
+              "tech": 2,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 56,
+              "armor": 4,
+              "movement": 4,
+              "initiative": 6,
+              "accuracy": 7,
+              "resolve": 12,
+              "supply_slots": 4,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 2,
+              "evasion": 2,
+              "threat": 12
+            },
+            "hp": 56,
+            "max_hp": 56,
+            "loadout": [
+              {
+                "id": "refractor_field",
+                "name": "Refractor Field",
+                "tags": [
+                  "survival",
+                  "guard"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "chain_relic",
+                "name": "Chain Relic",
+                "tags": [
+                  "melee",
+                  "objective"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "smoke_charge",
+                "name": "Smoke Charge",
+                "tags": [
+                  "mobility",
+                  "survival"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.35,
+              "objective": 0.7,
+              "greed": 0.25,
+              "survival": 0.9,
+              "ability": 0.45,
+              "consumable": 0.45,
+              "quest": 0.35,
+              "ability_bias": "guard_allies",
+              "character_notes": [
+                "holds the line",
+                "keeps Dr.Feed covered"
+              ]
+            }
+          },
+          {
+            "player": "Dr.Feed",
+            "hero_id": "plague_surgeon",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 5,
+              "will": 6,
+              "tech": 8,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 40,
+              "armor": 3,
+              "movement": 5,
+              "initiative": 7,
+              "accuracy": 8,
+              "resolve": 11,
+              "supply_slots": 5,
+              "carry_capacity": 10,
+              "damage_power": 5,
+              "healing_power": 8,
+              "objective_power": 7,
+              "tech_power": 8,
+              "evasion": 1,
+              "threat": 7
+            },
+            "hp": 40,
+            "max_hp": 40,
+            "loadout": [
+              {
+                "id": "medicae_injector",
+                "name": "Medicae Injector",
+                "tags": [
+                  "consumable",
+                  "healing",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "toxin_screen",
+                "name": "Toxin Screen",
+                "tags": [
+                  "control",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.3,
+              "objective": 0.55,
+              "greed": 0.2,
+              "survival": 0.95,
+              "ability": 0.7,
+              "consumable": 0.9,
+              "quest": 0.45,
+              "ability_bias": "heal_early",
+              "character_notes": [
+                "spends supplies before collapse",
+                "keeps damaged heroes operational"
+              ]
+            }
+          }
+        ]
+      },
+      "ui_panels": [
+        {
+          "id": "landing_zone"
+        },
+        {
+          "id": "clock_panel"
+        },
+        {
+          "id": "squad_readiness"
+        }
+      ],
+      "log_refs": [
+        "timeline:drop_in_under_fire"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "director_clocks",
+          "squad",
+          "zone"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_05_strategic_map_start",
+      "stage": "strategic_map_start",
+      "title": "Strategic Map",
+      "time_index": 5,
+      "state": {
+        "route_nodes": [
+          {
+            "node": "ash_causeway",
+            "choice": "fast route through shell-fire",
+            "cost": {
+              "extraction_timer": -4,
+              "noise": 1
+            },
+            "screen_focus": "tempo"
+          },
+          {
+            "node": "dead_vox_shrine",
+            "choice": "scan secondary objective",
+            "cost": {
+              "extraction_timer": -5,
+              "doom": 1
+            },
+            "reward": {
+              "intel": 1
+            },
+            "screen_focus": "quest"
+          },
+          {
+            "node": "black_reliquary_gate",
+            "choice": "breach vault perimeter",
+            "cost": {
+              "threat": 1,
+              "noise": 1
+            },
+            "screen_focus": "combat_setup"
+          }
+        ],
+        "director_clocks": {
+          "threat": 6,
+          "noise": 3,
+          "doom": 3,
+          "extraction_timer": 12
+        },
+        "camp_resources": {
+          "scrap": 26,
+          "relic_shards": 10,
+          "medicae": 1,
+          "intel": 4
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "hex_route_map"
+        },
+        {
+          "id": "route_options"
+        },
+        {
+          "id": "fog_and_threat"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp_resources",
+          "director_clocks",
+          "route_nodes"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_06_strategic_turn",
+      "stage": "strategic_turn",
+      "title": "Strategic Turn 1",
+      "time_index": 6,
+      "state": {
+        "index": 1,
+        "node": {
+          "node": "ash_causeway",
+          "choice": "fast route through shell-fire",
+          "cost": {
+            "extraction_timer": -4,
+            "noise": 1
+          },
+          "screen_focus": "tempo"
+        },
+        "clocks_after": {
+          "threat": 4,
+          "noise": 2,
+          "doom": 2,
+          "extraction_timer": 23
+        },
+        "camp_resources_after": {
+          "scrap": 14,
+          "relic_shards": 4,
+          "medicae": 1,
+          "intel": 0
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "hex_route_frame"
+        },
+        {
+          "id": "director_clock_delta"
+        },
+        {
+          "id": "gm_route_prompt"
+        }
+      ],
+      "log_refs": [
+        "timeline:route:ash_causeway"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp_resources_after",
+          "clocks_after",
+          "index",
+          "node"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_07_strategic_turn",
+      "stage": "strategic_turn",
+      "title": "Strategic Turn 2",
+      "time_index": 7,
+      "state": {
+        "index": 2,
+        "node": {
+          "node": "dead_vox_shrine",
+          "choice": "scan secondary objective",
+          "cost": {
+            "extraction_timer": -5,
+            "doom": 1
+          },
+          "reward": {
+            "intel": 1
+          },
+          "screen_focus": "quest"
+        },
+        "clocks_after": {
+          "threat": 4,
+          "noise": 2,
+          "doom": 3,
+          "extraction_timer": 18
+        },
+        "camp_resources_after": {
+          "scrap": 14,
+          "relic_shards": 4,
+          "medicae": 1,
+          "intel": 1
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "hex_route_frame"
+        },
+        {
+          "id": "director_clock_delta"
+        },
+        {
+          "id": "gm_route_prompt"
+        }
+      ],
+      "log_refs": [
+        "timeline:route:dead_vox_shrine"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp_resources_after",
+          "clocks_after",
+          "index",
+          "node"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_08_strategic_turn",
+      "stage": "strategic_turn",
+      "title": "Strategic Turn 3",
+      "time_index": 8,
+      "state": {
+        "index": 3,
+        "node": {
+          "node": "black_reliquary_gate",
+          "choice": "breach vault perimeter",
+          "cost": {
+            "threat": 1,
+            "noise": 1
+          },
+          "screen_focus": "combat_setup"
+        },
+        "clocks_after": {
+          "threat": 5,
+          "noise": 3,
+          "doom": 3,
+          "extraction_timer": 18
+        },
+        "camp_resources_after": {
+          "scrap": 14,
+          "relic_shards": 4,
+          "medicae": 1,
+          "intel": 1
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "hex_route_frame"
+        },
+        {
+          "id": "director_clock_delta"
+        },
+        {
+          "id": "gm_route_prompt"
+        }
+      ],
+      "log_refs": [
+        "timeline:route:black_reliquary_gate"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp_resources_after",
+          "clocks_after",
+          "index",
+          "node"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_09_tactical_encounter_start",
+      "stage": "tactical_encounter_start",
+      "title": "Tactical Encounter",
+      "time_index": 9,
+      "state": {
+        "encounter": "Reliquary Gate Ambush",
+        "rules": {
+          "grid": "hex",
+          "movement": "derived movement from rules_v042",
+          "main_action": 1,
+          "bonus_action": 1,
+          "reaction": "reserved when survival directive >= 0.7"
+        },
+        "squad": [
+          {
+            "player": "EZ",
+            "hero_id": "sanctioned_prism_psyker",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 3,
+              "will": 10,
+              "tech": 3,
+              "presence": 8
+            },
+            "derived": {
+              "max_hp": 32,
+              "armor": 2,
+              "movement": 5,
+              "initiative": 9,
+              "accuracy": 13,
+              "resolve": 19,
+              "supply_slots": 3,
+              "carry_capacity": 9,
+              "damage_power": 7,
+              "healing_power": 4,
+              "objective_power": 9,
+              "tech_power": 3,
+              "evasion": 1,
+              "threat": 11
+            },
+            "hp": 32,
+            "max_hp": 32,
+            "loadout": [
+              {
+                "id": "prism_focus",
+                "name": "Prism Focus",
+                "tags": [
+                  "ability",
+                  "control",
+                  "objective"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.65,
+              "objective": 0.9,
+              "greed": 0.35,
+              "survival": 0.45,
+              "ability": 0.85,
+              "consumable": 0.35,
+              "quest": 0.75,
+              "ability_bias": "control_priority",
+              "character_notes": [
+                "pushes anomaly objectives",
+                "accepts controlled warp risk"
+              ]
+            }
+          },
+          {
+            "player": "Candy Peace",
+            "hero_id": "void_chaplain",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "attributes": {
+              "force": 6,
+              "agility": 3,
+              "endurance": 8,
+              "will": 6,
+              "tech": 2,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 56,
+              "armor": 4,
+              "movement": 4,
+              "initiative": 6,
+              "accuracy": 7,
+              "resolve": 12,
+              "supply_slots": 4,
+              "carry_capacity": 16,
+              "damage_power": 9,
+              "healing_power": 3,
+              "objective_power": 4,
+              "tech_power": 2,
+              "evasion": 2,
+              "threat": 12
+            },
+            "hp": 56,
+            "max_hp": 56,
+            "loadout": [
+              {
+                "id": "refractor_field",
+                "name": "Refractor Field",
+                "tags": [
+                  "survival",
+                  "guard"
+                ],
+                "slot_cost": 2
+              },
+              {
+                "id": "chain_relic",
+                "name": "Chain Relic",
+                "tags": [
+                  "melee",
+                  "objective"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "smoke_charge",
+                "name": "Smoke Charge",
+                "tags": [
+                  "mobility",
+                  "survival"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.35,
+              "objective": 0.7,
+              "greed": 0.25,
+              "survival": 0.9,
+              "ability": 0.45,
+              "consumable": 0.45,
+              "quest": 0.35,
+              "ability_bias": "guard_allies",
+              "character_notes": [
+                "holds the line",
+                "keeps Dr.Feed covered"
+              ]
+            }
+          },
+          {
+            "player": "Dr.Feed",
+            "hero_id": "plague_surgeon",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "attributes": {
+              "force": 2,
+              "agility": 4,
+              "endurance": 5,
+              "will": 6,
+              "tech": 8,
+              "presence": 5
+            },
+            "derived": {
+              "max_hp": 40,
+              "armor": 3,
+              "movement": 5,
+              "initiative": 7,
+              "accuracy": 8,
+              "resolve": 11,
+              "supply_slots": 5,
+              "carry_capacity": 10,
+              "damage_power": 5,
+              "healing_power": 8,
+              "objective_power": 7,
+              "tech_power": 8,
+              "evasion": 1,
+              "threat": 7
+            },
+            "hp": 40,
+            "max_hp": 40,
+            "loadout": [
+              {
+                "id": "medicae_injector",
+                "name": "Medicae Injector",
+                "tags": [
+                  "consumable",
+                  "healing",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "toxin_screen",
+                "name": "Toxin Screen",
+                "tags": [
+                  "control",
+                  "survival"
+                ],
+                "slot_cost": 1
+              },
+              {
+                "id": "relic_scanner",
+                "name": "Relic Scanner",
+                "tags": [
+                  "quest",
+                  "greed",
+                  "route"
+                ],
+                "slot_cost": 1
+              }
+            ],
+            "directive": {
+              "mobility": 0.3,
+              "objective": 0.55,
+              "greed": 0.2,
+              "survival": 0.95,
+              "ability": 0.7,
+              "consumable": 0.9,
+              "quest": 0.45,
+              "ability_bias": "heal_early",
+              "character_notes": [
+                "spends supplies before collapse",
+                "keeps damaged heroes operational"
+              ]
+            }
+          }
+        ],
+        "enemy_group": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 48,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ]
+      },
+      "ui_panels": [
+        {
+          "id": "hex_battlefield"
+        },
+        {
+          "id": "initiative_ladder"
+        },
+        {
+          "id": "objective_panel"
+        },
+        {
+          "id": "action_budget_legend"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "encounter",
+          "enemy_group",
+          "rules",
+          "squad"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_10_tactical_round",
+      "stage": "tactical_round",
+      "title": "Tactical Round 1",
+      "time_index": 10,
+      "state": {
+        "round": 1,
+        "context": {
+          "lowest_ally_hp_ratio": 1.0,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": true
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 19.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "objective_unclaimed": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 48,
+                "after": 35,
+                "value": 13
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 32,
+                "after": 32,
+                "value": 18
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "EZ",
+                "before": 32,
+                "after": 32,
+                "value": 11
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 8,
+            "mitigated": 8,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 9,
+            "mitigated": 2,
+            "damage": 5,
+            "before": 32,
+            "after": 27
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 8,
+            "mitigated": 0,
+            "damage": 4,
+            "before": 56,
+            "after": 52
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 35,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 27,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 52,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 5,
+        "noise": 4
+      },
+      "ui_panels": [
+        {
+          "id": "battlefield_frame"
+        },
+        {
+          "id": "hero_action_scores"
+        },
+        {
+          "id": "enemy_pressure"
+        },
+        {
+          "id": "objective_progress"
+        }
+      ],
+      "log_refs": [
+        "tactical:round:1"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py::resolve_tactical_encounter"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "context",
+          "enemy_actions",
+          "enemy_state",
+          "hero_actions",
+          "noise",
+          "objective_progress",
+          "round",
+          "squad_state"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_11_tactical_round",
+      "stage": "tactical_round",
+      "title": "Tactical Round 2",
+      "time_index": 11,
+      "state": {
+        "round": 2,
+        "context": {
+          "lowest_ally_hp_ratio": 0.84375,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": true
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 19.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "objective_unclaimed": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 35,
+                "after": 19,
+                "value": 16
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 27,
+                "after": 32,
+                "value": 15
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "Candy Peace",
+                "before": 52,
+                "after": 56,
+                "value": 14
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 7,
+            "mitigated": 7,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 10,
+            "mitigated": 3,
+            "damage": 5,
+            "before": 32,
+            "after": 27
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 6,
+            "mitigated": 0,
+            "damage": 2,
+            "before": 56,
+            "after": 54
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 19,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 27,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 54,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 10,
+        "noise": 5
+      },
+      "ui_panels": [
+        {
+          "id": "battlefield_frame"
+        },
+        {
+          "id": "hero_action_scores"
+        },
+        {
+          "id": "enemy_pressure"
+        },
+        {
+          "id": "objective_progress"
+        }
+      ],
+      "log_refs": [
+        "tactical:round:2"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py::resolve_tactical_encounter"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "context",
+          "enemy_actions",
+          "enemy_state",
+          "hero_actions",
+          "noise",
+          "objective_progress",
+          "round",
+          "squad_state"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_12_tactical_round",
+      "stage": "tactical_round",
+      "title": "Tactical Round 3",
+      "time_index": 12,
+      "state": {
+        "round": 3,
+        "context": {
+          "lowest_ally_hp_ratio": 0.84375,
+          "enemy_pressure": 12,
+          "extraction_timer": 18,
+          "unclaimed_objective": false
+        },
+        "hero_actions": [
+          {
+            "actor": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "initiative": 9,
+            "budget": {
+              "movement": 5,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 0
+            },
+            "main_action": {
+              "id": "prism_lock",
+              "tags": [
+                "ability",
+                "control",
+                "objective",
+                "risk"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 26.1,
+              "score_components": {
+                "base": 6.0,
+                "role_fit": 2.0,
+                "directive:ability": 2.55,
+                "loadout_tag:ability": 1.0,
+                "class_tag:control": 1.0,
+                "loadout_tag:control": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "class_tag:risk": 1.0,
+                "attr:will": 3.333,
+                "attr:presence": 1.067,
+                "enemy_pressure": 2.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "damage": 8,
+                "objective": 2,
+                "noise": 1,
+                "risk": 2
+              }
+            },
+            "bonus_action": {
+              "id": "scan_relic_signal",
+              "tags": [
+                "quest",
+                "objective",
+                "greed"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 17.85,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:quest": 2.25,
+                "loadout_tag:quest": 1.0,
+                "directive:objective": 2.7,
+                "class_tag:objective": 1.0,
+                "loadout_tag:objective": 1.0,
+                "directive:greed": 1.05,
+                "loadout_tag:greed": 1.0,
+                "attr:tech": 0.4,
+                "attr:will": 1.0,
+                "initiative_bias": 0.45
+              },
+              "effect": {
+                "objective": 1,
+                "intel": 1,
+                "noise": 0,
+                "risk": 0
+              }
+            },
+            "effects": [
+              {
+                "type": "damage",
+                "action": "prism_lock",
+                "target": "blight_sergeant",
+                "before": 19,
+                "after": 5,
+                "value": 14
+              }
+            ]
+          },
+          {
+            "actor": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "initiative": 7,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "stabilize_ally",
+              "tags": [
+                "survival",
+                "consumable",
+                "healing"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 20.633,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 2.133,
+                "attr:will": 0.6,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 7,
+                "objective": 1,
+                "noise": 0,
+                "risk": -2
+              }
+            },
+            "bonus_action": {
+              "id": "field_injector",
+              "tags": [
+                "consumable",
+                "survival",
+                "healing"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 16.967,
+              "score_components": {
+                "base": 3.0,
+                "role_fit": 2.0,
+                "directive:consumable": 2.7,
+                "class_tag:consumable": 1.0,
+                "loadout_tag:consumable": 1.0,
+                "directive:survival": 2.85,
+                "loadout_tag:survival": 1.0,
+                "class_tag:healing": 1.0,
+                "loadout_tag:healing": 1.0,
+                "attr:tech": 1.067,
+                "initiative_bias": 0.35
+              },
+              "effect": {
+                "heal": 3,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "heal",
+                "action": "stabilize_ally",
+                "target": "EZ",
+                "before": 27,
+                "after": 32,
+                "value": 17
+              },
+              {
+                "type": "heal",
+                "action": "field_injector",
+                "target": "Candy Peace",
+                "before": 54,
+                "after": 56,
+                "value": 12
+              }
+            ]
+          },
+          {
+            "actor": "Candy Peace",
+            "hero": "Void Chaplain",
+            "initiative": 6,
+            "budget": {
+              "movement": 3,
+              "main": 1,
+              "bonus": 1,
+              "reaction_reserved": 1
+            },
+            "main_action": {
+              "id": "guard_line",
+              "tags": [
+                "survival",
+                "guard",
+                "objective"
+              ],
+              "budget": {
+                "main": 1,
+                "bonus": 0,
+                "reaction": 0
+              },
+              "score": 17.467,
+              "score_components": {
+                "base": 5.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "directive:objective": 2.1,
+                "loadout_tag:objective": 1.0,
+                "attr:endurance": 1.867,
+                "attr:presence": 0.5,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 4,
+                "objective": 1,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "bonus_action": {
+              "id": "raise_shield",
+              "tags": [
+                "survival",
+                "guard"
+              ],
+              "budget": {
+                "main": 0,
+                "bonus": 1,
+                "reaction": 0
+              },
+              "score": 12.067,
+              "score_components": {
+                "base": 4.0,
+                "role_fit": 2.0,
+                "directive:survival": 2.7,
+                "loadout_tag:survival": 1.0,
+                "loadout_tag:guard": 1.0,
+                "attr:endurance": 1.067,
+                "initiative_bias": 0.3
+              },
+              "effect": {
+                "mitigation": 2,
+                "objective": 0,
+                "noise": 0,
+                "risk": -1
+              }
+            },
+            "effects": [
+              {
+                "type": "mitigation",
+                "action": "guard_line",
+                "value": 6
+              },
+              {
+                "type": "mitigation",
+                "action": "raise_shield",
+                "value": 4
+              }
+            ]
+          }
+        ],
+        "enemy_actions": [
+          {
+            "actor": "blight_sergeant",
+            "target": "Dr.Feed",
+            "raw_threat": 8,
+            "mitigated": 8,
+            "damage": 0,
+            "before": 40,
+            "after": 40
+          },
+          {
+            "actor": "rust_gunner",
+            "target": "EZ",
+            "raw_threat": 8,
+            "mitigated": 2,
+            "damage": 4,
+            "before": 32,
+            "after": 28
+          },
+          {
+            "actor": "relic_thrall_pack",
+            "target": "Candy Peace",
+            "raw_threat": 9,
+            "mitigated": 0,
+            "damage": 5,
+            "before": 56,
+            "after": 51
+          }
+        ],
+        "enemy_state": [
+          {
+            "id": "blight_sergeant",
+            "name": "Blight Sergeant",
+            "hp": 5,
+            "armor": 3,
+            "threat": 5,
+            "target_bias": "medic"
+          },
+          {
+            "id": "rust_gunner",
+            "name": "Rust Gunner",
+            "hp": 34,
+            "armor": 2,
+            "threat": 4,
+            "target_bias": "lowest_armor"
+          },
+          {
+            "id": "relic_thrall_pack",
+            "name": "Relic Thrall Pack",
+            "hp": 58,
+            "armor": 1,
+            "threat": 3,
+            "target_bias": "frontline"
+          }
+        ],
+        "squad_state": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "role": "control",
+            "hp": 28,
+            "max_hp": 32,
+            "armor": 2,
+            "movement": 5,
+            "initiative": 9,
+            "resolve": 19
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "role": "tank",
+            "hp": 51,
+            "max_hp": 56,
+            "armor": 4,
+            "movement": 4,
+            "initiative": 6,
+            "resolve": 12
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "role": "medic",
+            "hp": 40,
+            "max_hp": 40,
+            "armor": 3,
+            "movement": 5,
+            "initiative": 7,
+            "resolve": 11
+          }
+        ],
+        "objective_progress": 15,
+        "noise": 6
+      },
+      "ui_panels": [
+        {
+          "id": "battlefield_frame"
+        },
+        {
+          "id": "hero_action_scores"
+        },
+        {
+          "id": "enemy_pressure"
+        },
+        {
+          "id": "objective_progress"
+        }
+      ],
+      "log_refs": [
+        "tactical:round:3"
+      ],
+      "calculation_refs": [
+        "engine/rules_v042.py::resolve_tactical_encounter"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "context",
+          "enemy_actions",
+          "enemy_state",
+          "hero_actions",
+          "noise",
+          "objective_progress",
+          "round",
+          "squad_state"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_13_gm_interlude",
+      "stage": "gm_interlude",
+      "title": "AI GM Interlude",
+      "time_index": 13,
+      "state": {
+        "tactical_result": {
+          "victory": true,
+          "objective_progress": 15,
+          "noise": 6,
+          "rounds": 3,
+          "heroes_alive": [
+            "EZ",
+            "Candy Peace",
+            "Dr.Feed"
+          ],
+          "enemies_remaining": [
+            {
+              "id": "blight_sergeant",
+              "name": "Blight Sergeant",
+              "hp": 5,
+              "armor": 3,
+              "threat": 5,
+              "target_bias": "medic"
+            },
+            {
+              "id": "rust_gunner",
+              "name": "Rust Gunner",
+              "hp": 34,
+              "armor": 2,
+              "threat": 4,
+              "target_bias": "lowest_armor"
+            },
+            {
+              "id": "relic_thrall_pack",
+              "name": "Relic Thrall Pack",
+              "hp": 58,
+              "armor": 1,
+              "threat": 3,
+              "target_bias": "frontline"
+            }
+          ],
+          "extraction_readiness": 100
+        },
+        "gm_options": [
+          {
+            "id": "extract_now",
+            "label": "Extract now",
+            "consequence": "Bank rewards, preserve survivors, increase camp stability."
+          },
+          {
+            "id": "press_on",
+            "label": "Push deeper",
+            "consequence": "More relic chance, more heat, higher injury risk."
+          },
+          {
+            "id": "spend_supplies",
+            "label": "Spend supplies",
+            "consequence": "Reduce injury risk before extraction."
+          }
+        ],
+        "ai_gm": {
+          "job": "turn computed state into player-facing choices and consequences",
+          "writes": "gm_options, decision prompts, consequence previews"
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "gm_consequence_cards"
+        },
+        {
+          "id": "squad_condition"
+        },
+        {
+          "id": "loot_preview"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "ai_gm",
+          "gm_options",
+          "tactical_result"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": [
+        {
+          "id": "extract_now",
+          "label": "Extract now",
+          "consequence": "Bank rewards, preserve survivors, increase camp stability."
+        },
+        {
+          "id": "press_on",
+          "label": "Push deeper",
+          "consequence": "More relic chance, more heat, higher injury risk."
+        },
+        {
+          "id": "spend_supplies",
+          "label": "Spend supplies",
+          "consequence": "Reduce injury risk before extraction."
+        }
+      ]
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_14_extraction",
+      "stage": "extraction",
+      "title": "Extraction",
+      "time_index": 14,
+      "state": {
+        "success": true,
+        "readiness": 100,
+        "heroes_alive": [
+          "EZ",
+          "Candy Peace",
+          "Dr.Feed"
+        ],
+        "director_clocks": {
+          "threat": 6,
+          "noise": 3,
+          "doom": 3,
+          "extraction_timer": 12
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "extraction_beacon"
+        },
+        {
+          "id": "survivor_panel"
+        },
+        {
+          "id": "timer_panel"
+        },
+        {
+          "id": "failure_conditions"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "director_clocks",
+          "heroes_alive",
+          "readiness",
+          "success"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_15_run_summary",
+      "stage": "run_summary",
+      "title": "Run Summary",
+      "time_index": 15,
+      "state": {
+        "success": true,
+        "mission": "blightfall_relic_extraction",
+        "key_stats": {
+          "tactical_rounds": 3,
+          "objective_progress": 15,
+          "noise": 6,
+          "heroes_alive": 3,
+          "extraction_readiness": 100
+        },
+        "rewards": {
+          "relic_shards": 6,
+          "scrap": 12,
+          "intel": 3,
+          "xp": 130
+        }
+      },
+      "ui_panels": [
+        {
+          "id": "result_banner"
+        },
+        {
+          "id": "stat_cards"
+        },
+        {
+          "id": "rewards"
+        },
+        {
+          "id": "highlight_timeline"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "key_stats",
+          "mission",
+          "rewards",
+          "success"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_16_progression",
+      "stage": "progression",
+      "title": "Hero Progression",
+      "time_index": 16,
+      "state": {
+        "heroes": [
+          {
+            "player": "EZ",
+            "hero": "Sanctioned Prism Psyker",
+            "level": 2,
+            "xp": 35,
+            "xp_gain": 185,
+            "hp": 28,
+            "max_hp": 32,
+            "traits": [
+              "objective_driven"
+            ],
+            "injuries": []
+          },
+          {
+            "player": "Candy Peace",
+            "hero": "Void Chaplain",
+            "level": 2,
+            "xp": 35,
+            "xp_gain": 185,
+            "hp": 51,
+            "max_hp": 56,
+            "traits": [
+              "hard_to_kill"
+            ],
+            "injuries": []
+          },
+          {
+            "player": "Dr.Feed",
+            "hero": "Plague Surgeon",
+            "level": 2,
+            "xp": 35,
+            "xp_gain": 185,
+            "hp": 40,
+            "max_hp": 40,
+            "traits": [
+              "hard_to_kill"
+            ],
+            "injuries": []
+          }
+        ],
+        "progression_rules": "150 xp per level; traits inferred from directives and survival state"
+      },
+      "ui_panels": [
+        {
+          "id": "hero_xp_cards"
+        },
+        {
+          "id": "trait_changes"
+        },
+        {
+          "id": "injuries"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "heroes",
+          "progression_rules"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": []
+    },
+    {
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_17_camp_return",
+      "stage": "camp_return",
+      "title": "Camp Return",
+      "time_index": 17,
+      "state": {
+        "camp": {
+          "id": "blackstar_camp_vesper_reliquary",
+          "name": "Vesper Reliquary Camp",
+          "tier": 1,
+          "resources": {
+            "scrap": 26,
+            "relic_shards": 10,
+            "medicae": 1,
+            "intel": 4
+          },
+          "facilities": {
+            "triage_bay": {
+              "level": 1,
+              "effect": "post-run injury mitigation"
+            },
+            "armory_rack": {
+              "level": 2,
+              "effect": "basic loadout budget"
+            },
+            "strategium_table": {
+              "level": 0,
+              "effect": "route intel locked"
+            }
+          },
+          "heat": 5,
+          "morale": 8,
+          "persistent_events": [
+            {
+              "id": "black_reliquary_claimed",
+              "result": "victory",
+              "heat_after": 5
+            }
+          ]
+        },
+        "persistent_events": [
+          {
+            "id": "black_reliquary_claimed",
+            "result": "victory",
+            "heat_after": 5
+          }
+        ]
+      },
+      "ui_panels": [
+        {
+          "id": "camp_facilities"
+        },
+        {
+          "id": "resources"
+        },
+        {
+          "id": "heat_morale"
+        },
+        {
+          "id": "next_campaign_hooks"
+        }
+      ],
+      "log_refs": [],
+      "calculation_refs": [
+        "engine/rules_v042.py"
+      ],
+      "render_contract": {
+        "source_of_truth": [
+          "state",
+          "ui_panels",
+          "log_refs",
+          "calculation_refs"
+        ],
+        "must_show": [
+          "camp",
+          "persistent_events"
+        ],
+        "must_not_invent": [
+          "stats outside rules_v042 formulas",
+          "hero actions not present in action score logs",
+          "dead/alive status not in state",
+          "player names other than EZ, Candy Peace, Dr.Feed",
+          "official WH40 logos or protected names in public assets"
+        ]
+      },
+      "next_decisions": [
+        {
+          "id": "upgrade_armory",
+          "label": "Upgrade armory if scrap allows"
+        },
+        {
+          "id": "treat_injuries",
+          "label": "Spend medicae to clear injuries"
+        },
+        {
+          "id": "change_directives",
+          "label": "Players update directives before next campaign"
+        }
+      ]
+    }
+  ],
+  "replay_index": [
+    {
+      "time_index": 0,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_00_hero_selection",
+      "stage": "hero_selection"
+    },
+    {
+      "time_index": 1,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_01_squad_lock_in",
+      "stage": "squad_lock_in"
+    },
+    {
+      "time_index": 2,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_02_campaign_briefing",
+      "stage": "campaign_briefing"
+    },
+    {
+      "time_index": 3,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_03_camp_loadout",
+      "stage": "camp_loadout"
+    },
+    {
+      "time_index": 4,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_04_drop_in",
+      "stage": "drop_in"
+    },
+    {
+      "time_index": 5,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_05_strategic_map_start",
+      "stage": "strategic_map_start"
+    },
+    {
+      "time_index": 6,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_06_strategic_turn",
+      "stage": "strategic_turn"
+    },
+    {
+      "time_index": 7,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_07_strategic_turn",
+      "stage": "strategic_turn"
+    },
+    {
+      "time_index": 8,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_08_strategic_turn",
+      "stage": "strategic_turn"
+    },
+    {
+      "time_index": 9,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_09_tactical_encounter_start",
+      "stage": "tactical_encounter_start"
+    },
+    {
+      "time_index": 10,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_10_tactical_round",
+      "stage": "tactical_round"
+    },
+    {
+      "time_index": 11,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_11_tactical_round",
+      "stage": "tactical_round"
+    },
+    {
+      "time_index": 12,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_12_tactical_round",
+      "stage": "tactical_round"
+    },
+    {
+      "time_index": 13,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_13_gm_interlude",
+      "stage": "gm_interlude"
+    },
+    {
+      "time_index": 14,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_14_extraction",
+      "stage": "extraction"
+    },
+    {
+      "time_index": 15,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_15_run_summary",
+      "stage": "run_summary"
+    },
+    {
+      "time_index": 16,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_16_progression",
+      "stage": "progression"
+    },
+    {
+      "time_index": 17,
+      "screen_id": "blackstar_campaign_001_run_001_v042_screen_17_camp_return",
+      "stage": "camp_return"
+    }
+  ],
+  "patch_contract": {
+    "schema": "blackstar-raiders.patch-intake.v0.42",
+    "purpose": "Allow ChatGPT Web, Notion, GitHub, or local agents to propose versioned game changes without editing canon directly.",
+    "allowed_patch_targets": [
+      "player_directives",
+      "hero_assignment_demo_seed",
+      "loadout_priority",
+      "action_score_weight",
+      "screen_copy",
+      "research_question",
+      "visual_prompt"
+    ],
+    "required_fields": [
+      "patch_id",
+      "source",
+      "target",
+      "reason",
+      "proposed_change",
+      "acceptance_check"
+    ],
+    "asset_policy": {
+      "heavy_assets": "store in Google Drive or local artifact folder, then reference by manifest",
+      "repo_assets": "keep only small JSON/spec/test fixtures in Git"
+    },
+    "current_run": {
+      "run_id": "blackstar_campaign_001_run_001_v042",
+      "schema": "blackstar-raiders.campaign-run.v0.42"
+    }
+  }
+}

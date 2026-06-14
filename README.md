@@ -1,5 +1,87 @@
 # wow-raiders-sim
 
+## v0.44 Full Campaign Runtime Checkpoint
+
+Current active checkpoint:
+
+- `blackstar-raiders/` - current compact playable/runtime package v0.52 from
+  GitHub main: 32x32 strategic open-world hex sector, fog/scouting, event
+  points, heroes, equipment, 12x12 tactical encounter generation, action log,
+  formula-driven damage, and invariant tests.
+- `docs/ENGINE_ACCELERATION_STRATEGY_V053.md` - route for accelerating the
+  project through Python runtime exports, browser/Godot shells, and friend task
+  packets while treating Steam games as references, not engines.
+- `docs/REFERENCE_GAME_ANALYSIS_V054.md` - reference matrix for extracting
+  mechanics, pacing logic, UI-state contracts, and production patterns from
+  existing games without copying code, assets, lore, UI, or proprietary data.
+- `engine/campaign_v044.py` - end-to-end campaign runtime from hero selection
+  to continuity handoff, with BattleV09 embedded as the tactical stage.
+- `tests/test_campaign_v044.py` - acceptance tests for replayable screens,
+  integrated BattleV09, AI layers, camp progression, continuity ledger, balance
+  audit, and patch intake.
+- `docs/FULL_CAMPAIGN_RUNTIME_V044.md` - full loop status and contract.
+- `game-data/campaign-runs/campaign01_v044_full_run.json` - generated full
+  campaign run with 20 screen payloads.
+- `game-data/screen-payloads/campaign01_v044_screen_payloads.json` - generated
+  v0.44 render payloads.
+- `game-data/continuity/campaign01_v044_continuity_ledger.json` - between-run
+  hero/camp continuity ledger.
+- `engine/battle_v09.py` - first tactical runtime that consumes the v0.42
+  calculated external roster directly.
+- `tests/test_battle_v09.py` - acceptance tests for deterministic battle
+  resolution, native `Dr.Feed` medic behavior, movement/action budgets, clocks,
+  frames, and screen payloads.
+- `docs/BATTLE_V09_RUNTIME.md` - runtime status and contract.
+- `game-data/battle-runs/campaign01_v09_external_battle_run.json` - generated
+  battle run.
+- `game-data/screen-payloads/campaign01_v09_external_battle_screen_payloads.json`
+  - generated render payloads for BattleV09.
+- `engine/battle_adapter_v043.py` - read-only adapter contract from v0.42
+  calculated campaign data to legacy `battle_v08.py` hex battle snapshots.
+- `tests/test_battle_adapter_v043.py` - acceptance tests for actor/action
+  mapping, explicit loss report, and adapter screen payload.
+- `docs/BATTLE_ADAPTER_V043.md` - adapter status and BattleV09 runtime gap.
+- `engine/rules_v042.py` - calculated stat/action/loadout/progression rules
+  spine.
+- `engine/campaign_v042.py` - v0.42 campaign using the calculated rules spine.
+- `tests/test_rules_v042.py` and `tests/test_campaign_v042.py` - acceptance
+  tests for derived stats, action budgets, AI scoring, screen payloads, and
+  patch intake.
+- `docs/RULES_MODEL_V042.md` - stat formulas and AI directive contract.
+- `engine/campaign_v041.py` - deterministic campaign orchestrator above the
+  older tactical/strategic line.
+- `tests/test_campaign_v041.py` - acceptance tests for full-run state,
+  screen payloads, `Dr.Feed`, directives, and camp progression.
+- `docs/GAME_SYSTEM_V041.md` - system model.
+- `docs/SCREEN_PIPELINE_V041.md` - state-to-screen contract.
+- `game-data/campaign-runs/campaign01_v041_full_run.json` - generated run.
+- `game-data/screen-payloads/campaign01_v041_screen_payloads.json` - 17
+  renderable screen payloads.
+
+Reference direction: hard WH40 latest-edition grimdark planetary raid mood.
+Public production artifacts stay original-safe under `Blackstar Raiders`
+unless explicitly marked as private fan/reference work.
+
+Canonical player nickname: `Dr.Feed`.
+
+## Codex Sync 2026-06-12
+
+This branch adds a safe GitHub sync layer for continuing WoW Raiders from Codex,
+ChatGPT web, Claude Code, Antigravity, or lower-effort executors.
+
+New entry points:
+
+- `AGENTS.md` - repo-level agent contract.
+- `docs/WEB_CHAT_DEVELOPMENT_GUIDE.md` - compact packet for web ChatGPT work.
+- `docs/AGENT_TASK_ARCHITECTURE.md` - planner/executor/verifier architecture.
+- `docs/V040_SYNC_AND_MERGE_PLAN.md` - how v0.40 should enter the repo without
+  overwriting the older v0.8/v0.9 line.
+- `handoffs/v0.40-codex-handoff-github-ready/` - imported v0.40 Codex handoff.
+
+Use `handoffs/v0.40-codex-handoff-github-ready/` as preserved source material.
+Do not merge it into the active engine until a v0.41 production spec chooses the
+merge path.
+
 Детерминированное симуляционное ядро тактической RPG **WoW Raiders · AI Game Master Run**.
 Deterministic-first: один и тот же `seed` → идентичный прогон. Источник правды — state/log/snapshot, визуал рендерится из данных, ничего не выдумывая.
 

@@ -1,0 +1,340 @@
+{
+  "schema": "blackstar-raiders.battle-adapter-screen.v0.43",
+  "screen_id": "campaign01_v043_battle_adapter_screen_battle_adapter_review",
+  "stage": "battle_adapter_review",
+  "title": "Battle Adapter Review",
+  "time_index": 18,
+  "state": {
+    "source_run_id": "blackstar_campaign_001_run_001_v042",
+    "source_rules": "blackstar-raiders.rules.v0.42",
+    "target_engine": "v0.8-hex",
+    "target_grid": {
+      "type": "hex",
+      "layout": "odd-r",
+      "width": 8,
+      "height": 8,
+      "neighbors": 6,
+      "distance": "cube",
+      "label": "col-letter + row-number (e.g. B2)"
+    },
+    "actor_contract": {
+      "hero_mappings": [
+        {
+          "player": "EZ",
+          "v042_hero": "Sanctioned Prism Psyker",
+          "v042_role": "control",
+          "target_v08_actor": "EZ",
+          "target_v08_class": "Warlock",
+          "fit": "strong",
+          "reason": "v0.8 EZ is already a controller/caster analogue.",
+          "stat_projection": {
+            "hp": {
+              "source": 32,
+              "target_current": 9,
+              "target_max": 32
+            },
+            "ac": {
+              "source_projected": 13,
+              "target": 15
+            },
+            "movement": {
+              "source": 5,
+              "v08_default": 6
+            },
+            "action_budget": {
+              "source": {
+                "main": 1,
+                "bonus": 1
+              },
+              "v08_resources": {
+                "action": 1,
+                "bonus_action": 1,
+                "reaction": 1
+              }
+            },
+            "dndish_stats_projection": {
+              "str": 10,
+              "dex": 12,
+              "con": 11,
+              "int": 11,
+              "wis": 18,
+              "cha": 16
+            }
+          }
+        },
+        {
+          "player": "Candy Peace",
+          "v042_hero": "Void Chaplain",
+          "v042_role": "tank",
+          "target_v08_actor": "EL",
+          "target_v08_class": "Paladin",
+          "fit": "strong",
+          "reason": "v0.8 EL is a protection/frontline analogue.",
+          "stat_projection": {
+            "hp": {
+              "source": 56,
+              "target_current": 24,
+              "target_max": 45
+            },
+            "ac": {
+              "source_projected": 16,
+              "target": 18
+            },
+            "movement": {
+              "source": 4,
+              "v08_default": 6
+            },
+            "action_budget": {
+              "source": {
+                "main": 1,
+                "bonus": 1
+              },
+              "v08_resources": {
+                "action": 1,
+                "bonus_action": 1,
+                "reaction": 1
+              }
+            },
+            "dndish_stats_projection": {
+              "str": 14,
+              "dex": 11,
+              "con": 16,
+              "int": 10,
+              "wis": 14,
+              "cha": 13
+            }
+          }
+        },
+        {
+          "player": "Dr.Feed",
+          "v042_hero": "Plague Surgeon",
+          "v042_role": "medic",
+          "target_v08_actor": "HE",
+          "target_v08_class": "Rogue",
+          "fit": "weak",
+          "reason": "v0.8 has no native medic slot; HE is only a temporary third-hero carrier.",
+          "stat_projection": {
+            "hp": {
+              "source": 40,
+              "target_current": 18,
+              "target_max": 31
+            },
+            "ac": {
+              "source_projected": 14,
+              "target": 16
+            },
+            "movement": {
+              "source": 5,
+              "v08_default": 6
+            },
+            "action_budget": {
+              "source": {
+                "main": 1,
+                "bonus": 1
+              },
+              "v08_resources": {
+                "action": 1,
+                "bonus_action": 1,
+                "reaction": 1
+              }
+            },
+            "dndish_stats_projection": {
+              "str": 10,
+              "dex": 12,
+              "con": 13,
+              "int": 16,
+              "wis": 14,
+              "cha": 13
+            }
+          }
+        }
+      ],
+      "enemy_mappings": [
+        {
+          "v042_enemy": "blight_sergeant",
+          "target_v08_actor": "SG",
+          "target_v08_class": "Guard",
+          "fit": "partial",
+          "reason": "armored pressure unit",
+          "stat_projection": {
+            "source_hp": 5,
+            "target_hp": 0,
+            "source_armor": 3,
+            "target_ac": 17,
+            "source_threat": 5
+          }
+        },
+        {
+          "v042_enemy": "rust_gunner",
+          "target_v08_actor": "XB",
+          "target_v08_class": "Archer",
+          "fit": "partial",
+          "reason": "ranged pressure unit",
+          "stat_projection": {
+            "source_hp": 34,
+            "target_hp": 0,
+            "source_armor": 2,
+            "target_ac": 15,
+            "source_threat": 4
+          }
+        },
+        {
+          "v042_enemy": "relic_thrall_pack",
+          "target_v08_actor": "WG",
+          "target_v08_class": "Hunter",
+          "fit": "partial",
+          "reason": "mobile melee pressure",
+          "stat_projection": {
+            "source_hp": 58,
+            "target_hp": 0,
+            "source_armor": 1,
+            "target_ac": 16,
+            "source_threat": 3
+          }
+        }
+      ],
+      "unmapped_v08_actors": [
+        "RS"
+      ]
+    },
+    "support_counts": {
+      "partial": 4,
+      "missing": 2
+    },
+    "loss_report": {
+      "adapter_status": "contract_only_not_runtime_replacement",
+      "runtime_risk": "high",
+      "actor_gaps": [
+        {
+          "type": "actor_fit",
+          "player": "Dr.Feed",
+          "severity": "high",
+          "issue": "v0.8 has no native medic slot; HE is only a temporary third-hero carrier."
+        }
+      ],
+      "action_gaps": [
+        {
+          "type": "action_mapping",
+          "player": "EZ",
+          "action": "prism_lock",
+          "support_level": "partial",
+          "missing": [
+            "objective progress",
+            "psyker risk clock"
+          ]
+        },
+        {
+          "type": "action_mapping",
+          "player": "EZ",
+          "action": "scan_relic_signal",
+          "support_level": "missing",
+          "missing": [
+            "non-combat scan action",
+            "intel gain",
+            "objective clue progress"
+          ]
+        },
+        {
+          "type": "action_mapping",
+          "player": "Dr.Feed",
+          "action": "stabilize_ally",
+          "support_level": "partial",
+          "missing": [
+            "Dr.Feed native medic actor",
+            "consumable loadout spend"
+          ]
+        },
+        {
+          "type": "action_mapping",
+          "player": "Dr.Feed",
+          "action": "field_injector",
+          "support_level": "missing",
+          "missing": [
+            "bonus-action consumable healing"
+          ]
+        },
+        {
+          "type": "action_mapping",
+          "player": "Candy Peace",
+          "action": "guard_line",
+          "support_level": "partial",
+          "missing": [
+            "squad-wide mitigation pool",
+            "threat anchoring"
+          ]
+        },
+        {
+          "type": "action_mapping",
+          "player": "Candy Peace",
+          "action": "raise_shield",
+          "support_level": "partial",
+          "missing": [
+            "bonus-action shield stance"
+          ]
+        }
+      ],
+      "required_engine_work": [
+        "external roster injection",
+        "Dr.Feed native medic/support actor",
+        "objective and extraction clocks inside tactical runtime",
+        "bonus-action consumables",
+        "route/quest scan actions in combat"
+      ]
+    }
+  },
+  "ui_panels": [
+    {
+      "id": "source_campaign"
+    },
+    {
+      "id": "actor_mapping"
+    },
+    {
+      "id": "action_mapping"
+    },
+    {
+      "id": "loss_report"
+    },
+    {
+      "id": "next_engine_work"
+    }
+  ],
+  "log_refs": [
+    "blackstar_campaign_001_run_001_v042",
+    "snap_enc_005_v08"
+  ],
+  "calculation_refs": [
+    "engine/battle_adapter_v043.py",
+    "engine/rules_v042.py",
+    "engine/battle_v08.py"
+  ],
+  "render_contract": {
+    "source_of_truth": [
+      "state",
+      "log_refs",
+      "calculation_refs"
+    ],
+    "must_show": [
+      "source_run_id",
+      "target_engine",
+      "actor_contract",
+      "support_counts",
+      "loss_report"
+    ],
+    "must_not_invent": [
+      "runtime integration is complete",
+      "Dr.Feed native medic support in v0.8",
+      "battle_v08 accepts external roster"
+    ]
+  },
+  "next_decisions": [
+    {
+      "id": "build_battle_v09_external_roster",
+      "label": "Build BattleV09 external roster runtime"
+    },
+    {
+      "id": "keep_adapter_contract_only",
+      "label": "Keep adapter as review gate and improve mappings"
+    }
+  ]
+}

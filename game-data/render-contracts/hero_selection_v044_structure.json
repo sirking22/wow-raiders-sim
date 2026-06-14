@@ -1,0 +1,49 @@
+{
+  "schema": "blackstar-raiders.pre-render.hero-selection.v0.44",
+  "source_screen_id": "blackstar_campaign_001_run_001_v044_screen_00_hero_selection",
+  "run_id": "blackstar_campaign_001_run_001_v044",
+  "stage": "hero_selection",
+  "title": "Hero Selection",
+  "validation": {
+    "assigned_count": 0,
+    "required_count": 3,
+    "player_names": ["EZ", "Candy Peace", "Dr.Feed"],
+    "hero_count": 9,
+    "attribute_budget": 30,
+    "mission_sidebar": "unresolved_in_screen_00_state"
+  },
+  "player_slots": [
+    {"slot": 1, "player": "EZ", "status": "unassigned"},
+    {"slot": 2, "player": "Candy Peace", "status": "unassigned"},
+    {"slot": 3, "player": "Dr.Feed", "status": "unassigned"}
+  ],
+  "hero_pool": [
+    {"n": 1, "id": "void_chaplain", "name": "Void Chaplain", "role": "tank", "tags": ["anchor", "protector", "morale", "frontline"], "attributes_f_a_e_w_t_p": "6/3/8/6/2/5", "hp": 56, "armor": 3, "movement": 4, "accuracy": 7, "damage_power": 9, "threat": 11},
+    {"n": 2, "id": "ash_scout", "name": "Ash Scout", "role": "scout", "tags": ["mobility", "stealth", "route", "quest"], "attributes_f_a_e_w_t_p": "3/8/4/5/5/5", "hp": 37, "armor": 2, "movement": 7, "accuracy": 9, "damage_power": 5, "threat": 7},
+    {"n": 3, "id": "plague_surgeon", "name": "Plague Surgeon", "role": "medic", "tags": ["healing", "toxins", "stabilize", "consumable"], "attributes_f_a_e_w_t_p": "2/4/5/6/8/5", "hp": 40, "armor": 2, "movement": 5, "accuracy": 8, "damage_power": 5, "threat": 7},
+    {"n": 4, "id": "siege_gunner", "name": "Siege Gunner", "role": "heavy", "tags": ["suppression", "breach", "heavy", "noise"], "attributes_f_a_e_w_t_p": "7/2/7/4/7/3", "hp": 53, "armor": 3, "movement": 4, "accuracy": 5, "damage_power": 9, "threat": 10},
+    {"n": 5, "id": "sanctioned_prism_psyker", "name": "Sanctioned Prism Psyker", "role": "control", "tags": ["psyker", "control", "risk", "objective"], "attributes_f_a_e_w_t_p": "2/4/3/10/3/8", "hp": 32, "armor": 2, "movement": 5, "accuracy": 12, "damage_power": 7, "threat": 11},
+    {"n": 6, "id": "iron_tech_adept", "name": "Iron Tech-Adept", "role": "support", "tags": ["repair", "devices", "camp", "consumable"], "attributes_f_a_e_w_t_p": "4/3/5/5/10/3", "hp": 42, "armor": 2, "movement": 4, "accuracy": 6, "damage_power": 6, "threat": 7},
+    {"n": 7, "id": "deathworld_beastmaster", "name": "Deathworld Beastmaster", "role": "ranger", "tags": ["tracking", "beast", "survival", "mobility"], "attributes_f_a_e_w_t_p": "5/7/6/5/2/5", "hp": 47, "armor": 3, "movement": 6, "accuracy": 8, "damage_power": 7, "threat": 9},
+    {"n": 8, "id": "penitent_duelist", "name": "Penitent Duelist", "role": "duelist", "tags": ["melee", "bleed", "zeal", "risk"], "attributes_f_a_e_w_t_p": "7/7/5/6/1/4", "hp": 45, "armor": 2, "movement": 6, "accuracy": 9, "damage_power": 10, "threat": 12},
+    {"n": 9, "id": "xeno_relic_sniper", "name": "Xeno Relic Sniper", "role": "sniper", "tags": ["range", "relics", "precision", "greed"], "attributes_f_a_e_w_t_p": "3/8/3/6/6/4", "hp": 33, "armor": 2, "movement": 7, "accuracy": 10, "damage_power": 6, "threat": 8}
+  ],
+  "visible_card_stats": ["HP", "ARM", "MOV", "ACC", "DMG", "THR"],
+  "ui_zones": [
+    {"id": "title_banner", "locked_text": "HERO SELECTION"},
+    {"id": "reserved_player_slots", "count": 3},
+    {"id": "mission_sidebar", "source_required": true},
+    {"id": "squad_status", "locked_text": "0 / 3 ASSIGNED"},
+    {"id": "hero_pool_grid", "count": 9},
+    {"id": "ready_up", "state": "disabled"}
+  ],
+  "must_not_invent": [
+    "selected heroes",
+    "battle actions",
+    "kills",
+    "injuries",
+    "rewards",
+    "mission facts unless mission_ref is resolved",
+    "official WH40 logos or protected faction marks"
+  ]
+}

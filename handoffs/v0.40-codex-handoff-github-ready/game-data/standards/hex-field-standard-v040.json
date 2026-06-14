@@ -1,0 +1,64 @@
+{
+  "schema_version": "wow-raiders.hex-field-standard.v0.40",
+  "goal": "Readable rectangular tactical arena on hexes, not a broken wedge.",
+  "coordinate_model": {
+    "engine": "q,r positions in JSON",
+    "renderer": "offset-row rectangular renderer",
+    "note": "Engine may use axial-like math; UI must show stable rectangular arena."
+  },
+  "global_ui_rules": [
+    "visible arena boundary",
+    "same number of visual columns per row for standard tactical field",
+    "blocked cells are dimmed tiles, not missing holes",
+    "QA mode can show coordinates",
+    "all current UI labels are Russian"
+  ],
+  "field_types": [
+    {
+      "id": "STANDARD_TACTICAL_FIELD",
+      "label_ru": "Стандартное тактическое поле",
+      "default_size": {
+        "cols": 11,
+        "rows": 9
+      },
+      "shape": "rectangular_offset_rows",
+      "use_for": [
+        "regular fights",
+        "QA screenshots",
+        "tactical reports"
+      ]
+    },
+    {
+      "id": "BOSS_ARENA",
+      "label_ru": "Босс-арена",
+      "default_size": {
+        "cols": 13,
+        "rows": 11
+      },
+      "shape": "rectangular_base_with_masked_edges",
+      "use_for": [
+        "boss fights",
+        "ritual objectives",
+        "elite encounters"
+      ]
+    },
+    {
+      "id": "CORRIDOR_CHOKEPOINT",
+      "label_ru": "Коридор / руины / choke-point",
+      "default_size": {
+        "cols": 12,
+        "rows": 7
+      },
+      "shape": "rectangular_base_with_blocked_sides",
+      "use_for": [
+        "narrow halls",
+        "ambushes",
+        "doors"
+      ]
+    }
+  ],
+  "v040_decision": {
+    "current_project_default": "STANDARD_TACTICAL_FIELD",
+    "reason": "Best readability for logs, screenshots, QA, Codex, and GitHub development."
+  }
+}

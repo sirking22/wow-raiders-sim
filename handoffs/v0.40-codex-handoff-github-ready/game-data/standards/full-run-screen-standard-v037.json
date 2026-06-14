@@ -1,0 +1,186 @@
+{
+  "schema_version": "wow-raiders.full-run-screen-standard.v0.37",
+  "purpose": "Single standard for every screen type in one complete run, preventing duplicated or hallucinated UI.",
+  "global_rules": [
+    "All numbers come from campaign DB / encounter logs / XP ledger.",
+    "Image-generated screens are visual drafts only until checked against data payload.",
+    "Use exact name: HesH Dem.",
+    "HP = red, XP = purple, level-up = gold.",
+    "Never show 120/300 XP.",
+    "Do not duplicate the same chronology or summary across multiple end screens."
+  ],
+  "screen_types": [
+    {
+      "id": "STRATEGIC_STEP",
+      "question_answered": "Куда сквад идёт и почему?",
+      "must_show": [
+        "current strategic step",
+        "map node",
+        "party HP/resource summary",
+        "danger",
+        "hidden events",
+        "route options",
+        "director hint"
+      ],
+      "must_not_show": [
+        "full campaign timeline",
+        "battle turn log",
+        "post-campaign level-up"
+      ],
+      "data_sources": [
+        "campaign timeline",
+        "world-state",
+        "director decision metrics"
+      ]
+    },
+    {
+      "id": "TACTICAL_BATTLE",
+      "question_answered": "Что происходит прямо сейчас в бою?",
+      "must_show": [
+        "round",
+        "initiative",
+        "HP bars",
+        "objective",
+        "AP/actions",
+        "selected unit",
+        "tactical hints",
+        "current battlefield state"
+      ],
+      "must_not_show": [
+        "campaign achievements",
+        "base upgrades",
+        "post-campaign XP conversion"
+      ],
+      "data_sources": [
+        "encounter state",
+        "turn log",
+        "audit log"
+      ]
+    },
+    {
+      "id": "BATTLE_RESULT_LOOT",
+      "question_answered": "Чем закончился конкретный бой?",
+      "must_show": [
+        "battle outcome",
+        "rounds",
+        "final HP",
+        "XP for this battle",
+        "loot",
+        "opened paths",
+        "battle-specific notes"
+      ],
+      "must_not_show": [
+        "full campaign summary",
+        "base construction",
+        "future campaign meta"
+      ],
+      "data_sources": [
+        "encounter result",
+        "loot ledger",
+        "XP ledger"
+      ]
+    },
+    {
+      "id": "CAMPAIGN_CHRONICLE",
+      "question_answered": "Что произошло во всём ране?",
+      "must_show": [
+        "run timeline",
+        "one compact campaign summary",
+        "major outcomes",
+        "evacuation decision"
+      ],
+      "must_not_show": [
+        "hero upgrade details",
+        "base facility detail table",
+        "duplicated clean stat board"
+      ],
+      "data_sources": [
+        "campaign DB timeline",
+        "director decisions"
+      ]
+    },
+    {
+      "id": "HERO_PROGRESS",
+      "question_answered": "Как изменились герои?",
+      "must_show": [
+        "hero arc",
+        "level-up",
+        "XP after training",
+        "role score",
+        "MVP/raw leader separation",
+        "patch focus"
+      ],
+      "must_not_show": [
+        "full route timeline",
+        "base building ledger"
+      ],
+      "data_sources": [
+        "XP ledger",
+        "role performance",
+        "patch signals"
+      ]
+    },
+    {
+      "id": "SQUAD_BASE_PROGRESS",
+      "question_answered": "Что получил сквад как группа и база?",
+      "must_show": [
+        "squad achievements",
+        "base tier",
+        "facilities",
+        "resources after build",
+        "unlocks"
+      ],
+      "must_not_show": [
+        "per-turn combat log",
+        "full battle chronology"
+      ],
+      "data_sources": [
+        "base progression ledger",
+        "squad achievements"
+      ]
+    },
+    {
+      "id": "NEXT_CAMPAIGN_SETUP",
+      "question_answered": "Что переносится дальше и где стартуем?",
+      "must_show": [
+        "carryover resources",
+        "unresolved hooks",
+        "first route choices",
+        "required checks",
+        "recommended next action"
+      ],
+      "must_not_show": [
+        "old campaign full stats",
+        "battle-specific loot list unless relevant"
+      ],
+      "data_sources": [
+        "world state",
+        "base progression",
+        "director policy"
+      ]
+    }
+  ],
+  "end_of_campaign_final_pack": {
+    "max_screens": 3,
+    "screens": [
+      {
+        "id": "FS01",
+        "type": "CAMPAIGN_CHRONICLE",
+        "title": "Хроника полного рана"
+      },
+      {
+        "id": "FS02",
+        "type": "HERO_PROGRESS + SQUAD_BASE_PROGRESS",
+        "title": "Прогресс героев и достижения сквада"
+      },
+      {
+        "id": "FS03",
+        "type": "NEXT_CAMPAIGN_SETUP",
+        "title": "База и перенос в Campaign III"
+      }
+    ],
+    "deprecated": [
+      "standalone CLEAN_STAT_BOARD if it duplicates FS01"
+    ]
+  }
+}
