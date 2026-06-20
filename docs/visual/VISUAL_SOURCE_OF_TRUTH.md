@@ -10,10 +10,20 @@ Runtime facts -> Visual contract -> Prompt / Worker -> Visual artifact -> Review
 
 ## Storage policy
 
-- **Notion Visual DB** stores images, review notes, statuses, What We Take / What We Don't Take, Asset Sets, Canon Levels, Runtime Anchors.
-- **GitHub** stores text-level contracts: manifests, prompt templates, runtime anchors, situation taxonomy, guardrails.
+- **Notion Visual DB** stores images, review notes, statuses, What We Take / What We Don't Take, Asset Sets, Canon Levels, Runtime Anchors and Generation Lane.
+- **GitHub** stores text-level contracts: manifests, prompt templates, runtime anchors, situation taxonomy, guardrails and generation lane docs.
 - **PC / worker** packages batches: prompts, payload placeholders, contact sheets, review packets.
 - **GPT Web / GPT Image** are scout/generation layers, not canon.
+
+## Final generation lanes
+
+Final/high-quality visuals are produced through:
+
+- `GPT Images 2` — primary final visual lane.
+- `GPT Web` — exploration/web generation/reference lane.
+- `Codex` — future automation/generation lane; currently blocked until tokens exist.
+
+Notion, GitHub and PC-worker are not final visual generators.
 
 ## Asset Sets
 
