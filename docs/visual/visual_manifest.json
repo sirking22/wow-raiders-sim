@@ -1,0 +1,95 @@
+{
+  "project": "War Raiders / Blackstar Raiders",
+  "version": "v0.53",
+  "source_of_truth": {
+    "visual_db": "https://app.notion.com/p/e6369b5cdb7347589348d995c4bf7d02",
+    "game_os": "https://app.notion.com/p/7a3820000c0f46d88411d154aa3bf4c1",
+    "visual_sot_page": "https://app.notion.com/p/3dcd55145ce741d0b8316768089b0b45",
+    "game_state_kit_page": "https://app.notion.com/p/221711f492d64cb18f7d1b880d34e9aa"
+  },
+  "asset_sets": [
+    {
+      "asset_set_id": "WR-SET-GAME-STATE-KIT",
+      "name": "Game State Kit / Situation Board",
+      "type": "Production Kit",
+      "items": [
+        {
+          "name": "Game State Kit / Situation Board — v0.2",
+          "visual_db_row": "https://app.notion.com/p/9501f934dcce4f488a82687ccf66b7b3",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Review board",
+          "runtime_anchor": "start_camp; collapsed_streets; bastion; field_bazaar; Situation Manifest v0.1"
+        },
+        {
+          "name": "Game State Kit / Situation Board — v0.1",
+          "visual_db_row": "https://app.notion.com/p/47791781742a4e1bad5faab4d26da09a",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Review board",
+          "runtime_anchor": "Situation Manifest v0.1; StrategicSector / EventKind / future result payload"
+        }
+      ]
+    },
+    {
+      "asset_set_id": "WR-SET-STRATEGIC-MAP",
+      "name": "Strategic Map",
+      "type": "Map Set",
+      "items": [
+        {
+          "name": "Strategic Fog Map — 32×32 view",
+          "visual_db_row": "https://app.notion.com/p/010b8e55a75b48b09a6d85003cb47ba5",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Reference",
+          "runtime_anchor": "StrategicSector.visible_payload(); TileState unknown/visible/scanned/discovered"
+        }
+      ]
+    },
+    {
+      "asset_set_id": "WR-SET-HERO-TRIO",
+      "name": "Hero Trio Canon",
+      "type": "Character Set",
+      "items": [
+        {
+          "name": "Hero Canon — EZ / Candy Peace / Dr.Feed",
+          "visual_db_row": "https://app.notion.com/p/0ad1a60ce14d42ce99570ca1b2dc4e11",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Prompt input",
+          "runtime_anchor": "Heroes / Equipment / Abilities; Hero Visual Canon"
+        }
+      ]
+    },
+    {
+      "asset_set_id": "WR-SET-TACTICAL-UI",
+      "name": "Tactical UI",
+      "type": "Screen Set",
+      "items": [
+        {
+          "name": "Tactical Battle UI — 12×12 hex",
+          "visual_db_row": "https://app.notion.com/p/d32ecc25ea2949eb8da1e7fbc94a00d3",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Screen mock",
+          "runtime_anchor": "TacticalEncounter.payload(); 12x12 tactical encounter"
+        }
+      ]
+    },
+    {
+      "asset_set_id": "WR-SET-VICTORY-POSTBATTLE",
+      "name": "Victory / Post-Battle",
+      "type": "Screen Set",
+      "items": [
+        {
+          "name": "Victory / Result Screen mock",
+          "visual_db_row": "https://app.notion.com/p/b187a83b59334b32b714592d58263645",
+          "status": "Useful",
+          "canon_level": "L2 Useful Direction",
+          "production_use": "Screen mock",
+          "runtime_anchor": "encounter-result-payload.v0.53; Victory / Result Screen contract"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "project": "War Raiders / Blackstar Raiders",
+  "version": "v0.53",
+  "board_type": "game_state_kit",
+  "situations": [
+    {
+      "situation_id": "state.scouting",
+      "title": "Scouting / Exploration",
+      "runtime_mapping": ["StrategicSector.scout()", "TileState.UNKNOWN", "TileState.SCANNED", "TileState.VISIBLE", "TileState.DISCOVERED"],
+      "visual_rule": "Show partial reveal and scout focus; no fake reward."
+    },
+    {
+      "situation_id": "state.intel_discovered",
+      "title": "Intel Discovered",
+      "runtime_mapping": ["EventKind.INTEL", "visible_events"],
+      "visual_rule": "Show intel icon / discovered cell; no fake mission text."
+    },
+    {
+      "situation_id": "state.resource_opportunity",
+      "title": "Resource Opportunity",
+      "runtime_mapping": ["EventKind.RESOURCE", "event.reward[]"],
+      "visual_rule": "Show resource icon; reward list only if runtime provides it."
+    },
+    {
+      "situation_id": "state.stronghold_located",
+      "title": "Stronghold Located",
+      "runtime_mapping": ["EventKind.BATTLE", "EventKind.BOSS"],
+      "visual_rule": "Show threat marker, not invented enemy stats."
+    },
+    {
+      "situation_id": "state.under_attack",
+      "title": "Under Attack",
+      "runtime_mapping": ["Enemy Pack / AI", "encounter trigger"],
+      "visual_rule": "Show alert / hostile markers; no fake damage."
+    },
+    {
+      "situation_id": "state.extraction_available",
+      "title": "Extraction Available",
+      "runtime_mapping": ["extraction_cell", "Future spec: strategic extraction state"],
+      "visual_rule": "No route-line board; show safe area / marker only."
+    },
+    {
+      "situation_id": "state.sector_secured",
+      "title": "Sector Secured",
+      "runtime_mapping": ["result.state", "post_battle_delta", "Future spec: sector state"],
+      "visual_rule": "Show secured state only after result payload exists."
+    },
+    {
+      "situation_id": "state.post_battle_return",
+      "title": "Return to Strategic Map",
+      "runtime_mapping": ["next_state", "post_battle_report", "StrategicSector.visible_payload()"],
+      "visual_rule": "Show return/continue state without inventing rewards or consequences."
+    }
+  ]
+}
